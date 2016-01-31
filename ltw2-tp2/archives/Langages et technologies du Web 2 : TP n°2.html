@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Langages et technologies du Web 2 : TP n°2</title>
+  <link rel="stylesheet" type="text/css" href="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B02_fichiers/stylesTps.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B02_fichiers/stylesTpsPrint.css" media="print">
+  <meta charset="utf-8">
+  <style>
+    .todo {
+	  background-color: #FFF5A8;
+	  border-style: solid;
+	  border-width: 1px; 
+	}
+	.todo > li {
+	  margin-top: 5px;
+	  margin-bottom: 5px; 
+	}
+	.todo {
+	  padding: 5px; 
+	}
+	section p {
+	  text-align:justify; 
+	}
+	figure {
+	  text-align:center;
+    }
+    #wrapper {
+      width:1000px;
+	}
+	.pre {
+	  background-color:#FFF5A8;
+      border:2px solid #00000;
+      padding:10px;
+      overflow:auto
+      margin:7px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+  <header>
+    <hgroup>
+	  <h3>Langages et technologies du Web 2</h3>
+	  <h1 class="titreTP">TP n°2 : Animation d'une "chenille" !</h1>
+    </hgroup>
+  </header>
+  <p><strong>Objectifs :</strong> 
+                il s'agit de faire vos premiers pas avec la programmation objet ainsi que 
+                d'expérimenter avec les tableaux en JavaScript.</p>
+
+
+            <p>Sur le modèle de l'application <a href="https://imss-www.upmf-grenoble.fr/%7Eatenciam/LTW2/TPs/TP2/Sujet/visages.html">Visages Rebondissants</a> vue en cours, 
+                il s'agit de réaliser une application permettant 
+                d'animer une ou plusieurs "chenilles" se déplaçant de manière aléatoire
+				en "rebondissant" sur les bords dans un <a href="http://www.w3schools.com/tags/ref_canvas.asp">canvas</a> HTML5.
+            </p>
+  <section>
+    <h2>1. Représentation d'une 
+                    chenille</h2>
+    <p>
+                    Une chenille est constituée  d'une tête suivie d'une suite d'anneaux (figure 1).
+                </p>
+                <figure>
+                    <img src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B02_fichiers/chenille.png">
+                    <figcaption>figure 1: représentation 
+                        d'une chenille composée de 10 anneaux
+                    </figcaption>
+                </figure>
+                <ul>
+                    <li> Un <strong>anneau </strong>est représenté 
+                        par un cercle de rayon R (on propose R = 5 comme valeur par défaut).</li>
+                    <li>La <strong>tête</strong> de la chenille 
+                        est représentée par un disque noir de rayon identique au rayon 
+                        des anneaux.</li>
+                    <li>Le <strong>corps </strong>de la chenille 
+                        est constitué de N anneaux, numérotés de 0 à N-1 
+                        ; l'anneau n° 0 est celui qui suit la tête et l'anneau n° N-1 
+                        est celui de queue.
+                    </li>
+                    <li>Le centre de l'anneau n° i est 
+                        situé sur la circonférence de l'anneau n° i-1 ( i = 1, 2, ... 
+                        , N), le premier anneau (anneau n° 0) étant situé sur la circonférence 
+                        de la tête.</li>
+                    <li>Le <strong>cap</strong> de la chenille 
+                        indique la direction dans laquelle se déplace la tête de la chenille. 
+                        C'est l'angle entre l'axe Ox et le vecteur indiquant la direction de déplacement 
+                        de la tête.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>2. Animation d'une chenille</h2>
+                <h3>2.1 Création d'une chenille</h3>
+                <figure>
+                    <img src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B02_fichiers/chenilleJS1.png" alt="chenille dans sa position initiale">
+                    <figcaption>
+                        figure 2: Position initiale d'une chenille dans un canvas de largeur <code>width</code>
+                        et hauteur <code>height</code>.
+                    </figcaption>
+                </figure>
+                <p>A sa création, une chenille a le centre de sa tête situé au milieu du canvas,
+				    orientée vers la droite (cap = 0), et
+				    son corps est horizontal (parallèle à l'axe Ox).(figure 2).</p>
+                <p>
+                    <em>le repère associé à un canvas a son origine dans le coin supérieur gauche
+                        du canvas. Les points-écran (pixels) à l'intérieur
+                        d'un canvas sont à coordonnées entières.</em>
+                </p>
+                <h3>2.2 Avancée d'une chenille</h3>
+                <p>A chaque étape de l'animation le déplacement de la chenille
+                    s'effectue de la manière suivante (figure 3) :
+                </p>
+                <a id="algodeplacement"></a>
+                <pre class="pre">les anneaux de la chenille se décalent d'une position :
+  - l'anneau n° i prend la position de l'anneau n° i-1 (i = N-1, N-2, ... ,1)
+  - l'anneau n° 0 prend la position de la tête
+
+la tête de la chenille effectue une déviation de cap d'un angle tiré au hasard 
+              dans l'intervalle [-30°,+30°]
+
+<strong>tant que</strong> le nouveau cap ne garantit pas que le prochain déplacement de la tête la maintiendra 
+                entièrement dans le canvas* <strong>faire</strong>
+  |
+  |    dévier le cap de la tête de 10°
+  |
+<strong>fin tant que</strong>
+ 
+la tête se déplace d'une distance R selon la direction définie par le nouveau cap
+
+<em>* c'est-à-dire que la distance du centre de la tête aux bords du canvas 
+  sera supérieure ou égale au rayon de la tête</em>
+                </pre>
+                <figure>
+                    <img src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B02_fichiers/chenille2.png">
+                    <figcaption> figure
+                        3: Déplacement d'une chenille (en gris italique les éléments 
+                        de la chenille à l'instant t,<br>
+                        en normal les éléments 
+                        de la chenille à l'instant t+1)
+                    </figcaption>
+                </figure>
+            </section>
+            <section>
+                <h2>3. Modélisation JavaScript d'une Chenille</h2>
+                <p>Pour modéliser 
+                    une chenille en langage JavaScript on décide de définir trois types 
+                    d'objets :
+                </p>
+                <ul>
+                    <li> une type <strong><code>Anneau</code></strong> 
+                        qui décrit les objets représentant chaque anneau de la chenille.</li>
+                    <li>une type <strong><code>Tête</code></strong> 
+                        qui décrit l'objet représentant la tête de la chenille.</li>
+                    <li>une type <strong><code>Chenille</code></strong> 
+                        qui décrit un objet modélisant une chenille dans son ensemble 
+                        et donc qui utilisera les services d'un objet <code>Tête</code> 
+                        et d'objets <code>Anneau.</code></li>
+                </ul>
+                <h3>3.1 Les objets de type <code>Anneau</code></h3>
+                <p>
+                    Un <code>Anneau</code> est un objet défini par trois attributs (les coordonnées x,y du 
+                    centre du cercle le représentant et le rayon r de ce cercle), capable 
+                    de se placer à une position donnée, de s'afficher. La spécification 
+                    du constructeur et des méthodes des objets de type <code>Anneau</code> 
+                    vous est donnée ci-dessous.
+                </p>
+                <pre class="pre"><code>
+/**
+* crée un Anneau en fixant sa position initiale et son rayon
+* @param {integer} xInit abscisse du centre de l'anneau
+* @param {integer} yInit ordonnée du centre de l'anneau
+* @param {integer} rInit rayon initial de l'anneau
+* @returns {Anneau}
+*/
+function Anneau(xInit, yInit, r) 
+
+/** 
+* positionne le centre de l'anneau en un point donné
+* @param {integer} px abscisse du point
+* @param {integer} py ordonnée du point
+* @returns {undefined}
+*/
+placerA = function(px,py)
+
+/**
+* affiche l'anneau
+* @param {object} ctxt le contexte graphique associé au canvas dans lequel l'anneau
+*           se dessine
+* @returns {undefined}
+*/
+dessiner = function(ctxt)
+                </code></pre>
+                <p>Pour dessiner un cercle matérialisant l'anneau on utilisera 
+                    le méthode <a href="http://www.w3schools.com/tags/canvas_arc.asp">
+                        <code>arc</code></a>
+                    de l'objet contexte graphique.  
+
+                </p><h3>3.2 La <code>Tête</code></h3>
+                <p>
+                    La <code>Tête</code> de la chenille, comme un anneau, est un objet défini par trois attributs 
+                    (les coordonnées de son centre et son rayon), capable de se placer 
+                    à une position donnée et de s'afficher. Les différences avec les <code>Anneau</code>x
+                    sont les suivantes :
+                </p>
+                <ol>
+                    <li>La <code>Tête</code> possède un attribut supplémentaire : 
+					    <ul>
+						   <li><code>cap</code> un réel qui définit la direction de déplacement de la tête.</li>
+						 </ul>
+                    </li>
+                    <li>La tête se dessine avec une couleur différente.
+                    </li>
+                    <li>
+                        De plus la tête possède trois méthodes suplémentaires :
+                        <ul>
+                            <li> 
+                                <p>
+                                    <strong><code>devierCap(deltaC)</code></strong><br>
+                                    qui permet de modifier le cap de la 
+tête en lui ajoutant la déviation définie par le paramètre 
+                                    <code>deltaC</code>.</p>
+                            </li>
+                            <li> 
+                                <p>
+                                    <strong><code>deplacerSelonCap()</code></strong><br> 
+                                    qui modifie le centre de la tête en lui appliquant un déplacement 
+                                    de longueur R (le rayon de la tête) dans la direction définie par le cap. Pour cela, on 
+                                    calcule la nouvelle position du centre de la tête à l'aide 
+                                    de la formule suivante&nbsp;:</p>
+                                <p><code>x'  = x + R * cos(cap) et y' = y + R * sin(cap)</code> </p>
+								<p>où <code>x</code> et <code>y</code> sont le centre de la tête avant le déplacement, 
+								<code>R</code> le rayon de la tête et <code>x'</code>, <code>y'</code> les coordonnées
+								du centre de la tête après le déplacement.</p>
+                            </li>
+                            <li> 
+                                <p>
+                                    <strong><code>capOK(canvas)</code></strong><br>
+                                    qui retourne un booléen dont la valeur est 
+                                    vraie (<code>true</code>) si le cap actuel de la tête est tel que le prochain
+                                    déplacement maintiendra la tête entièrement dans le canvas et faux (<code>false</code>) 
+                                    sinon. Plus précisément, cette méthode vérifie que le  point  (x',y') défini par<br>
+                                    <code>x'  = x + R * cos(cap) et y' = y + R * sin(cap)</code><br>
+                                    est à une distance <code>&gt;= R</code> de chacun des bords du canvas.
+                                </p>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>3.3 Le type <code>Chenille</code></h3>
+                <p> Un objet <code>Chenille</code> 
+                    possède trois attributs :</p>
+                <ul>
+                    <li>sa
+                        tête, </li>
+                    <li>la liste de
+                        ses anneaux (que l'on pourra stocker dans un tableau), </li>
+                    <li>le canvas (la zone de dessin) 
+                        dans laquelle il s'affiche.</li>
+                </ul>
+                <p> Le constructeur <code>Chenille(canvas,nbAnneaux,r)</code>permet de créer une chenille constituées de
+				    <code>nbAnneaux</code> de rayon <code>r</code> en position initiale (horizontale
+                    avec le centre de la tête placé au centre du canvas). </p>
+                <p>Un objet chenille possède deux méthodes: </p>
+                <ul>
+                    <li>
+                        <strong><code>dessiner()</code></strong><br>
+                        pour se dessiner dans son canvas,
+                    </li>
+                    <li>
+                        <strong><code>deplacer()</code></strong><br>
+                        pour lui faire effectuer à un déplacement élémentaire
+                        selon <a href="#algodeplacement">l'algorithme donné au § 2.2</a>,
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>4. Travail à effectuer</h2>
+                <div class="todo">
+                    <ol>
+                        <li>Sur le modèle de l'application <code>
+			<a href="https://imss-www.upmf-grenoble.fr/%7Eatenciam/LTW2/TPs/TP2/Sujet/visages.html">Visages Rebondissants</a>
+			</code> écrivez une application qui permet d'animer une Chenille.
+			<br><br><em>N'essayer pas d'implémenter toutes les fonctionnalités à la fois, procédez de manière incrémentale. Commencez par
+			créer une chenille et vérifier qu'elle s'affiche correctement en position initiale. Ce n'est qu'ensuite que vous vous
+			intéresserez à ses déplacements. Vous pouvez aussi au début ne vous intéresser qu'à la tête et une fois
+			que les déplacements de celle-ci fonctionnent, ajouter
+			un corps à la chenille.</em><br><br>
+			
+			</li>
+			<li>
+			    Modifier l'application afin d'afficher plusieurs chenilles.<br><br>
+		     </li>
+                <li>
+				Permettre à l'utilisateur de choisir le nombre de chenilles à afficher.
+				</li>
+                    </ol>
+                </div>
+                <h3><strong> Pour ceux à qui il
+                        reste  du temps&nbsp;et qui veulent en faire plus :</strong></h3>
+
+                <p><strong>a)</strong> Imaginez
+                    de nouveaux types de chenilles. Par exemple des chenilles colorées,
+                    des chenilles mutantes dont le nombre d'anneaux varie au cours de
+                    leur existence (par exemple ajout d'un anneau lorsque l'un des
+                    bords est atteint, sauf dans le cas où il s'agit du bord supérieur
+                    de la fenêtre, dans ce dernier cas la chenille perd un anneau). </p>
+                <p>Modifiez l'application de sorte à ce que plusieurs chenilles d'espèces
+                    différentes soient animées simultanément.</p>
+                <p><strong>b)</strong> Déposez
+                    dans la zone de dessin des "&nbsp;salades&nbsp;" matérialisées
+                    par des disques verts. Programmez une nouvelle espèce de chenilles,
+                    les chenilles gourmandes, dont la taille (diamètre des anneaux)
+                    croit chaque fois qu'elles "&nbsp;mangent&nbsp;" une salade
+                    (c'est à dire chaque fois que la tête de la chenille
+                    passe sur une salade). Bien sûr, pour ne pas faire éclater
+                    les chenilles on prendra soin de retirer les salades au fur et à mesure
+                    que les chenilles les dévorent. </p>
+			    <p><strong>c)</strong>... Laissez libre cours à votre imagination...</p>
+            </section>
+
+</div></body></html>

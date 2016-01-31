@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Visages Animés</title>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                text-align: center;
+                font-family: Verdana, Geneva, sans-serif;
+            }
+            canvas { 
+                border:1px solid;
+                background-color: greenyellow;
+            }
+            wrapper {
+                width: 800px;
+                margin:auto;
+            }
+        </style>
+        <script src="Visages%20Anim%C3%A9s_fichiers/visages.js"></script>
+    </head>
+    <body onload="init()">
+        <div id="wrapper">
+            <h1>Les visages rebondissants</h1>
+            <!-- le boutons pour lancer et interrompre l'animation -->
+            <div>
+                <button disabled="disabled" id="startBtn">Start</button>
+                <button id="stopBtn">Stop</button>
+            </div>
+            <!-- le canvas pour dessiner -->
+            <canvas id="myCanvas" width="500" height="500">
+                la zone de dessin
+            </canvas>
+        </div>
+    
+</body></html>

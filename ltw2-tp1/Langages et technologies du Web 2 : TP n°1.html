@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>Langages et technologies du Web 2 : TP n°1</title>
+    <link rel="stylesheet" type="text/css" href="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/stylesTps.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/stylesTpsPrint.css" media="print">
+     <script src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/shCore.js"></script>
+        <script src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/shBrushPhp.js"></script>
+        <script src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/shBrushXml.js"></script>
+        <script src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/shBrushJava.js"></script>
+        <script src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/shBrushJScript.js"></script>
+        <script src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/shBrushSql.js"></script>
+        <link type="text/css" rel="stylesheet" href="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/shCoreDefault.css">
+        <script type="text/javascript">SyntaxHighlighter.all();</script>
+    <meta charset="utf-8">
+    <style>
+        #wrapper {
+          width: 1000px;    
+        }
+       .todo {
+        background-color: #FFF5A8;
+        border-style: solid;
+        border-width: 1px;
+        padding: 5px;
+       }
+       
+       .todo > li {
+         margin-top: 5px;
+         margin-bottom: 5px;
+       }
+       section p {
+       text-align:justify;
+       }
+       section p:first-letter {
+            //padding-left:1.5em;
+        }
+        figure {
+            text-align:center;
+        }
+       </style>
+    </head><body>
+        <div id="wrapper">
+            <header>
+                <hgroup>
+            <h3>Langages et technologies du Web 2</h3>
+            <h1 class="titreTP">TP n°1 : À la découverte de Canvas</h1>
+        </hgroup>
+            </header>
+            <section>
+                <h2>Objectifs :</h2>
+                <p>L'objectif de ce tp est de découvrir
+         l'élément Canvas de HTML5.
+                </p>
+            </section>
+	              <section>
+                <h2>Partie 1: Dessiner avec canvas.</h2>
+                <h3><strong>Exercice 1:</strong> Les "escaliers"</h3>
+                <div class="todo">
+                    <p>En utilisant les méthodes
+                        <a href="http://www.w3schools.com/tags/canvas_strokerect.asp" target="_blank"><code>strokeRect()</code></a>, 
+                        <a href="http://www.w3schools.com/tags/canvas_fillrect.asp" target="_blank"><code>fillRect()</code></a>, 
+                        <a href="http://www.w3schools.com/tags/canvas_clearrect.asp" target="_blank"><code>clearRect()</code></a> de 
+                        <a href="http://www.w3schools.com/tags/ref_canvas.asp" target="_blank"><code>canvas</code></a> réalisez une page html
+                        permettant de dessiner dans un canvas un "escalier", l'utilisateur pouvant choisir le nombre de marches
+                        et la hauteur de l'escalier comme indiqué sur la figure 1 ci-dessous.
+                    </p>
+                </div>
+                <br>
+                <figure>
+                    <img src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/escaliers.png" alt="image de l'application escaliers">
+                    <figcaption>Figure 1: La page HTML des "escaliers"</figcaption>
+                </figure>
+                <h3><strong>Exercice 2:</strong> Les "fleurs"</h3>
+                <p>
+                    La fonction <code>ellipse()</code> ci-après permet de dessiner une ellipse dans un canvas.
+                </p>
+                <div><div id="highlighter_467663" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">/**</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;</code><code class="js comments">* Dessine une ellipse dans un canvas</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;</code><code class="js comments">* @param {CanvasRenderingContext2D} ctx le contexte graphique du canvas</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;</code><code class="js comments">* @param {number} cx l'abscisse du centre de l'ellipse</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;</code><code class="js comments">* @param {number} cy l'ordonnée du centre de l'ellipse</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;</code><code class="js comments">* @param {number} rx le rayon horizontal de l'ellipse</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;</code><code class="js comments">* @param {number} ry le rayon vertical de l'ellipse</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;</code><code class="js comments">* @param {number} angle l'angle (en degrés) de l'ellipse par rapport à l'horizontale</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;</code><code class="js comments">* @param {string} style le style de tracé (couleur) pour le contour de l'ellipse</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;</code><code class="js comments">*/</code></div><div class="line number11 index10 alt2"><code class="js keyword">function</code> <code class="js plain">ellipse(ctx, cx, cy, rx, ry, angle, style) {</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.save(); </code><code class="js comments">// sauvegarde l'état du contexte graphique</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.beginPath();</code></div><div class="line number14 index13 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.translate(cx, cy);</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.rotate(angle * Math.PI / 180);</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.scale(rx, ry);</code></div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.arc(0, 0, 1, 0, 2 * Math.PI, </code><code class="js keyword">false</code><code class="js plain">);</code></div><div class="line number18 index17 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.restore(); </code><code class="js comments">// restaure l'état original du contexte graphique</code></div><div class="line number19 index18 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.save();</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code> <code class="js plain">(style) {</code></div><div class="line number21 index20 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.strokeStyle = style;</code></div><div class="line number22 index21 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number23 index22 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.stroke();</code></div><div class="line number24 index23 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">ctx.restore();</code></div><div class="line number25 index24 alt2"><code class="js plain">}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+                <p>
+                    En supposant une page HTML contenant un canevas défini comme suit.
+                </p>
+                <div><div id="highlighter_39546" class="syntaxhighlighter  html"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="html plain">&lt;</code><code class="html keyword">canvas</code> <code class="html color1">id</code><code class="html plain">=</code><code class="html string">"canvas"</code> <code class="html color1">height</code><code class="html plain">=</code><code class="html string">"600"</code> <code class="html color1">width</code><code class="html plain">=</code><code class="html string">"600"</code><code class="html plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="html plain">&lt;/</code><code class="html keyword">canvas</code><code class="html plain">&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+                <p>le code javascript suivant permet de dessiner une ellipse bleue et une ellipse rouge
+                    centrées au milieu du canvas, de rayons 200 et 40, la première étant horizontale (angle = 0)
+                    et la seconde inclinée de 30° (figure 2).
+                </p><div><div id="highlighter_103625" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code> <code class="js plain">canvas = document.getElementById(</code><code class="js string">"canvas"</code><code class="js plain">);</code></div><div class="line number2 index1 alt1"><code class="js keyword">var</code> <code class="js plain">ctx = canvas.getContext(</code><code class="js string">"2d"</code><code class="js plain">);</code></div><div class="line number3 index2 alt2"><code class="js plain">ellipse(ctx,300,300,200,40,0,</code><code class="js string">'blue'</code><code class="js plain">);</code></div><div class="line number4 index3 alt1"><code class="js plain">ellipse(ctx,300,300,200,40,30,</code><code class="js string">'red'</code><code class="js plain">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+                <figure>
+                    <img src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/ellipse.png" alt="explication de la fonction ellipse">
+                    <figcaption>Figure 2: La fonction ellipse"</figcaption>
+                </figure>
+                <br>
+                <div class="todo">
+                    <p><strong>Question 1:</strong> 
+                        En utilisant la fonction <code>ellipse()</code> ecrivez une fonction <code>fleur()</code>
+                        (dont les paramètres sont à votre discretion) permettant de dessiner dans 
+                        un canvas le motif suivant (figure 3).
+                    </p>
+                    <figure>
+                        <img src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/fleur.png" alt="une fleur">
+                        <figcaption>Figure 3: Une "fleur" réalisée avec la primitive ellipse</figcaption>
+                    </figure>
+                    <p>
+                        Pour tester votre fonction, réalisez une page HTML <code>fleur.html</code> permettant d'afficher un canvas 
+                        avec une fleur centrée au mileu de celui-ci.
+                    </p>
+                </div>
+                <br>
+                <div class="todo">
+                    <p><strong>Question 2:</strong> 
+                        Ecrire une seconde page HTML <code>champDeFleurs.html</code> qui permet à l'utilisateur de remplir
+                        un canvas avec des "fleurs", l'utilisateur fixant à l'aide d'un champ de saisie le nombre de
+                        fleurs à afficher par ligne (figure 4). Toute modification du nombre de fleur par ligne (événement 
+                        <em>"onchange"</em> provoque immédiatement le réaffichage du canvas.
+                    </p>
+                    <figure>
+                        <img src="Langages%20et%20technologies%20du%20Web%202%20:%20TP%20n%C2%B01_fichiers/champDeFleurs.png" alt="pavage d'un canvas à l'aide de fleurs">
+                        <figcaption>Figure 4: pavage d'un canvas à l'aide de fleurs</figcaption>
+                    </figure>
+                </div>
+                <p>
+            </p></section>
+        </div>
+    
+</body></html>

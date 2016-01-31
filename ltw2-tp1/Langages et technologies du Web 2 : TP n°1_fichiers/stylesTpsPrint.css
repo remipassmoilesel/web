@@ -1,0 +1,109 @@
+﻿
+section h2 {
+	background-color: lightblue;
+}
+
+.auteur {
+font-size: 1.2em;
+}
+
+
+.titreTP {
+line-height:40%;
+}
+
+
+header {
+
+font-family: 'Arial', 'Verdana', 'sans-serif';
+    height: 110px;
+	text-align: center;
+	border-radius:10px;
+background-image: linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+background-image: -o-linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+background-image: -moz-linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+background-image: -webkit-linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+background-image: -ms-linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	right top,
+	color-stop(0.04, rgb(186,201,217)),
+	color-stop(0.35, rgb(56,240,231)),
+	color-stop(0.63, rgb(82,200,255))
+);
+}
+#wrapper {
+	margin:auto;
+	width:100%;
+}
+.imageADroite {
+  float: right;
+  margin: 5px 5px 0 0;
+}
+
+.imageAGauche {
+  float: left;
+  margin: 5px 0 0 5px;
+}
+
+body {
+    font-family: 'Verdana', 'Arial', 'sans-serif';
+	font-size: 0.8em;
+}
+
+footer {
+ font-size: 0.8em;
+     height: 20px;
+	text-align: center;
+	border-radius:10px;
+background-image: linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+background-image: -o-linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+background-image: -moz-linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+background-image: -webkit-linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+background-image: -ms-linear-gradient(left bottom, rgb(186,201,217) 4%, rgb(56,240,231) 35%, rgb(82,200,255) 63%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	right top,
+	color-stop(0.04, rgb(186,201,217)),
+	color-stop(0.35, rgb(56,240,231)),
+	color-stop(0.63, rgb(82,200,255))
+);
+}
+
+
+code {
+  font-size: 1.1em;
+  font-family: 'Courier New', 'Courier', 'monospace';
+}
+
+a[href ^= 'http://www.w3schools']{
+  color:#FA0A0A;
+  background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATCAYAAAB/TkaLAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAScwAAEnMBjCK5BwAABLdJREFUOE91kwtQVGUYho+XpMRLOlJqaeNo5GRNTt4zjZpGzdIuo9ZYSRqNFzAwCBsCkWBMQcUU8D6IWoLc3WUBF2TZBUFkcbmziASCXBTiogLCLk//HsYlx+mbeeec85//f//3+97vG4IISY5+qaUnUXpgKpHM/f2Sydwn9Zl6BR5Z0Svee009A+gbWLes9Ynvnr4u6c2XNkhLZ/pKkoXUEh2Pcqi+70NV+y7KW70oanZHf8eF3Ns/oLu1gTTjl6hKPyOxcAXRegf+zF1EeNZsjl6ZwWH1FIJTJxOYNJ7KJhVW0qauKIxtnpS1/EJh00/k33Hmaq0TmVXfoK5YS1LJahIMy7iY/x7ncxZwQmPPsQx7zugWczpzPkEqO7xjJLIr9w+S3nlwnuJ7rhia3Lhev5Xsmk1oqr7mcvkalMWfEH/jQ6LylnDu6jxBNoOEgvXU/5NDr6lL4CG1LVpOaRaTWe4/SHq7IwJ9w2by6raQ9fdGMm6uJ7XsCxRFK4kt+IDIvHc5e3UuxzNe5eK1VfT0ddDfb6a47oJApFzC+90NVDb+J/2q1jCyatajq3YkvfIrUso+J6FwuSBbyPnc+URkz+Fk5iwOXZ5ESf1fMkmSwQUfkbIl7STDdnnNcpG1ptWtZ9HeckRtXCsM+ZS4AgdUxSLFNh2pxZuFIdMJTZ/BweSJKG9sRWvcQ3DKNAISRrE7bjhH02ZjMj+Sia2k5v4eQZBGvMGBGP1SwrNnioM75U03ao4LZ0cLjGOfcjxVzWrudZYTcnkWvnHD8I0dSlqJl0Xnk6SPW0tfGyRUruSSYR13O4sGatXTSGTuKo6o7dGU7ZbX6lpz+C3elvj8jdS06DCbex9TDCqtbI7kgThsiT5zl3VDQe0pOrrr5G+L05Zo77otO+0dMwSdcZ+oo8m6/4n0tZUexOpXYKg7Rk2rmvLGKJKKnAhUjSVcu4i86hCMjUrRMgGEqGfhFz+CvYrxBCVNJlT9BvqaU08rzTR6CjOmEJryAgcTxrAnygbfiKH4nLbBPVTCM1wS6doIjBDm2ArDprJXOYE9l56Xa3ow+RU6ugYyshqVUeFKQMxU1vm/wzKvj1iycw1z3L9jppsLk5z9+fa4IweSbIVREyitj6H67hUOqF6WFfsJ9w+optD+sPZJUk35JracXYjknIXkqmWIa7p4XkNyuc6zngZOavdzUsy5X/xwKhoS5cPZlUEymUV1zs1gec1SX6vSZFG/AIUd3x+di4PXx4z6MRLJLVdckseCwADOaF7nj9Tp+Cc8R5joSUtLWaK7t02gXX6vb71GSV3UIKlS78jPYRLLvB2wcUlktEcsdh4nhGIt287NY79ymFy/fYoJgnikuMCeK6U+snkVjQrSSr3k0mgez775YSeHL7gzedt2pC35vBZwmI1hbzHG9RzT/YIJUowUTo/ld0E6gHGy4t2i8f3inpGxK1bi12hJjHA0UmdbC4EX1Izbrma4Wz6rj+0gJNUWp/D3kbbl4hSxnCOpY8Q0TRTt8zQClS8KhXbi3yQxzp6ix7uR8m81Y7sjk7cDdZzOCiWrwoW0Ymeir3tzKD0YlWEHKYWuJBe6/S9UBldSizwwNijk+f8XEO6Zo+39qoQAAAAASUVORK5CYII=') no-repeat center right;
+  padding-right: 20px; 
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+figure {
+  margin:auto;
+}
+figcaption {
+  font-size:0.8em;
+  text-align: center;
+}
+
+.tooltip span
+{
+  font-size:0.6em;
+  display: none;
+}
+
+
+

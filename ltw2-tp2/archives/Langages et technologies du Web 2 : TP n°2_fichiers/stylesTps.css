@@ -1,0 +1,105 @@
+﻿@import url("styles.css");
+
+section h2 {
+	background-color: lightblue;
+}
+
+code {
+  font-size: 1.1em;
+  font-family: 'Courier New', 'Courier', 'monospace';
+}
+
+a[href ^= 'http://www.w3schools']{
+  color:#98BF21;
+  background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATCAYAAAB/TkaLAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAScwAAEnMBjCK5BwAABLdJREFUOE91kwtQVGUYho+XpMRLOlJqaeNo5GRNTt4zjZpGzdIuo9ZYSRqNFzAwCBsCkWBMQcUU8D6IWoLc3WUBF2TZBUFkcbmziASCXBTiogLCLk//HsYlx+mbeeec85//f//3+97vG4IISY5+qaUnUXpgKpHM/f2Sydwn9Zl6BR5Z0Svee009A+gbWLes9Ynvnr4u6c2XNkhLZ/pKkoXUEh2Pcqi+70NV+y7KW70oanZHf8eF3Ns/oLu1gTTjl6hKPyOxcAXRegf+zF1EeNZsjl6ZwWH1FIJTJxOYNJ7KJhVW0qauKIxtnpS1/EJh00/k33Hmaq0TmVXfoK5YS1LJahIMy7iY/x7ncxZwQmPPsQx7zugWczpzPkEqO7xjJLIr9w+S3nlwnuJ7rhia3Lhev5Xsmk1oqr7mcvkalMWfEH/jQ6LylnDu6jxBNoOEgvXU/5NDr6lL4CG1LVpOaRaTWe4/SHq7IwJ9w2by6raQ9fdGMm6uJ7XsCxRFK4kt+IDIvHc5e3UuxzNe5eK1VfT0ddDfb6a47oJApFzC+90NVDb+J/2q1jCyatajq3YkvfIrUso+J6FwuSBbyPnc+URkz+Fk5iwOXZ5ESf1fMkmSwQUfkbIl7STDdnnNcpG1ptWtZ9HeckRtXCsM+ZS4AgdUxSLFNh2pxZuFIdMJTZ/BweSJKG9sRWvcQ3DKNAISRrE7bjhH02ZjMj+Sia2k5v4eQZBGvMGBGP1SwrNnioM75U03ao4LZ0cLjGOfcjxVzWrudZYTcnkWvnHD8I0dSlqJl0Xnk6SPW0tfGyRUruSSYR13O4sGatXTSGTuKo6o7dGU7ZbX6lpz+C3elvj8jdS06DCbex9TDCqtbI7kgThsiT5zl3VDQe0pOrrr5G+L05Zo77otO+0dMwSdcZ+oo8m6/4n0tZUexOpXYKg7Rk2rmvLGKJKKnAhUjSVcu4i86hCMjUrRMgGEqGfhFz+CvYrxBCVNJlT9BvqaU08rzTR6CjOmEJryAgcTxrAnygbfiKH4nLbBPVTCM1wS6doIjBDm2ArDprJXOYE9l56Xa3ow+RU6ugYyshqVUeFKQMxU1vm/wzKvj1iycw1z3L9jppsLk5z9+fa4IweSbIVREyitj6H67hUOqF6WFfsJ9w+optD+sPZJUk35JracXYjknIXkqmWIa7p4XkNyuc6zngZOavdzUsy5X/xwKhoS5cPZlUEymUV1zs1gec1SX6vSZFG/AIUd3x+di4PXx4z6MRLJLVdckseCwADOaF7nj9Tp+Cc8R5joSUtLWaK7t02gXX6vb71GSV3UIKlS78jPYRLLvB2wcUlktEcsdh4nhGIt287NY79ymFy/fYoJgnikuMCeK6U+snkVjQrSSr3k0mgez775YSeHL7gzedt2pC35vBZwmI1hbzHG9RzT/YIJUowUTo/ld0E6gHGy4t2i8f3inpGxK1bi12hJjHA0UmdbC4EX1Izbrma4Wz6rj+0gJNUWp/D3kbbl4hSxnCOpY8Q0TRTt8zQClS8KhXbi3yQxzp6ix7uR8m81Y7sjk7cDdZzOCiWrwoW0Ymeir3tzKD0YlWEHKYWuJBe6/S9UBldSizwwNijk+f8XEO6Zo+39qoQAAAAASUVORK5CYII=') no-repeat center right;
+  padding-right: 20px; 
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+figure {
+  margin:auto;
+}
+figcaption {
+  font-size:0.8em;
+  text-align: center;
+}
+
+/* pour faire les info bulles
+http://red-team-design.developpez.com/tutoriels/css/infobulles-css3/
+*/
+
+.tooltip
+{
+  position: relative;
+  background: #eaeaea;
+  cursor: help;
+  display: inline-block;
+  text-decoration: none;
+  color: #222;
+  outline: none;
+}
+
+.tooltip span
+{
+  font-size:0.6em;
+  visibility: hidden;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  z-index: 999;
+  width: 330px;
+  margin-left: -127px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  opacity: .95;
+  background-color: #ddd;
+  background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255,.4);
+}
+
+.tooltip:hover
+{
+  border: 0; /* IE6 fix */
+}
+
+.tooltip:hover span
+{
+  visibility: visible;
+}
+
+.tooltip span:before,
+.tooltip span:after
+{
+  content: "";
+  position: absolute;
+  z-index: 1000;
+  bottom: -7px;
+  left: 50%;
+  margin-left: -8px;
+  border-top: 8px solid #ddd;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 0;
+}
+
+.tooltip span:before
+{
+  border-top-color: #ccc;
+  bottom: -8px;
+}
+
+
+
