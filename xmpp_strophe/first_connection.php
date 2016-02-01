@@ -30,7 +30,7 @@
 
     <body>
 
-        <div id="login_dialog" class="hidden">
+        <div id="login_bar" class="hidden">
             <label>JID:</label><input type="text" id="jid" />
             <label>Password:</label><input type="password" id="password" />
         </div>

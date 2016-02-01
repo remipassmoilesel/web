@@ -1,5 +1,23 @@
 
 /*
+ * Changer la couleur de fond avec animation
+ */
+
+$('#input').animate({backgroundColor: "#faa"}, 200);
+
+/*
+ * iteration d'objets
+ */
+var arrayString = ["a", "b", "c", "d"];
+$.each(arrayString, function (index, object) {
+    console.log(index + ": " + object);
+
+    // si retourne faux, alors arret de la boucle
+    // peut ne rien retourner (undefined)
+    return true;
+});
+
+/*
  * Vérifier la sélection d'un id
  */
 console.log($('#true_id').length); // == 1
