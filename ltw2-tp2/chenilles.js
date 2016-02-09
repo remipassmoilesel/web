@@ -186,23 +186,14 @@ Chenille.prototype.draw = function () {
  */
 Chenille.prototype.moveRandomCap = function () {
 
-    // trouver une valeur de correction de cap aleatoire
-    var corr;
-    do {
-        corr = Math.floor((Math.random() * 20) + 1) - 10;
-    } while (corr === 0);
-
     // trouver un cap aléatoire
     var cap = Math.floor((Math.random() * 60) + 1) - 30;
-    do {
+    this.head.setCap(cap);
 
-        cap -= 10;
-
-        //console.log("Cap: " + this.head.cap);
-
+    while (this.head.isCapOk(this.canvas) === false) {
+        cap += 5;
         this.head.setCap(cap);
-
-    } while (this.head.isCapOk(this.canvas) === false)
+    }
 
     this.move(cap);
 };
@@ -272,7 +263,7 @@ function init() {
     var nbrChen = 5;
 
     // la taille des chenilles
-    var chenLenght = 20;
+    var chenLenght = 10;
 
     // le canvas ou decider
     var canvas = document.getElementById("myCanvas");
