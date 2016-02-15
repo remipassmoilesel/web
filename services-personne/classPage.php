@@ -63,9 +63,12 @@ class Page {
         $output = "";
 
         $model = <<<EOT
-        <section id='%id' class='wrapper style2 spotlights'>
-            <h3>%title</h3>
-            <section>%content</section>
+        <!-- <section id='%id' class='wrapper style2 spotlights'> -->
+        <section id='%id' class='wrapper style1 fade-up'>
+            <div class="inner">
+                <h3>%title</h3>
+                %content
+            </div>
         </section>
 
 EOT;

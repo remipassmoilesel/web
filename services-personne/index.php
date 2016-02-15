@@ -11,8 +11,9 @@ EOT;
 $titles = array();
 $contents = array();
 
-$titles[] = "Services informatiques";
+$titles[] = "Services";
 $contents[] = <<<EOT
+    <p>
      <ul>
       <li>Installation de systèmes d'exploitation libres, éthiques, sécurisés et
         qui respectent votre vie privée. </li>
@@ -35,10 +36,12 @@ $contents[] = <<<EOT
         d'exploitation,</li>
       <li>Conseil achat et développement</li>
     </ul>
+    </p>
 EOT;
 
-$titles[] = "Formation informatique";
+$titles[] = "Formation";
 $contents[] = <<<EOT
+    <p>
     <ul>
         <li>Formation aux taches courantes et tutoriels simples et clairs, </li>
         <li>Formation de bureautique avancée, logiciel libres, </li>
@@ -57,10 +60,12 @@ $contents[] = <<<EOT
                 <li>installation d'un service de cloud, </li>
         </ul></li>
     </ul>
+    </p>
 EOT;
 
 $titles[] = "A propos de l'auteur";
 $contents[] = <<<EOT
+    <p>
     <ul>
         <li> Etudiant en informatique, Master 2,</li>
         <li> Licence de géographie à l'Université de Rennes II</li>
@@ -68,6 +73,7 @@ $contents[] = <<<EOT
         <li> Compte GitHub: https://github.com/remipassmoilesel</li>
         <li> Passionné de photographie argentique: http://toutes-les-bulles-eclatent.fr</li>
     </ul>
+    </p>   
 EOT;
 
 $page = new Page();
