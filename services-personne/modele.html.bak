@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta  content="text/html; charset=UTF-8"  http-equiv="content-type">
+    <title>index.html</title>
+  </head>
+  <body>
+    <h1>Services informatiques</h1>
+    <ul>
+      <li>Installation de systèmes d'exploitation libres, éthiques, sécurisés et
+        qui respectent votre vie privée. </li>
+      <ul>
+        <li>Forfait OS Complet + outils de bureatiques + outils multimédia 80€</li>
+        <li>Personnalisation et installations de matériels: imprimantes, ...</li>
+        <li>Listes de suggestion d'OS:</li>
+      </ul>
+      <ul>
+        <ul>
+          <li>Pack Mint / Multimédia / Bureatique: Libreoffice, Vlc, ...</li>
+          <li>Pack KUbuntu jeux: Environement graphique, Steam, ...</li>
+          <li><br>
+          </li>
+        </ul>
+      </ul>
+      <li>Installation de logiciels sur Windows et Linux,</li>
+      <li>Réinitialisations de systèmes et récupération de données,</li>
+      <li>Récupération de données, réparation et configuration de systèmes
+        d'exploitation,</li>
+      <li>Conseil achat et développement</li>
+    </ul>
+    <h1>Formation informatique</h1>
+    <ul>
+      <li>Formation aux taches courantes et tutoriels simples et clairs,</li>
+      <li>Formation de bureautique avancée, logiciel libres,</li>
+      <li>Initiation à la programmation et au web design,</li>
+      <li>Aide à la mise en place de portfolio modernes, pour un évenement par
+        exemple</li>
+    </ul>
+    <h1>Pack hébergement à domicile</h1>
+    <ul>
+      <li>75€ de matériel + forfait installation (40€ ?), hébergement de vos
+        sites web chez vous, </li>
+      <li>Options: </li>
+      <ul>
+        <li>installation d'un service de cloud, </li>
+      </ul>
+    </ul>
+    <h1>A propos de l'auteur</h1>
+    <ul>
+      <li> Etudiant en informatique, en master 2 eme année,</li>
+      <li> Licence de géographie à l'Université de Rennes II</li>
+      <li> Passionné de photographie argentique</li>
+      <li> Développeur actif du logiciel de cartographie Abc-Map&nbsp; </li>
+    </ul>
+    <p><br>
+    </p>
+    <h1>Ajouter</h1>
+    <ul>
+      <li>Un lien vers mon compte github</li>
+      <li>Un lien vers le site photo (à héberger ?)</li>
+    </ul>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <ul>
+    </ul>
+  </body>
+</html>
