@@ -62,10 +62,17 @@ class Page {
 
         $output = "";
 
-        $model = "<section id='%id' class='wrapper style2 spotlights'>%content</section>";
+        $model = <<<EOT
+        <section id='%id' class='wrapper style2 spotlights'>
+            <h3>%title</h3>
+            <section>%content</section>
+        </section>
+
+EOT;
 
         foreach ($this->sectionContents as $c => $v) {
             $n = str_replace("%id", "section" . $c, $model);
+            $n = str_replace("%title", $this->sectionTitles[$c], $n);
             $n = str_replace("%content", $v, $n);
             $output .= $n;
         }
@@ -102,12 +109,16 @@ class Page {
         echo $output;
     }
 
-    public function setTitles($sArray) {
+    public function setSectionTitles($sArray) {
         $this->sectionTitles = $sArray;
     }
 
-    public function setContents($sArray) {
+    public function setSectionContents($sArray) {
         $this->sectionContents = $sArray;
+    }
+
+    public function setIntroductionContent($str) {
+        $this->introductionContent = $str;
     }
 
     public function setPageTitle($str) {
