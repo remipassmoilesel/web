@@ -80,7 +80,7 @@ $contents[] = <<<EOT
 <div>
      <h3>Forfait OS Complet</h3>
      <ul>
-        <li>Choix de l'OS: Mint, Ubuntu, Fedora, ...</li>
+        <li>Choix de l'OS et de son environnement graphique: Mint, Ubuntu, Fedora, ...</li>
         <li>Choix des packs d'application: multimédia, éducation, 
             bureautique, jeux, programmation, </li>
         <li>Personnalisation et installation de matériels: imprimantes, scanners,
@@ -94,7 +94,8 @@ $contents[] = <<<EOT
         <li>Suite Libre Office: découvrez la suite bureautique qui ouvre 
             le plus grand nombre de formats différents (Writer, Calc, Draw, Base, 
                 Math)</li>
-        <li>Logiciel de dessin vectoriel Inkscape</li>
+        <li>Les logiciel de graphisme Pinta, Inkscape, The Gimp, LibreOffice Draw, pour satisfaire tous 
+            les besoins, des plus basiques aux plus avancés,</li>
         <li>The Gimp</li>
         <li>Virtualbox, pour tester n'importe quel OS sans danger,</li>
         <li>GnuPG, Tor, et un wallet BitCoin pour protéger votre vie privée,</li>
@@ -161,7 +162,7 @@ $linksHtml = getLinksHtml();
 
 $titles[] = "A propos";
 $contents[] = <<<EOT
-    <p>
+    <div>
         <p> Rémi Pace, étudiant en Master 2 d'informatique,
         <br>Licence de géographie à l'Université de Rennes II,
         <br>Développeur actif du logiciel de cartographie Abc-Map.</p>
@@ -170,7 +171,9 @@ $contents[] = <<<EOT
             $linksHtml
         </ul>
         
-    </p>   
+        <p>remi.pace88[#]gmail.com</p>
+        
+    </div>   
 EOT;
 
 $page = new Page();
