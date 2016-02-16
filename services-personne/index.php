@@ -153,12 +153,14 @@ $contents[] = <<<EOT
 EOT;
 
 $page = new Page();
-$page->setPageTitle("Services informatique");
+$page->setPageTitle("Services informatiques");
 
 $page->setIntroductionContent($introContent);
 
 $page->setSectionTitles($titles);
 $page->setSectionContents($contents);
+
+$page->setCopyrightMention("<a href='https://creativecommons.org/licenses/by-sa/4.0/legalcode'>CC BY-SA</a>");
 
 $page->printPage();
 

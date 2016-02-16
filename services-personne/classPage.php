@@ -127,5 +127,9 @@ EOT;
     public function setPageTitle($str) {
         $this->pageTitle = $str;
     }
+    
+    public function setCopyrightMention($str) {
+        $this->copyrightMention= $str;
+    }
 
 }
