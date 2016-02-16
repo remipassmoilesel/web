@@ -39,7 +39,10 @@ function getOSselection() {
     $model = <<<EOT
         <section>
             <p>%description</p>
-            <p><a href="images/%imageSrc" data-lightbox="image-%c" data-title="Image %c"><img src="images/%imageSrc"/></a>
+            <p><a href="images/%imageSrc" 
+                data-lightbox="image-%c" 
+                    data-title="Image %c">
+                        <img style='width: 75%; padding-left: 15%' src="images/%imageSrc"/></a>
             <p>&nbsp;</p>
         </section>
 EOT;
