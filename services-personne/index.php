@@ -21,7 +21,7 @@ $osDescriptions[] = "<b>Elementary OS</b> est un environnement épuré tourné v
         . "des menus déroulants.";
 
 $osImages[] = "visuel_kubuntu.png";
-$osDescriptions[] = "<b>KUbuntu</b> est un OS dérivé de Linux Ubuntu. Multimédia, bureautique, jeux, les 
+$osDescriptions[] = "<b>Kubuntu</b> est un OS dérivé de Linux Ubuntu. Multimédia, bureautique, jeux, les 
     applications sont inombrables et l'environnement graphique est hautement personnalisable. De nombreux
     thèmes graphiques circulent sur les listes .... ";
 
@@ -66,8 +66,9 @@ $contents = array();
 $titles[] = "Installation d'OS libres";
 $contents[] = <<<EOT
         
-    <p>Installation de systèmes d'exploitation libres et éthiques, 
-        qui respectent votre vie privée. Les logiciels libres sont variés, 
+    <p>Donnez un coup de neuf à votre PC pour le rendre plus performant, 
+        même si il n'est pas tout jeune. Profitez de systèmes d'exploitation 
+            libres et éthiques, qui respectent votre vie privée. Les logiciels libres sont variés, 
             adaptés aux usages numériques quotidiens, fiables et puissants.</p>
     
         $selectionOs
@@ -149,7 +150,6 @@ $contents[] = <<<EOT
             <li> Photographie argentique: http://toutes-les-bulles-eclatent.fr</li>
         </ul>
         
-        <p>&nbsp;</p>
         <p>Interview sur le Framablog: 
             http://framablog.org/2015/03/06/abc-map-realisez-des-cartes-et-des-traces-facilement/<p>
     </p>   
