@@ -25,6 +25,10 @@ $osDescriptions[] = "<b>KUbuntu</b> est un OS dérivé de Linux Ubuntu. Multimé
     applications sont inombrables et l'environnement graphique est hautement personnalisable. De nombreux
     thèmes graphiques circulent sur les listes .... ";
 
+$osImages[] = "visuel_store.png";
+$osDescriptions[] = "<b>Profitez du store Ubuntu</b>, choisissez et installez des applications de qualité "
+        . "en un clic.";
+
 function getOSselection() {
 
     global $osImages;
@@ -35,7 +39,7 @@ function getOSselection() {
     $model = <<<EOT
         <section>
             <p>%description</p>
-            <p><img src="images/%imageSrc"/></p>
+            <p><a href="images/%imageSrc" data-lightbox="image-%c" data-title="Image %c"><img src="images/%imageSrc"/></a>
             <p>&nbsp;</p>
         </section>
 EOT;
@@ -43,6 +47,7 @@ EOT;
     foreach ($osImages as $c => $v) {
 
         $n = str_replace("%imageSrc", $v, $model);
+        $n = str_replace("%c", $c + 1, $n);
         $n = str_replace("%description", $osDescriptions[$c], $n);
         $output .= $n;
     }
@@ -84,7 +89,7 @@ $contents[] = <<<EOT
         <li>Logiciel de dessin vectoriel Inkscape</li>
         <li>The Gimp</li>
         <li>Virtualbox, pour tester n'importe quel OS sans danger,</li>
-        <li>GnuPG, pour protéger votre vie privée,</li>
+        <li>GnuPG, Tor, et un wallet BitCoin pour protéger votre vie privée,</li>
       </ul>
         
     </div>
@@ -93,14 +98,14 @@ $titles[] = "Services";
 $contents[] = <<<EOT
     <p>
        <ul>
-        <li><b>Réparation / récupération de données:</b> données supprimées, 
-            problèmes de démarage, réparation de boot, ... </li>
+        <li><b>Réparation / récupération de données:</b> données supprimées accidentellement, 
+            problèmes de démarage et réparation de boot, ... </li>
         <li><b>Installation de logiciels adaptés à toutes activités:</b> 
-             bureautiques, éducation, programmation, photographie, ... 
-                 Systèmes Windows et Linux.</li>
-        <li>Mise à jour / nettoyage virus et publicités:</li>
-        <li>Installations de matériels: scanners, imprimantes, webcam, ...</li>
-        <li>Conseil achat et développement</li>
+             bureautiques, éducation, programmation, photographie,  
+                 sur systèmes Windows et Linux,</li>
+        <li>Mise à jour / nettoyage virus et publicités,</li>
+        <li>Installations de matériels: disques SSD, scanners, imprimantes, webcam, ...</li>
+        <li>Conseil achat.</li>
       </ul>
     </p>
 EOT;
@@ -109,12 +114,13 @@ $titles[] = "Formation";
 $contents[] = <<<EOT
     <p>
         <ul>
-            <li>Formation aux taches courantes et tutoriels simples et clairs, </li>
-            <li>Formation de bureautique avancée, logiciel libres, </li>
-            <li>Initiation à la programmation et au web design, </li>
-            <li>Création et configuration de machines virtuelles, essayer l'OS de
-                    votre choix sans dangers,</li>
-            <li>Aide à la mise en place de portfolio modernes, pour un évenement par
+            <li>Formation aux tâches courantes et tutoriels simples et clairs, </li>
+            <li>Formation de bureautique avancée, </li>
+            <li>Initiaition à la création de sites web, et à l'installation de CMS: Wordpress, 
+                Zenfolio, wikis, ...</li>
+            <li>Initiation à la programmation, </li>
+            <li>Veille technologique: virtualisation, Docker, Git, Java EE, serveurs, ...</li>
+            <li>Aide à la mise en place de portfolios modernes, pour un évenement par
               exemple</li>
         </ul>
         <ul>
@@ -130,14 +136,19 @@ EOT;
 $titles[] = "A propos";
 $contents[] = <<<EOT
     <p>
-    <ul>
-        <li> Rémi Pace, étudiant en Master 2 d'informatique,</li>
-        <li> Licence de géographie à l'Université de Rennes II,</li>
-        <li> Développeur actif du logiciel de cartographie Abc-Map,</li>
-        <li> Compte GitHub: https://github.com/remipassmoilesel</li>
-        <li> Logiciel de cartographie Abc-Map: http://abc-map.fr</li>
-        <li> Photographie argentique: http://toutes-les-bulles-eclatent.fr</li>
-    </ul>
+        <p> Rémi Pace, étudiant en Master 2 d'informatique,
+        <br>Licence de géographie à l'Université de Rennes II,
+        <br>Développeur actif du logiciel de cartographie Abc-Map.</p>
+
+        <ul>
+            <li> Compte GitHub: https://github.com/remipassmoilesel</li>
+            <li> Logiciel de cartographie Abc-Map: http://abc-map.fr</li>
+            <li> Photographie argentique: http://toutes-les-bulles-eclatent.fr</li>
+        </ul>
+        
+        <p>&nbsp;</p>
+        <p>Interview sur le Framablog: 
+            http://framablog.org/2015/03/06/abc-map-realisez-des-cartes-et-des-traces-facilement/<p>
     </p>   
 EOT;
 
