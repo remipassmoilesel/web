@@ -4,7 +4,14 @@ include './classPage.php';
 
 $introContent = <<<EOT
     
-   <h1>Yeeaaaaaaa !!!!! </h1>
+   <h1>Bienvenue !</h1>
+   <p>N'hésitez pas à me contacter aux coordonnées situées en bas de 
+       page pour me proposer vos projets.<p>
+   
+   <p>
+       <a href="#section0" class="button scrolly">En savoir plus</a>        
+   </p>
+   
         
 EOT;
 
@@ -90,15 +97,14 @@ $contents[] = <<<EOT
      <h3>Liste d'applications installées:</h3>
      <ul>
         <li>Firefox et Chromium, deux navigateurs performants, avec bloqueurs de publicité</li>
-        <li>Lecteur VLC Média Player</li>
+        <li>Lecteur vidéo VLC Média Player, lecteur audio Audacious,</li>
         <li>Suite Libre Office: découvrez la suite bureautique qui ouvre 
             le plus grand nombre de formats différents (Writer, Calc, Draw, Base, 
-                Math)</li>
+                Math),</li>
         <li>Les logiciel de graphisme Pinta, Inkscape, The Gimp, LibreOffice Draw, pour satisfaire tous 
             les besoins, des plus basiques aux plus avancés,</li>
-        <li>The Gimp</li>
         <li>Virtualbox, pour tester n'importe quel OS sans danger,</li>
-        <li>GnuPG, Tor, et un wallet BitCoin pour protéger votre vie privée,</li>
+        <li>GnuPG, Tor, et un wallet BitCoin pour protéger votre vie privée.</li>
       </ul>
         
     </div>
@@ -111,7 +117,7 @@ $contents[] = <<<EOT
              bureautiques, éducation, programmation, photographie,  
                  sur systèmes Windows et Linux,</li>
         <li>Mise à jour / nettoyage virus et publicités,</li>
-        <li>Installations de matériels: disques SSD, scanners, imprimantes, webcam, ...</li>
+        <li>Installations de matériels: disques SSD, ajout de mémoire vide, scanners, imprimantes, webcam, ...</li>
         <li>Conseil achat.</li>
       </ul>
     </div>
@@ -171,7 +177,10 @@ $contents[] = <<<EOT
             $linksHtml
         </ul>
         
-        <p>remi.pace88[#]gmail.com</p>
+        <p>
+            <a class="button scrolly">remi.pace88[#]gmail.com</a>
+            <a class="button scrolly">06 58 15 37 86</a>
+        </p>
         
     </div>   
 EOT;
