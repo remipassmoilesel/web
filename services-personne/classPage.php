@@ -66,7 +66,7 @@ class Page {
         <!-- <section id='%id' class='wrapper style2 spotlights'> -->
         <section id='%id' class='wrapper style1 fade-up '>
             <div class="inner">
-                <h3>%title</h3>
+                <h2>%title</h2>
                 %content
             </div>
         </section>

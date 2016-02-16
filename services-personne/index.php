@@ -73,7 +73,11 @@ $contents[] = <<<EOT
     
         $selectionOs
         
-    <div>
+EOT;
+$titles[] = "Services";
+$contents[] = <<<EOT
+        
+<div>
      <h3>Forfait OS Complet</h3>
      <ul>
         <li>Choix de l'OS: Mint, Ubuntu, Fedora, ...</li>
@@ -97,10 +101,8 @@ $contents[] = <<<EOT
       </ul>
         
     </div>
-EOT;
-$titles[] = "Services";
-$contents[] = <<<EOT
-    <p>
+    <div>
+        <h3>Interventions personnalisées:</h3>
        <ul>
         <li><b>Réparation / récupération de données:</b> données supprimées accidentellement, 
             problèmes de démarage et réparation de boot, ... </li>
@@ -111,7 +113,7 @@ $contents[] = <<<EOT
         <li>Installations de matériels: disques SSD, scanners, imprimantes, webcam, ...</li>
         <li>Conseil achat.</li>
       </ul>
-    </p>
+    </div>
 EOT;
 
 $titles[] = "Formation";
@@ -120,22 +122,42 @@ $contents[] = <<<EOT
         <ul>
             <li>Formation aux tâches courantes et tutoriels simples et clairs, </li>
             <li>Formation de bureautique avancée, </li>
-            <li>Initiaition à la création de sites web, et à l'installation de CMS: Wordpress, 
+            <li>Initiation à la création de sites web, et à l'installation de CMS: Wordpress, 
                 Zenfolio, wikis, ...</li>
-            <li>Initiation à la programmation, </li>
-            <li>Veille technologique: virtualisation, Docker, Git, Java EE, serveurs, ...</li>
-            <li>Aide à la mise en place de portfolios modernes, pour un évenement par
-              exemple</li>
+            <li>Initiation à la programmation et à l'administration distante de systèmes Linux,</li>
+            <li>Veille technologique: virtualisation, Docker, Git, Java EE, serveurs d'applications, ...</li>
         </ul>
         <ul>
-            <li><b>Pack hébergement à domicile:</b> à partir de 45€ de matériel + 
+            <li><b>Pack auto-hébergement:</b> à partir de 45€ de matériel + 
                 forfait installation, hébergez vos sites web chez vous, pour 
-                    7€ d'électricité par an</li>
-            <li>Installation de services en option: cloud, virtualisation, PHP, 
+                    7€ d'électricité par an,</li>
+            <li>Installation de services sur demande en option: cloud, virtualisation, PHP, 
                 MySQL, PostgreSQL, Java EE, ...</li>
         </ul>
     </p>
 EOT;
+
+$links = array();
+$links[] = array("Compte GitHub", "https://github.com/remipassmoilesel");
+$links[] = array("Logiciel de cartographie Abc-Map", "http://abc-map.fr");
+$links[] = array("Photographie argentique", "http://toutes-les-bulles-eclatent.fr");
+$links[] = array("Interview sur le Framablog", "http://framablog.org/2015/03/06/abc-map-realisez-des-cartes-et-des-traces-facilement/");
+
+function getLinksHtml() {
+
+    global $links;
+
+    $output = "";
+
+    foreach ($links as $c => $v) {
+        $output .= "<li>$v[0]: <a target='_blank' href='$v[1]'>$v[1]</a></li>";
+    }
+
+    return $output;
+}
+
+$linksHtml = getLinksHtml();
+
 
 $titles[] = "A propos";
 $contents[] = <<<EOT
@@ -145,13 +167,9 @@ $contents[] = <<<EOT
         <br>Développeur actif du logiciel de cartographie Abc-Map.</p>
 
         <ul>
-            <li> Compte GitHub: https://github.com/remipassmoilesel</li>
-            <li> Logiciel de cartographie Abc-Map: http://abc-map.fr</li>
-            <li> Photographie argentique: http://toutes-les-bulles-eclatent.fr</li>
+            $linksHtml
         </ul>
         
-        <p>Interview sur le Framablog: 
-            http://framablog.org/2015/03/06/abc-map-realisez-des-cartes-et-des-traces-facilement/<p>
     </p>   
 EOT;
 
