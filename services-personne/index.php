@@ -5,7 +5,8 @@ include './classPage.php';
 $introContent = <<<EOT
     
    <h1>Bienvenue !</h1>
-   <p>N'hésitez pas à me contacter aux coordonnées situées en bas de 
+   <p>Etudiant en Master 2 d'informatique et passionné de technologies de l'information, 
+       n'hésitez pas à me contacter aux coordonnées situées en bas de 
        page pour me proposer vos projets.<p>
    
    <p>
@@ -81,6 +82,7 @@ $contents[] = <<<EOT
         $selectionOs
         
 EOT;
+
 $titles[] = "Services";
 $contents[] = <<<EOT
         
@@ -114,9 +116,9 @@ $contents[] = <<<EOT
         <li><b>Réparation / récupération de données:</b> données supprimées accidentellement, 
             problèmes de démarage et réparation de boot, ... </li>
         <li><b>Installation de logiciels adaptés à toutes activités:</b> 
-             bureautiques, éducation, programmation, photographie,  
-                 sur systèmes Windows et Linux,</li>
-        <li>Mise à jour / nettoyage virus et publicités,</li>
+             bureautiques, éducation, programmation, photographie, et plus. 
+                 Sur systèmes Windows et Linux,</li>
+        <li>Mise à jour / nettoyage anti-virus et programmes publicitaires,</li>
         <li>Installations de matériels: disques SSD, ajout de mémoire vide, scanners, imprimantes, webcam, ...</li>
         <li>Conseil achat.</li>
       </ul>
@@ -127,12 +129,13 @@ $titles[] = "Formation";
 $contents[] = <<<EOT
     <p>
         <ul>
-            <li>Formation aux tâches courantes et tutoriels simples et clairs, </li>
+            <li>Pack 2h formation aux tâches courantes et mise en place de tutoriels simples et clairs, </li>
+            <li>Pack 1h formation à la protection de la vie privée sur internet, </li>
             <li>Formation de bureautique avancée, </li>
-            <li>Initiation à la création de sites web, et à l'installation de CMS: Wordpress, 
-                Zenfolio, wikis, ...</li>
+            <li>Initiation à la création de sites web: HTML5, PHP, Java, installation de serveurs, installation de CMS (Wordpress, 
+                Zenfolio, wikis, ...), mise en ligne, ...</li>
             <li>Initiation à la programmation et à l'administration distante de systèmes Linux,</li>
-            <li>Veille technologique: virtualisation, Docker, Git, Java EE, serveurs d'applications, ...</li>
+            <li>Veille technologique: virtualisation, Docker, Java EE, serveurs d'applications, Git, ...</li>
         </ul>
         <ul>
             <li><b>Pack auto-hébergement:</b> à partir de 45€ de matériel + 
