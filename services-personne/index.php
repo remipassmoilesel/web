@@ -181,8 +181,8 @@ $contents[] = <<<EOT
         </ul>
         
         <p>
-            <a class="button scrolly">remi.pace88[#]gmail.com</a>
-            <a class="button scrolly">06 58 15 37 86</a>
+            <a class="button special disabled">remi.pace88[#]gmail.com</a>
+            <a class="button special disabled">06 58 15 37 86</a>
         </p>
         
     </div>   
