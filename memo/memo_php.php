@@ -1,5 +1,8 @@
 <?php
 
+// rediriger vers la page d'appel
+header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 /**
  * Créer une classe
  */

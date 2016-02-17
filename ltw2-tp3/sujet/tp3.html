@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<title>Langages et technologies du Web 2 : TP n°3</title>
+	<link rel="stylesheet" type="text/css"  href="../../Styles/stylesTps.css" media="screen"/>
+	<link rel="stylesheet" type="text/css"  href="../../Styles/stylesTpsPrint.css" media="print"/>
+    <meta charset="utf-8">
+	<style>
+	   .todo {
+		background-color: #FFF5A8;
+		border-style: solid;
+		border-width: 1px;
+	   }
+	   
+	   .todo > li {
+	   margin-top: 5px;
+	   margin-bottom: 5px;
+	   }
+	  .todo {
+		padding: 5px;
+	   }
+	   section p {
+	   text-align:justify;
+	   }
+	   section p:first-letter {
+			padding-left:1.5em;
+		}
+		figure {
+			text-align:center;
+		}
+		#wrapper {
+		   width:1000px;
+	}
+	   </style>
+</head>
+	<body>
+	<div id="wrapper">
+	<header>
+		<hgroup>
+			<h3>Langages et technologies du Web 2</h3>
+			<h1 class="titreTP">TP n°3 : PHP et base de données</h1>
+		</hgroup>
+	</header>
+	<section>
+	<h2>Objectifs :</h2>
+	<p>Il s'agit de mettre en place, un site pour un club de football (le FCCB). La Figure 1 donne une carte de ce site.</p>
+		<figure>
+			<img src="carteSite.png" alt="La carte du site web du FCCB"/>
+			<figcaption>Fig.1 : La carte du site web du FCCB</figcaption>
+		</figure>
+ <p>
+Le site est constitué d'une page d'accueil qui présente le club, d'une page consacrée à la présentation des terrains 
+utilisés par le club et leur plan d'accès, et d'une page qui présente l'ensemble des équipes. 
+Cette page affiche la liste des équipes du club et pour chacune d'elles :
+<ul>
+	<li>le nom de son entraineur,</li>
+	<li>un lien vers une page présentant les joueurs (ou joueuses) de l'équipe,</li>
+	<li>des liens externes vers le site web du district de football de l'Isère pour consulter 
+	les résultats et le classement de l'équipe dans le championnat où elle est engagée,</li>
+	<li>la photographie de l'entraineur et la photographie de l'équipe.</li>
+</ul>
+Sur la page consacrée à une équipe apparaissent le nom et prénom, le poste (gardien, arrière central, attaquant…), l'âge et la photographie de chaque joueur.
+</p>
+<p>
+Un bénévole du club a débuté le développement de ce site. Ses compétences en informatique étant limitées, 
+il s'est contenté de faire une maquette en HTML et CSSS permettant de valider la présentation du site et de naviguer 
+entre les différentes pages du site.  Il avait prévu d'utiliser une base de données relationnelle pour stocker les informations
+relatives aux équipes et au joueurs du club et d'utiliser PHP pour produire le contenu des pages présentant les équipes et les joueurs
+de chaque équipe. Ainsi pour les équipes, il a défini la table suivante :
+</p>
+		<figure>
+			<img src="tableEquipes.png" alt="la table EQUIPES"/>
+			<figcaption>Fig.2 : La table <code>equipes</code></figcaption>
+		</figure>
+ <p>
+ Les colonnes de la table equipes sont:
+ <ul>
+<li>equipe_id : varchar(16), l'identifiant de l'équipe,</li>
+<li>championnat : varchar(32), l'intitulé du championnat où est engagée l'équipe,</li>
+<li>masc : char(1), indique si l'équipe est masculine ('M') ou féminine ('F'),</li>
+<li>coach : varchar(32), le nom de l'entraineur de l'équipe,</li>
+<li>photo_c : varchar(32), le nom du fichier image correspondant à la photographie de l'entraineur,</li>
+<li>phot_e : varchar(32), le nom du fichier image correspondant à la photographie de l'équipe,</li>
+<li>url_res : varchar(200), l'url de la page des derniers résultats de l'équipe sur le site du district de l'Isère,</li>
+<li>url_classmnt : varchar(200), l'url de la page du classement  de l'équipe sur le site du district de l'Isère.</li>
+</ul>
+</p>
+<p>
+Ce bénévole ayant du interrompre son activité, il vous est demandé de reprendre son travail et de
+terminer la transformation du site statique en un site dynamique en exploitant les possibilités du langage PHP.
+Le site que vous récupérez est organisé comme suit :
+
+	</p>
+		<figure>
+			<img src="fichiersSite.png" alt="organisation des fichiers du site du FCCB"/>
+			<figcaption>Fig.3 : organisation des fichiers du site du FCCB></figcaption>
+		</figure>
+	</section>
+	<section>
+	<h2>Installation du site du FCCB</h2>
+		<p>Le serveur utilisé pour ce TP est le serveur Apache (<a href="http://httpd.apache.org">http://httpd.apache.org</a>) 
+		accompagné de l'extension PHP (<a href="http://www.php.net">http://www.php.net</a>).</p>
+		<p>Ce serveur web a été configuré de manière à ce que vous puissiez l'utiliser pour diffuser vos propres pages HTML. Pour cela
+		vous devez créer à la racine de votre compte (dans votre <em>home-directory</em>) un répertoire <code>public_html</code> accessible
+		en lecture. Ensuite le contenu de ce répertoire pourra être accédé par l'url :</p>
+		<code class="todo">
+		http://localhost/~<em>&lt;votre-login&gt;</em>
+		</code><br/><br/>
+		<div class="todo">
+		<p>
+		<ol>
+			<li>Téléchargez le fichier <a href="siteFCCB_XXX.zip"><code>siteFCCB_XXX.zip</code></a>
+			et sauvegardez le dans votre répertoire <code>public_html</code></li>
+			<li>Décompressez ce fichier en tapant la commande <code>unzip siteFCCB_XXX.zip</code></li>
+			<li>Renommez le répertoire <code>siteFCCB_XXX</code> en remplaçant <code>XXX</code> par votre nom 
+			(commande <code>mv siteFCCB_XXX siteFCCB_<em>votreNOM</em></code>
+			</li>
+			<li>Ouvrez un navigateur et vérifiez que ce
+		mini site est accessible via l'url :<br/>
+			<code>localhost/~<em>votre-login</em>/<em>siteFCCB_votreNOM</em></code>
+			</li>
+		</ol>
+		<strong>Attention :</strong> les fichiers dans <code>{votre-login}/public_html</code> doivent avoir les droits d'accès en lecture ! 
+		</p>
+		</div>
+	</section>
+	<section>
+		<h2>Création de la table equipes dans la base MySQL</code></h2>
+		
+
+		<div class="todo">
+		<ol>
+			<li>Enregistrez sur votre compte le fichier <a href="equipes.sql"><code>equipes.sql</code></a> qui contient les commandes SQL pour la création et
+			l'initialisation de la table <code>equipes</code>.</li>
+			<li>Connectez vous à la base MySQL en
+		utilisant l'application phpMyAdmin via l'URL : <code>localhost/phpmyadmin</code> et exécutez le script <code>equipes.sql</code></li>
+
+		</ol>
+		</div>
+		
+</section>
+<section>
+<h2>Ecriture de la page <code>lesequipes.php</code></h2>
+
+ <div class="todo">
+<ol>
+<li>Recopiez le fichier <code>lesequipes.hmtl</code> dans un fichier <code>lesequipes.php</code> (<code>cp lesequipes.html lesequipes.php</code>)</li>
+<li>Modifiez <code>lesequipes.php</code> afin d'afficher la liste des équipes à partir des informations contenues dans la table equipes.
+</li>
+</ol>
+
+La requête pour obtenir la liste des équipes masculines :<br/><br/>
+<code>SELECT * FROM equipes WHERE sexe='M'</code><br/><br/>
+La requête pour obtenir la liste des équipes féminines :<br/><br/>
+<code>SELECT * FROM equipes WHERE sexe='F'</code>
+</p>
+<p>
+<em><strong>remarque</strong> : le code pour afficher la liste des équipes masculines est quasiment identique à celui pour afficher la liste 
+des équipes féminines, seule la requête SQL change. Pour éviter de dupliquer ce code, vous pouvez définir une fonction 
+PHP dont l'argument indiquera le type d'équipes (Masculines ou Féminines).</em>
+</p>
+</div>
+</p>
+	</section>
+	<section>
+		<h2>Barre de navigation dynamique - connexion / déconnexion</h2>
+		<p>
+		Le bénévole qui a conçu le site avait prévu de permettre à des personnes identifiées (administrateurs) d'en modifier le contenu. 
+		Pour cela, le menu de navigation situé en haut des différentes pages du site offre la possibilité à un visiteur du site 
+		de s'identifier en tant qu'administrateur. Une fois identifié, l'utilisateur aura accès aux fonctionnalités d'édition sur
+		toutes les pages du site, et ceci tant qu'il ne s'est pas explicitement déconnecté. 
+		</p>
+		<p>Pour cela, le concepteur du site a commencé à écrire un script <code>connexion.php</code> qui permet de vérifier le login
+		et le mot de passe fournis (pour le moment cette vérification est en "dur" dans le code PHP, mais il prévu plus tard d'utiliser une
+		table de la base de données pour stocker les identifiants et mots de passe). En cas de succès, l'identifiant de l'utilisateur est
+		enregistré dans la session et la page qui a invoqué le script de connexion est réaffichée. Il était prévu que lorque l'utilisateur s'est identifié la
+		barre de navigation des pages prenne un forme différente (elle affiche le nom de l'utilisateur et un bouton pour la déconnexion).</p>
+				<figure>
+			<img src="barreNav.png" alt="la barre de navigation"/>
+			<figcaption>Fig.4 : les deux formes de la barre de navigation</figcaption>
+		</figure>
+		<p>
+		Malheureusement cette fonctionnalité n'a pas été réalisée.
+		</p>
+
+		<div class="todo">
+
+				Modifiez l'application de manière à ce que toutes les pages du site supportent de manière correcte la connexion/déconnexion d'un utilisateur
+				et affiche la bonne barre de navigation selon que l'utilisateur s'est authentifié ou non.
+
+		</div>
+</section>
+<section>
+  <h2>Ajout des fonctionnalités de modification/suppression</h2>
+		<p>Lorsque l'utilisateur est authentifié, il peut accéder aux fonctionnalités d'édition. Ainsi sur la page présentant les équipes, il 
+		pourra ajouter, modifier ou supprimer une équipe au travers de boutons prévus à cette effet (Figure 5).
+		</p>
+		<figure>
+		    <img src="modifEquipes.png" />
+			<figcaption>
+				Fig.5 : affichage produit pour la page lesequipes.php pour un utilisateur authentifié.
+			</figcaption>
+		</figure>
+				<br/>
+		<div class="todo">
+		<ol>
+			<li>Modifiez la page <code>lesequipes.php</code> pour adapter l'affichage selon que l'utilisateur est authentifié ou non.  
+Les images utilisées pour les opérations d'édition se trouvent comme les autres images dans le dossier images et sont les suivantes :
+		<figure>
+		    <img src="iconesModif.png" />
+			<figcaption>
+				Fig.6 : icones pour opérations d'ajout, modification et suppression.
+			</figcaption>
+		</figure>
+		<br/>
+</li>
+			<li>Implémentez l'opération qui permet de supprimer une équipe.
+			</li>
+			<li>Implémentez l'opération qui permet de modifier une équipe.
+			</li>
+		</ol>
+		</div>
+				<br/>
+	</section>
+	<div>
+	</body>
+</html>
