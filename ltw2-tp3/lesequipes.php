@@ -48,8 +48,8 @@ EOT;
         if (isset($_SESSION['login'])) {
             $id = urlencode($v['equipe_id']);
             $form = <<<EOT
-            <a href="manageTeams.php?action=delete&id=$id">Supprimer</a>
-            <a href="manageTeams.php?action=edit&id=$id">Modifier</a>
+            <a href="manageTeams.php?action=delete&equipe_id=$id">Supprimer</a>
+            <a href="manageTeams.php?action=edit&equipe_id=$id">Modifier</a>
 EOT;
             $n = str_replace("%modif-form%", $form, $n);
         }
@@ -64,9 +64,10 @@ EOT;
 $mascHtml = extractTeams("m");
 $femHtml = extractTeams("f");
 
-$formAddTeam = "";
+$formTeam = "";
 if (isset($_SESSION['login'])) {
     $ft = new FormTeam();
+    $ft->setAction("add");
     $formTeam = $ft->getHtml();
 }
 
@@ -75,7 +76,7 @@ $content = <<<EOT
     <h2>Les équipes</h2>
   
    <h3>Ajouter une équipe</h4>
-   $formTeam
+    $formTeam
         
    <h3>Equipes masculines</h3>
     $mascHtml

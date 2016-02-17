@@ -104,6 +104,9 @@ $pers2 = clone $pers1;
 // connexion à une bdd
 $db = new PDO('mysql:host=localhost;dbname=testdb;charset=utf8', 'username', 'password');
 
+// obtenir des exceptions à chaque erreur
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 // gestion d'exceptions
 try {
     $stmt = $db->query('hi'); //invalid query!
