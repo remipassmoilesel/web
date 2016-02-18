@@ -3,6 +3,10 @@ body{
     font-family: Arial, Verdana;
 }
 
+.form{
+    text-align: center;
+}
+
 #container{
     border: solid gray 1px;
     background: white;
@@ -36,6 +40,10 @@ body{
     font-size: 17px;
     font-weight: bolder;
     color: green;
+    margin-bottom: 7px;
+}
+.articleText{
+    color: #252525;
 }
 
 .resultPiece{

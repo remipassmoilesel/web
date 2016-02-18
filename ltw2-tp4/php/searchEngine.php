@@ -36,7 +36,7 @@ if (isset($_GET[$QUERY_ARG]) && $_GET[$QUERY_ARG] != "") {
             $output .= <<<EOT
     <div class="resultPiece">
             <div class="articleTitle">{$v["name"]} (lasts visits: {$v["visits"]})</div>
-            <div class="article">$shortArticle</div>
+            <div class="articleText">$shortArticle</div>
             <div class="linkArticle"><a href="php/r.php?id={$v["id"]}">Visit '{$v["name"]}'</a></div>
     </div>
 EOT;
