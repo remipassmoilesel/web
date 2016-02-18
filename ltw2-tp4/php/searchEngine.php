@@ -10,6 +10,10 @@ $QUERY_ARG = "q";
  */
 if (isset($_GET[$QUERY_ARG]) && $_GET[$QUERY_ARG] != "") {
 
+    /*
+     * Une erreur avec le module regex de mariadb m'empeche d'utiliser les regex
+     */
+
     // parser la requete et la transformer en sql   
     $kwords = split(" +", $_GET[$QUERY_ARG]);
     $kwordsSql = "%" . join("%", $kwords) . "%";
@@ -17,6 +21,7 @@ if (isset($_GET[$QUERY_ARG]) && $_GET[$QUERY_ARG] != "") {
     // connexion et requete
     $db = new DBManager();
     //$res = $db->query("SELECT * FROM articles WHERE name REGEXP '$kwordsSql' OR article REGEXP '$kwordsSql';");
+
     $res = $db->query("SELECT * FROM articles WHERE name LIKE '$kwordsSql' OR article LIKE '$kwordsSql' ORDER BY VISITS DESC LIMIT 20;");
     $res = $res->fetchAll(PDO::FETCH_ASSOC);
 
@@ -36,18 +41,16 @@ if (isset($_GET[$QUERY_ARG]) && $_GET[$QUERY_ARG] != "") {
     </div>
 EOT;
         }
-    } 
-    
-    /** Aucun résultat n'a été trouvé */
-    else {
+    }
+
+    /** Aucun résultat n'a été trouvé */ else {
         $output = <<<EOT
             <div class='errorResponse'>
                 No results found.
             </div>
 EOT;
-        
     }
-    
+
     echo $output;
 }
 
@@ -57,7 +60,7 @@ EOT;
  */
 //
 else {
-     echo <<<EOT
+    echo <<<EOT
             <div class='errorResponse'>
                 Type in search parameter.
             </div>

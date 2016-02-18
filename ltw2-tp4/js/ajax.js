@@ -9,22 +9,26 @@ $(function () {
     console.log("document ready");
     console.log(SEARCH_TXTFIELD_ID);
 
+    var notEmptyReq = new RegExp("[^ ]+");
+
     // associer la frappe des touches avec la recherche
-    $(SEARCH_TXTFIELD_ID).keypress(function () {
+    $(SEARCH_TXTFIELD_ID).keyup(function () {
+
+        var req = $(SEARCH_TXTFIELD_ID).val();
 
         console.log("keypressed: ");
+        console.log(req);
+        console.log(req.match(notEmptyReq));
         console.log();
 
-        $req = $(SEARCH_TXTFIELD_ID).val();
-
+        changeHeaderSpace();
+            
         // changer l'espace d'affichage du logo
-        if ($req != "") {
+        if (req.match(notEmptyReq) !== null) {
             // lancer une recherche
-            searchAndShow($(SEARCH_TXTFIELD_ID).val());
-        } 
-        
-        else {
-            changeHeaderSpace();
+            searchAndShow(req);
+        } else {
+            showInResultSpace("<div class='errorResponse'>Type in search parameter.</div>");
         }
 
 

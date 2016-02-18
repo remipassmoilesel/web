@@ -3,10 +3,6 @@ body{
     font-family: Arial, Verdana;
 }
 
-#headerSpace{
-    text-align: center;
-}
-
 #container{
     border: solid gray 1px;
     background: white;
@@ -15,6 +11,10 @@ body{
     width: 60%;
     margin: auto;
     min-height: 600px;
+}
+
+#headerSpace{
+    text-align: center;
 }
 
 #resultsSpace{
@@ -27,6 +27,11 @@ body{
     color: gray;
 }
 
+#footer{
+    margin-top: 30px;
+    text-align: center;
+}
+
 .articleTitle{
     font-size: 17px;
     font-weight: bolder;
@@ -35,11 +40,6 @@ body{
 
 .resultPiece{
     margin: 30px;
-}
-
-#footer{
-    margin-top: 30px;
-
 }
 
 .errorResponse{
