@@ -45,14 +45,15 @@ EOT;
         $n = str_replace("%url-res%", $v['url_res'], $n);
         $n = str_replace("%url-class%", $v['url_classmnt'], $n);
 
+        $form = "";
         if (isset($_SESSION['login'])) {
             $id = urlencode($v['equipe_id']);
             $form = <<<EOT
             <a href="manageTeams.php?action=delete&equipe_id=$id">Supprimer</a>
             <a href="manageTeams.php?action=edit&equipe_id=$id">Modifier</a>
 EOT;
-            $n = str_replace("%modif-form%", $form, $n);
         }
+        $n = str_replace("%modif-form%", $form, $n);
 
 
         $output .= $n;
@@ -73,16 +74,18 @@ if (isset($_SESSION['login'])) {
 
 // affichage du résultat
 $content = <<<EOT
-    <h2>Les équipes</h2>
-  
-   <h3>Ajouter une équipe</h4>
-    $formTeam
+   <h2>Les équipes</h2>
+   <a href="#newTeam">Ajouter une équipe</a>
         
    <h3>Equipes masculines</h3>
     $mascHtml
    
    <h3>Equipes féminines</h3>
     $femHtml
+   
+   <a id="newTeam" />
+   <h3>Ajouter une équipe</h4>
+   $formTeam
 EOT;
 
 
