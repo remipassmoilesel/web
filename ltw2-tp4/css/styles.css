@@ -1,0 +1,49 @@
+body{
+    background: #F0F0F0;
+    font-family: Arial, Verdana;
+}
+
+#headerSpace{
+    text-align: center;
+}
+
+#container{
+    border: solid gray 1px;
+    background: white;
+    padding: 20px;
+    padding-top: 25px;
+    width: 60%;
+    margin: auto;
+    min-height: 600px;
+}
+
+#resultsSpace{
+
+}
+
+#searchTextField{
+    width: 80%;
+    font-size: 20px;
+    color: gray;
+}
+
+.articleTitle{
+    font-size: 17px;
+    font-weight: bolder;
+    color: green;
+}
+
+.resultPiece{
+    margin: 30px;
+}
+
+#footer{
+    margin-top: 30px;
+
+}
+
+.errorResponse{
+    margin: 30px;
+    color: #b81900;
+    font-weight: bolder;
+}

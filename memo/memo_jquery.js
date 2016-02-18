@@ -57,3 +57,12 @@ $('#item_hidded').dialog({
     }
 });
 
+// associer une action avec on keypress
+$('#someTextBox').keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        alert('You pressed a "enter" key in textbox');  
+    }
+});
+
+// Tester si un element est visible
