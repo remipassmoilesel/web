@@ -83,6 +83,32 @@ $contents[] = <<<EOT
         
 EOT;
 
+$titles[] = "Pack auto-hébergement";
+$contents[] = <<<EOT
+        
+<div>
+    <h3>Reprenez le contrôle de vos données !</h3>
+    <p><b>Pack formation à l'auto-hébergement:</b> à partir de 45€ de matériel + 
+            forfait installation, hébergez vos sites web chez vous sans frais supplémentaires et
+        sans limites de durée, pour 7€ d'électricité par an.</p>
+
+        <p>Hébergez vos sites et vos données personnelles grâce à des applications libres et robustes. Sur
+        demande, formation à l'installation et à l'utilisation des applications suivantes: </p>
+        
+        <ul>
+            <li>OwnCloud: Découvrez la plateforme libre de stockage de données en ligne. Avec une interface 
+                épurées, uploadez vers votre propre plateforme personnelle en ligne tous vos documents.</li>
+            <li>CMS: installez un wiki, un Wordpress, ou tout autre CMS ...</li>
+            <li>Développez vos propres applications: PHP, MySQL/MariaDB, virtualisation et conteneurs Docker, 
+                Java EE, PostgreSQL, ...</li>
+        </ul>
+        
+        <p>Solutions entièrement libres et hautement extensibles !</p>
+</div>
+        
+EOT;
+
+
 $titles[] = "Services";
 $contents[] = <<<EOT
         
@@ -136,13 +162,6 @@ $contents[] = <<<EOT
                 Zenfolio, wikis, ...), mise en ligne, ...</li>
             <li>Initiation à la programmation et à l'administration distante de systèmes Linux,</li>
             <li>Veille technologique: virtualisation, Docker, Java EE, serveurs d'applications, Git, ...</li>
-        </ul>
-        <ul>
-            <li><b>Pack auto-hébergement:</b> à partir de 45€ de matériel + 
-                forfait installation, hébergez vos sites web chez vous, pour 
-                    7€ d'électricité par an,</li>
-            <li>Installation de services sur demande en option: cloud, virtualisation, PHP, 
-                MySQL, PostgreSQL, Java EE, ...</li>
         </ul>
     </p>
 EOT;
