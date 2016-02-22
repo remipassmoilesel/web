@@ -10,10 +10,53 @@ $introContent = <<<EOT
        page pour me proposer vos projets.<p>
    
    <p>
-       <a href="#section0" class="button scrolly">En savoir plus</a>        
+       <a href="#section5" class="button scrolly">En savoir plus</a>        
    </p>
    
         
+EOT;
+
+$titles = array();
+$contents = array();
+
+$titles[] = "Prestations";
+$contents[] = <<<EOT
+        <div>
+            <p><b>Dépannage</b> et interventions sur systèmes Windows et Linux.</p>
+            <ul>
+                 <li>Correction des problèmes de démarrage,</li>
+                 <li>Réintialisation de systèmes,</li>
+                 <li>Récupération de données,</li>
+                 <li>Mise à jour / nettoyage anti-virus et programmes publicitaires,</li>
+                 <li>Configuration avancée,</li>
+                 <li>Mise en place de réseaux locaux,</li>
+                 <li>Installation de matériel,</li>
+            </ul>
+            
+            <p><b>Pack d'applications libres</b> sur Windows et Linux. Installation de logiciels adaptés à toutes 
+                activités: bureautique, éducation, programmation, photographie, et plus.</p>
+            <ul>
+               <li>Firefox et Chromium, deux navigateurs performants, avec bloqueurs de publicité,</li>
+               <li>Lecteur vidéo VLC Média Player, lecteur audio Audacious,</li>
+               <li>Suite Libre Office: découvrez la suite bureautique qui ouvre 
+                   le plus grand nombre de formats différents (Writer, Calc, Draw, Base, 
+                       Math),</li>
+               <li>Les logiciel de graphisme Pinta, Inkscape, The Gimp, LibreOffice Draw, pour satisfaire tous 
+                   les besoins, des plus basiques aux plus avancés,</li>
+               <li>Virtualbox, pour tester n'importe quel OS sans danger,</li>
+               <li>GnuPG, Tor, et wallets BitCoin pour protéger votre vie privée.</li>
+             </ul>
+            
+            <p><b>Installation</b> de systèmes d'exploitation complets:</p>
+            <ul>
+               <li>Choix de la distribution et de son environnement graphique: Mint, Ubuntu, Fedora, ...</li>
+               <li>Choix des packs d'application: multimédia, éducation, 
+                   bureautique, jeux, programmation, </li>
+               <li>Personnalisation et installation de matériels: imprimantes, scanners,
+                   webcams, ...</li>
+            </ul>
+            
+        <div>
 EOT;
 
 $osImages = array();
@@ -30,8 +73,8 @@ $osDescriptions[] = "<b>Elementary OS</b> est un environnement épuré tourné v
 
 $osImages[] = "visuel_kubuntu.png";
 $osDescriptions[] = "<b>Kubuntu</b> est un OS dérivé de Linux Ubuntu. Multimédia, bureautique, jeux, les 
-    applications sont inombrables et l'environnement graphique est hautement personnalisable. De nombreux
-    thèmes graphiques circulent sur les listes .... ";
+        applications sont inombrables et l'environnement graphique est hautement personnalisable. De nombreux
+        thèmes graphiques circulent sur les listes .... ";
 
 $osImages[] = "visuel_store.png";
 $osDescriptions[] = "<b>Profitez du store Ubuntu</b>, choisissez et installez des applications de qualité "
@@ -45,14 +88,14 @@ function getOSselection() {
     $output = "";
 
     $model = <<<EOT
-        <section>
-            <p>%description</p>
-            <p><a href="images/%imageSrc" 
-                data-lightbox="image-%c" 
-                    data-title="Image %c">
-                        <img style='width: 75%; padding-left: 15%' src="images/%imageSrc"/></a>
-            <p>&nbsp;</p>
-        </section>
+            <section>
+                <p>%description</p>
+                <p><a href="images/%imageSrc" 
+                    data-lightbox="image-%c" 
+                        data-title="Image %c">
+                            <img style='width: 75%; padding-left: 15%' src="images/%imageSrc"/></a>
+                <p>&nbsp;</p>
+            </section>
 EOT;
 
     foreach ($osImages as $c => $v) {
@@ -68,102 +111,66 @@ EOT;
 
 $selectionOs = getOSselection();
 
-$titles = array();
-$contents = array();
-
 $titles[] = "Installation d'OS libres";
 $contents[] = <<<EOT
-        
-    <p>Donnez un coup de neuf à votre PC pour le rendre plus performant, 
-        même si il n'est pas tout jeune. Profitez de systèmes d'exploitation 
-            libres et éthiques, qui respectent votre vie privée. Les logiciels libres sont variés, 
-            adaptés aux usages numériques quotidiens, fiables et puissants.</p>
-    
-        $selectionOs
+
+       <p>Installez un nouveau système d'exploitation pour donner un coup de neuf à votre PC et
+           le rendre plus performant, même si il n'est pas tout jeune. Profitez de systèmes d'exploitation 
+                libres et éthiques, qui respectent votre vie privée. Les logiciels libres sont variés, 
+                adaptés aux usages numériques quotidiens.</p>
+
+            $selectionOs
         
 EOT;
 
 $titles[] = "Pack auto-hébergement";
 $contents[] = <<<EOT
-        
-<div>
-    <h3>Reprenez le contrôle de vos données !</h3>
-    <p><b>Pack formation à l'auto-hébergement:</b> à partir de 45€ de matériel + 
-            forfait installation, hébergez vos sites web chez vous sans frais supplémentaires et
-        sans limites de durée, pour 7€ d'électricité par an.</p>
 
-        <p>Hébergez vos sites et vos données personnelles grâce à des applications libres et robustes. Sur
-        demande, formation à l'installation et à l'utilisation des applications suivantes: </p>
-        
-        <ul>
-            <li>OwnCloud: Découvrez la plateforme libre de stockage de données en ligne. Avec une interface 
-                épurées, uploadez vers votre propre plateforme personnelle en ligne tous vos documents.</li>
-            <li>CMS: installez un wiki, un Wordpress, ou tout autre CMS ...</li>
-            <li>Développez vos propres applications: PHP, MySQL/MariaDB, virtualisation et conteneurs Docker, 
-                Java EE, PostgreSQL, ...</li>
-        </ul>
-        
-        <p>Solutions entièrement libres et hautement extensibles !</p>
-</div>
-        
-EOT;
-
-
-$titles[] = "Services";
-$contents[] = <<<EOT
-        
-<div>
-     <h3>Forfait OS Complet</h3>
-     <ul>
-        <li>Choix de l'OS et de son environnement graphique: Mint, Ubuntu, Fedora, ...</li>
-        <li>Choix des packs d'application: multimédia, éducation, 
-            bureautique, jeux, programmation, </li>
-        <li>Personnalisation et installation de matériels: imprimantes, scanners,
-            webcams, ...</li>
-     </ul>
-
-     <h3>Liste d'applications installées:</h3>
-     <ul>
-        <li>Firefox et Chromium, deux navigateurs performants, avec bloqueurs de publicité</li>
-        <li>Lecteur vidéo VLC Média Player, lecteur audio Audacious,</li>
-        <li>Suite Libre Office: découvrez la suite bureautique qui ouvre 
-            le plus grand nombre de formats différents (Writer, Calc, Draw, Base, 
-                Math),</li>
-        <li>Les logiciel de graphisme Pinta, Inkscape, The Gimp, LibreOffice Draw, pour satisfaire tous 
-            les besoins, des plus basiques aux plus avancés,</li>
-        <li>Virtualbox, pour tester n'importe quel OS sans danger,</li>
-        <li>GnuPG, Tor, et un wallet BitCoin pour protéger votre vie privée.</li>
-      </ul>
-        
-    </div>
     <div>
-        <h3>Interventions personnalisées:</h3>
-       <ul>
-        <li><b>Réparation / récupération de données:</b> données supprimées accidentellement, 
-            problèmes de démarage et réparation de boot, ... </li>
-        <li><b>Installation de logiciels adaptés à toutes activités:</b> 
-             bureautiques, éducation, programmation, photographie, et plus. 
-                 Sur systèmes Windows et Linux,</li>
-        <li>Mise à jour / nettoyage anti-virus et programmes publicitaires,</li>
-        <li>Installations de matériels: disques SSD, ajout de mémoire vide, scanners, imprimantes, webcam, ...</li>
-        <li>Conseil achat.</li>
-      </ul>
+        <h3>Reprenez le contrôle de vos données !</h3>
+        <p><b>Pack formation à l'auto-hébergement:</b> à partir de 45€ de matériel + 
+                forfait installation, hébergez vos sites web chez vous sans frais supplémentaires et
+            sans limites de durée, pour 7€ d'électricité par an.</p>
+
+            <p>Hébergez vos sites et vos données personnelles grâce à des applications libres et robustes. Sur
+            demande, formation à l'installation et à l'utilisation des applications suivantes: </p>
+
+            <ul>
+                <li>OwnCloud: Découvrez la plateforme libre de stockage de données en ligne. Avec une interface 
+                    épurées, uploadez vers votre propre plateforme personnelle en ligne tous vos documents.</li>
+                <li>CMS: installez un wiki, un Wordpress, ou tout autre CMS ...</li>
+                <li>Développez vos propres applications: PHP, MySQL/MariaDB, virtualisation et conteneurs Docker, 
+                    Java EE, PostgreSQL, ...</li>
+            </ul>
+
+            <p>Solutions entièrement libres et hautement extensibles !</p>
     </div>
+
 EOT;
+
 
 $titles[] = "Formation";
 $contents[] = <<<EOT
-    <p>
-        <ul>
-            <li>Pack 2h formation aux tâches courantes et mise en place de tutoriels simples et clairs, </li>
-            <li>Pack 1h formation à la protection de la vie privée sur internet, </li>
-            <li>Formation de bureautique avancée, </li>
-            <li>Initiation à la création de sites web: HTML5, PHP, Java, installation de serveurs, installation de CMS (Wordpress, 
-                Zenfolio, wikis, ...), mise en ligne, ...</li>
-            <li>Initiation à la programmation et à l'administration distante de systèmes Linux,</li>
-            <li>Veille technologique: virtualisation, Docker, Java EE, serveurs d'applications, Git, ...</li>
-        </ul>
-    </p>
+        <p>
+            <ul>
+                <li>Pack 2h formation aux tâches courantes et mise en place de tutoriels simples et clairs, </li>
+                <li>Pack 1h formation à la protection de la vie privée sur internet, </li>
+                <li>Formation de bureautique avancée, </li>
+                <li>Initiation à la création de sites web: HTML5, PHP, Java, installation de serveurs, installation de CMS (Wordpress, 
+                    Zenfolio, wikis, ...), mise en ligne, ...</li>
+                <li>Initiation à la programmation et à l'administration distante de systèmes Linux,</li>
+                <li>Veille technologique: virtualisation, Docker, Java EE, serveurs d'applications, Git, ...</li>
+            </ul>
+        </p>
+EOT;
+
+$titles[] = "Tarifs";
+$contents[] = <<<EOT
+        <p>
+            <ul>
+                <li>...</li>
+            </ul>
+        </p>
 EOT;
 
 $links = array();
@@ -187,7 +194,6 @@ function getLinksHtml() {
 
 $linksHtml = getLinksHtml();
 
-
 $titles[] = "A propos";
 $contents[] = <<<EOT
     <div>
@@ -208,7 +214,7 @@ $contents[] = <<<EOT
 EOT;
 
 $page = new Page();
-$page->setPageTitle("Services informatiques");
+$page->setPageTitle("Services Libre-Info !");
 
 $page->setIntroductionContent($introContent);
 
