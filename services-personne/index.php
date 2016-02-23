@@ -4,15 +4,15 @@ include './classPage.php';
 
 $introContent = <<<EOT
     
-   <h1>Bienvenue !</h1>
-   <p>Etudiant en Master 2 d'informatique et passionné de technologies de l'information, 
-       n'hésitez pas à me contacter aux coordonnées situées en bas de 
-       page pour me proposer vos projets.<p>
-   
-   <p>
-       <a href="#section5" class="button scrolly">En savoir plus</a>        
-   </p>
-   
+    <h1>Bienvenue !</h1>
+        
+    <div>
+        <p>Etudiant en Master 2 d'informatique et passionné de technologies de l'information, 
+            n'hésitez pas à me contacter aux coordonnées situées en bas de 
+            page pour me proposer vos projets.<p>
+
+        <p><a href="#section5" class="button scrolly">En savoir plus</a></p>
+    </div>
         
 EOT;
 
@@ -56,7 +56,7 @@ $contents[] = <<<EOT
                    webcams, ...</li>
             </ul>
             
-        <div>
+        </div>
 EOT;
 
 $osImages = array();
@@ -114,12 +114,15 @@ $selectionOs = getOSselection();
 $titles[] = "Installation d'OS libres";
 $contents[] = <<<EOT
 
+    <div>
        <p>Installez un nouveau système d'exploitation pour donner un coup de neuf à votre PC et
            le rendre plus performant, même si il n'est pas tout jeune. Profitez de systèmes d'exploitation 
                 libres et éthiques, qui respectent votre vie privée. Les logiciels libres sont variés, 
                 adaptés aux usages numériques quotidiens.</p>
 
             $selectionOs
+        
+    </div>
         
 EOT;
 
@@ -128,17 +131,22 @@ $contents[] = <<<EOT
 
     <div>
         <h3>Reprenez le contrôle de vos données !</h3>
-        <p><b>Pack formation à l'auto-hébergement:</b> à partir de 45€ de matériel + 
+        
+        <p><b>Hébergez vos sites et vos données personnelles</b> grâce à des applications libres et robustes. Sur
+            demande, formation complète à l'installation et à l'utilisation des applications. Ce site ainsi que 
+                d'autres services utilisés quotidiennement sont installés sur un hébergement personnel.</p>
+        
+        <p>Pack formation à l'auto-hébergement: à partir de 45€ de matériel + 
                 forfait installation, hébergez vos sites web chez vous sans frais supplémentaires et
-            sans limites de durée, pour 7€ d'électricité par an.</p>
+            sans limites de durée, pour 7€ d'électricité par an. Plusieurs applications disponibles
+                sur demande: </p>
 
-            <p>Hébergez vos sites et vos données personnelles grâce à des applications libres et robustes. Sur
-            demande, formation à l'installation et à l'utilisation des applications suivantes: </p>
 
             <ul>
                 <li>OwnCloud: Découvrez la plateforme libre de stockage de données en ligne. Avec une interface 
                     épurées, uploadez vers votre propre plateforme personnelle en ligne tous vos documents.</li>
                 <li>CMS: installez un wiki, un Wordpress, ou tout autre CMS ...</li>
+                <li>Phplist: gérer votre liste mail d'information pour garder le lien avec votre publique,</li>
                 <li>Développez vos propres applications: PHP, MySQL/MariaDB, virtualisation et conteneurs Docker, 
                     Java EE, PostgreSQL, ...</li>
             </ul>
@@ -151,7 +159,7 @@ EOT;
 
 $titles[] = "Formation";
 $contents[] = <<<EOT
-        <p>
+        <div>
             <ul>
                 <li>Pack 2h formation aux tâches courantes et mise en place de tutoriels simples et clairs, </li>
                 <li>Pack 1h formation à la protection de la vie privée sur internet, </li>
@@ -161,16 +169,16 @@ $contents[] = <<<EOT
                 <li>Initiation à la programmation et à l'administration distante de systèmes Linux,</li>
                 <li>Veille technologique: virtualisation, Docker, Java EE, serveurs d'applications, Git, ...</li>
             </ul>
-        </p>
+        </div>
 EOT;
 
 $titles[] = "Tarifs";
 $contents[] = <<<EOT
-        <p>
+        <div>
             <ul>
                 <li>...</li>
             </ul>
-        </p>
+        </div>
 EOT;
 
 $links = array();
