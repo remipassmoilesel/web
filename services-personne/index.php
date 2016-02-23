@@ -130,10 +130,9 @@ $titles[] = "Pack auto-hébergement";
 $contents[] = <<<EOT
 
     <div>
-        <h3>Reprenez le contrôle de vos données !</h3>
-        
-        <p><b>Hébergez vos sites et vos données personnelles</b> grâce à des applications libres et robustes. Sur
-            demande, formation complète à l'installation et à l'utilisation des applications. Ce site ainsi que 
+        <p><b>Reprenez le contrôle de vos données !</b> Hébergez vos sites et vos données personnelles
+            grâce à des applications libres et robustes. Sur demande, formation complète à l'installation 
+                et à l'utilisation des applications. Ce site ainsi que 
                 d'autres services utilisés quotidiennement sont installés sur un hébergement personnel.</p>
         
         <p>Pack formation à l'auto-hébergement: à partir de 45€ de matériel + 
