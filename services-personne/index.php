@@ -22,7 +22,7 @@ $contents = array();
 $titles[] = "Prestations";
 $contents[] = <<<EOT
         <div>
-            <p><b>Dépannage</b> et interventions sur systèmes Windows et Linux.</p>
+            <p><b>Dépannage</b> et interventions sur systèmes Windows et Linux:</p>
             <ul>
                  <li>Correction des problèmes de démarrage,</li>
                  <li>Réintialisation de systèmes,</li>
@@ -30,11 +30,21 @@ $contents[] = <<<EOT
                  <li>Mise à jour / nettoyage anti-virus et programmes publicitaires,</li>
                  <li>Configuration avancée,</li>
                  <li>Mise en place de réseaux locaux,</li>
-                 <li>Installation de matériel,</li>
+                 <li>Installation de périphériques et améliorations matérielles 
+                     (mémoire RAM, disques SSD, ...)</li>
             </ul>
             
+            <p><b>Installation</b> de systèmes d'exploitation complets:</p>
+            <ul>
+               <li>Choix de la distribution et de son environnement graphique: Mint, Ubuntu, Fedora, ...</li>
+               <li>Choix des packs d'application: multimédia, éducation, 
+                   bureautique, jeux, programmation, </li>
+               <li>Personnalisation et installation de matériels: imprimantes, scanners,
+                   webcams, ...</li>
+            </ul>
+        
             <p><b>Pack d'applications libres</b> sur Windows et Linux. Installation de logiciels adaptés à toutes 
-                activités: bureautique, éducation, programmation, photographie, et plus.</p>
+                activités: bureautique, éducation, programmation, photographie, et plus:</p>
             <ul>
                <li>Firefox et Chromium, deux navigateurs performants, avec bloqueurs de publicité,</li>
                <li>Lecteur vidéo VLC Média Player, lecteur audio Audacious,</li>
@@ -46,15 +56,6 @@ $contents[] = <<<EOT
                <li>Virtualbox, pour tester n'importe quel OS sans danger,</li>
                <li>GnuPG, Tor, et wallets BitCoin pour protéger votre vie privée.</li>
              </ul>
-            
-            <p><b>Installation</b> de systèmes d'exploitation complets:</p>
-            <ul>
-               <li>Choix de la distribution et de son environnement graphique: Mint, Ubuntu, Fedora, ...</li>
-               <li>Choix des packs d'application: multimédia, éducation, 
-                   bureautique, jeux, programmation, </li>
-               <li>Personnalisation et installation de matériels: imprimantes, scanners,
-                   webcams, ...</li>
-            </ul>
             
         </div>
 EOT;
