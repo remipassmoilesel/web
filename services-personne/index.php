@@ -145,8 +145,8 @@ $contents[] = <<<EOT
             <ul>
                 <li>OwnCloud: Découvrez la plateforme libre de stockage de données en ligne. Avec une interface 
                     épurées, uploadez vers votre propre plateforme personnelle en ligne tous vos documents.</li>
-                <li>CMS: installez un wiki, un Wordpress, ou tout autre CMS ...</li>
-                <li>Phplist: gérer votre liste mail d'information pour garder le lien avec votre publique,</li>
+                <li>Installez un wiki, un forum, un Wordpress ou tout autre CMS ...</li>
+                <li>Phplist: gérer votre liste mail d'information pour garder le lien avec votre public,</li>
                 <li>Développez vos propres applications: PHP, MySQL/MariaDB, virtualisation et conteneurs Docker, 
                     Java EE, PostgreSQL, ...</li>
             </ul>

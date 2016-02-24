@@ -906,8 +906,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="241.69632"
-     inkscape:cy="477.46967"
+     inkscape:cx="314.61508"
+     inkscape:cy="489.49396"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -943,7 +943,7 @@
        y="307.2677" />
     <g
        id="g5426"
-       transform="matrix(0.83745472,0,0,0.83745472,-284.53355,57.580638)">
+       transform="matrix(0.81378983,0,0,0.81378983,-100.1675,23.832663)">
       <circle
          r="105.29683"
          cy="463.79077"
@@ -1696,247 +1696,324 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="126.08107"
-       y="339.12869"
+       x="16.015053"
+       y="362.32159"
        id="text5525"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan5527"
-         x="126.08107"
-         y="339.12869">Services Libre-Info !</tspan></text>
+         x="16.015053"
+         y="362.32159"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:-0.49000001px"
+         id="tspan6447">Services Libre-Info !</tspan></text>
     <text
-       transform="matrix(0,1,-1,0,0,0)"
-       sodipodi:linespacing="125%"
-       id="text5557"
-       y="186.91888"
-       x="743.9646"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:19.43677711px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="21.417639"
+       y="399.98267"
+       id="text5922"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="21.417639"
+         y="399.98267"
+         id="tspan5964" /></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6031"
        style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         style="font-size:22.5px"
-         y="186.91888"
-         x="743.9646"
-         id="tspan5559"
-         sodipodi:role="line">Rémi: 06.58.15.37.86</tspan><tspan
-         style="font-size:22.5px"
-         id="tspan5561"
-         y="215.04388"
-         x="743.9646"
-         sodipodi:role="line">services-libreinfo.ddns.net</tspan></text>
-    <g
-       id="g5884"
-       transform="translate(-1.6834807,0)">
+       transform="translate(-2.4322395,334.06466)"><flowRegion
+         id="flowRegion6033"><rect
+           id="rect6035"
+           width="496.99506"
+           height="405.0712"
+           x="23.233509"
+           y="94.566399" /></flowRegion><flowPara
+         id="flowPara6037"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.5px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'">Dépannage:</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6087">- Restauration de systèmes,</flowPara><flowPara
+         id="flowPara6041"
+         style="font-size:17.5px">- Récupération de données,</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara7008">- Nettoyage anti-virus et anti-publicitaires.</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6095" /><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.5px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+         id="flowPara6069">Configuration et services avancés:</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara7004">- Installation de périphériques,</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6079">- Améliorations logicielles et matérielles,</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6083">- Installation de réseaux locaux,</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6105">- Installation de logiciels libres et fomations complètes.</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6059" /><flowPara
+         id="flowPara6049"
+         style="font-size:17.5px" /><flowPara
+         id="flowPara6051"
+         style="font-size:17.5px" /><flowPara
+         id="flowPara6053"
+         style="font-size:17.5px" /><flowPara
+         id="flowPara6055"
+         style="font-size:17.5px" /><flowPara
+         id="flowPara6057"
+         style="font-size:17.5px" /></flowRoot>    <flowRoot
+       transform="translate(-1.5777474,572.21699)"
+       style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="flowRoot6153"
+       xml:space="preserve"><flowRegion
+         id="flowRegion6155"><rect
+           y="94.566399"
+           x="23.233509"
+           height="405.0712"
+           width="496.99506"
+           id="rect6157" /></flowRegion><flowPara
+         style="font-size:17.5px"
+         id="flowPara6187"><flowSpan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+           id="flowSpan6322">Plus d'informations aux coordonnées suivantes:</flowSpan></flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6308">   http://www.services-libreinfo.ddns.net   </flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6318">   Rémi: 06.58.15.37.86</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6312" /><flowPara
+         style="font-size:17.5px"
+         id="flowPara6314">Devis personnalisés, prix raisonnables.</flowPara><flowPara
+         style="font-size:17.5px"
+         id="flowPara6316" /></flowRoot>    <g
+       id="g6941">
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-445.45929"
+         x="792.49304"
+         height="58.324055"
+         width="253.58028"
+         id="rect5621"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.61102557;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         transform="matrix(0,1.0062292,-0.99380932,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text5623"
+         y="-423.09845"
+         x="793.48065"
+         style="font-style:normal;font-weight:normal;font-size:22.15160179px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:18.1240387px"
+           y="-423.09845"
+           x="793.48065"
+           id="tspan5625"
+           sodipodi:role="line">Rémi: 06.58.15.37.86</tspan><tspan
+           style="font-size:18.1240387px"
+           id="tspan5627"
+           y="-394.97345"
+           x="793.48065"
+           sodipodi:role="line">services-libreinfo.ddns.net</tspan></text>
+      <rect
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.61102557;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect5631"
+         width="253.58028"
+         height="58.324055"
+         x="792.49304"
+         y="-383.8223"
+         transform="matrix(0,1,-1,0,0,0)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:22.15160179px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="793.48065"
+         y="-361.07751"
+         id="text5633"
+         sodipodi:linespacing="125%"
+         transform="matrix(0,1.0062292,-0.99380932,0,0,0)"><tspan
+           sodipodi:role="line"
+           id="tspan5635"
+           x="793.48065"
+           y="-361.07751"
+           style="font-size:18.1240387px">Rémi: 06.58.15.37.86</tspan><tspan
+           sodipodi:role="line"
+           x="793.48065"
+           y="-332.95251"
+           id="tspan5637"
+           style="font-size:18.1240387px">services-libreinfo.ddns.net</tspan></text>
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-322.18524"
+         x="792.49304"
+         height="58.324055"
+         width="253.58028"
+         id="rect5665"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.61102557;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         transform="matrix(0,1.0062292,-0.99380932,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text5667"
+         y="-299.05652"
+         x="793.48065"
+         style="font-style:normal;font-weight:normal;font-size:22.15160179px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:18.1240387px"
+           y="-299.05652"
+           x="793.48065"
+           id="tspan5669"
+           sodipodi:role="line">Rémi: 06.58.15.37.86</tspan><tspan
+           style="font-size:18.1240387px"
+           id="tspan5671"
+           y="-270.93152"
+           x="793.48065"
+           sodipodi:role="line">services-libreinfo.ddns.net</tspan></text>
+      <rect
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.61102557;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect5707"
+         width="253.58028"
+         height="58.324055"
+         x="792.49304"
+         y="-260.54825"
+         transform="matrix(0,1,-1,0,0,0)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:22.15160179px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="793.48065"
+         y="-237.03557"
+         id="text5709"
+         sodipodi:linespacing="125%"
+         transform="matrix(0,1.0062292,-0.99380932,0,0,0)"><tspan
+           sodipodi:role="line"
+           id="tspan5711"
+           x="793.48065"
+           y="-237.03557"
+           style="font-size:18.1240387px">Rémi: 06.58.15.37.86</tspan><tspan
+           sodipodi:role="line"
+           x="793.48065"
+           y="-208.91057"
+           id="tspan5713"
+           style="font-size:18.1240387px">services-libreinfo.ddns.net</tspan></text>
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-198.91121"
+         x="792.49304"
+         height="58.324055"
+         width="253.58028"
+         id="rect5717"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.61102557;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         transform="matrix(0,1.0062292,-0.99380932,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text5719"
+         y="-175.01459"
+         x="793.48065"
+         style="font-style:normal;font-weight:normal;font-size:22.15160179px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:18.1240387px"
+           y="-175.01459"
+           x="793.48065"
+           id="tspan5721"
+           sodipodi:role="line">Rémi: 06.58.15.37.86</tspan><tspan
+           style="font-size:18.1240387px"
+           id="tspan5723"
+           y="-146.88959"
+           x="793.48065"
+           sodipodi:role="line">services-libreinfo.ddns.net</tspan></text>
+      <rect
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.61102557;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect5727"
+         width="253.58028"
+         height="58.324055"
+         x="792.49304"
+         y="-137.27422"
+         transform="matrix(0,1,-1,0,0,0)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:22.15160179px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="793.48065"
+         y="-112.99363"
+         id="text5729"
+         sodipodi:linespacing="125%"
+         transform="matrix(0,1.0062292,-0.99380932,0,0,0)"><tspan
+           sodipodi:role="line"
+           id="tspan5731"
+           x="793.48065"
+           y="-112.99363"
+           style="font-size:18.1240387px">Rémi: 06.58.15.37.86</tspan><tspan
+           sodipodi:role="line"
+           x="793.48065"
+           y="-84.868629"
+           id="tspan5733"
+           style="font-size:18.1240387px">services-libreinfo.ddns.net</tspan></text>
       <g
-         transform="matrix(0.9623453,0,0,0.97437201,-33.80857,22.887758)"
-         id="g5847">
-        <g
-           id="g5823"
-           transform="translate(-0.22769165,0)">
-          <rect
-             transform="matrix(0,1,-1,0,0,0)"
-             y="-500"
-             x="736.64795"
-             height="72.857155"
-             width="312.85715"
-             id="rect5621"
-             style="fill:#93a1ff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-          <text
-             transform="matrix(0,1,-1,0,0,0)"
-             sodipodi:linespacing="125%"
-             id="text5623"
-             y="-468.79541"
-             x="743.9646"
-             style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             xml:space="preserve"><tspan
-               style="font-size:22.5px"
-               y="-468.79541"
-               x="743.9646"
-               id="tspan5625"
-               sodipodi:role="line">Rémi: 06.58.15.37.86</tspan><tspan
-               style="font-size:22.5px"
-               id="tspan5627"
-               y="-440.67041"
-               x="743.9646"
-               sodipodi:role="line">services-libreinfo.ddns.net</tspan></text>
-        </g>
-        <g
-           id="g5829"
-           transform="translate(-0.4413147,0)">
-          <rect
-             style="fill:#93a1ff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-             id="rect5631"
-             width="312.85715"
-             height="72.857155"
-             x="736.64795"
-             y="-423.21429"
-             transform="matrix(0,1,-1,0,0,0)" />
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             x="743.9646"
-             y="-392.00967"
-             id="text5633"
-             sodipodi:linespacing="125%"
-             transform="matrix(0,1,-1,0,0,0)"><tspan
-               sodipodi:role="line"
-               id="tspan5635"
-               x="743.9646"
-               y="-392.00967"
-               style="font-size:22.5px">Rémi: 06.58.15.37.86</tspan><tspan
-               sodipodi:role="line"
-               x="743.9646"
-               y="-363.88467"
-               id="tspan5637"
-               style="font-size:22.5px">services-libreinfo.ddns.net</tspan></text>
-        </g>
-        <g
-           id="g5835"
-           transform="translate(-0.60394287,0)">
-          <rect
-             transform="matrix(0,1,-1,0,0,0)"
-             y="-346.37759"
-             x="736.64795"
-             height="72.857155"
-             width="312.85715"
-             id="rect5665"
-             style="fill:#93a1ff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-          <text
-             transform="matrix(0,1,-1,0,0,0)"
-             sodipodi:linespacing="125%"
-             id="text5667"
-             y="-315.17297"
-             x="743.9646"
-             style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             xml:space="preserve"><tspan
-               style="font-size:22.5px"
-               y="-315.17297"
-               x="743.9646"
-               id="tspan5669"
-               sodipodi:role="line">Rémi: 06.58.15.37.86</tspan><tspan
-               style="font-size:22.5px"
-               id="tspan5671"
-               y="-287.04797"
-               x="743.9646"
-               sodipodi:role="line">services-libreinfo.ddns.net</tspan></text>
-        </g>
-        <g
-           id="g5705"
-           transform="translate(195.91719,0)">
-          <rect
-             style="fill:#93a1ff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-             id="rect5707"
-             width="312.85715"
-             height="72.857155"
-             x="736.64795"
-             y="-72.85714"
-             transform="matrix(0,1,-1,0,0,0)" />
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             x="743.9646"
-             y="-41.652546"
-             id="text5709"
-             sodipodi:linespacing="125%"
-             transform="matrix(0,1,-1,0,0,0)"><tspan
-               sodipodi:role="line"
-               id="tspan5711"
-               x="743.9646"
-               y="-41.652546"
-               style="font-size:22.5px">Rémi: 06.58.15.37.86</tspan><tspan
-               sodipodi:role="line"
-               x="743.9646"
-               y="-13.527546"
-               id="tspan5713"
-               style="font-size:22.5px">services-libreinfo.ddns.net</tspan></text>
-        </g>
-        <g
-           transform="translate(118.91788,0)"
-           id="g5715">
-          <rect
-             transform="matrix(0,1,-1,0,0,0)"
-             y="-72.85714"
-             x="736.64795"
-             height="72.857155"
-             width="312.85715"
-             id="rect5717"
-             style="fill:#93a1ff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-          <text
-             transform="matrix(0,1,-1,0,0,0)"
-             sodipodi:linespacing="125%"
-             id="text5719"
-             y="-41.652546"
-             x="743.9646"
-             style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             xml:space="preserve"><tspan
-               style="font-size:22.5px"
-               y="-41.652546"
-               x="743.9646"
-               id="tspan5721"
-               sodipodi:role="line">Rémi: 06.58.15.37.86</tspan><tspan
-               style="font-size:22.5px"
-               id="tspan5723"
-               y="-13.527546"
-               x="743.9646"
-               sodipodi:role="line">services-libreinfo.ddns.net</tspan></text>
-        </g>
-        <g
-           id="g5841">
-          <rect
-             style="fill:#93a1ff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-             id="rect5727"
-             width="312.85715"
-             height="72.857155"
-             x="736.64795"
-             y="-114.77569"
-             transform="matrix(0,1,-1,0,0,0)" />
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             x="743.9646"
-             y="-83.571098"
-             id="text5729"
-             sodipodi:linespacing="125%"
-             transform="matrix(0,1,-1,0,0,0)"><tspan
-               sodipodi:role="line"
-               id="tspan5731"
-               x="743.9646"
-               y="-83.571098"
-               style="font-size:22.5px">Rémi: 06.58.15.37.86</tspan><tspan
-               sodipodi:role="line"
-               x="743.9646"
-               y="-55.446098"
-               id="tspan5733"
-               style="font-size:22.5px">services-libreinfo.ddns.net</tspan></text>
-        </g>
-        <g
-           id="g5817">
-          <rect
-             style="fill:#93a1ff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-             id="rect5763"
-             width="312.85715"
-             height="72.857155"
-             x="736.64795"
-             y="-576.77161"
-             transform="matrix(0,1,-1,0,0,0)" />
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             x="743.9646"
-             y="-545.56702"
-             id="text5765"
-             sodipodi:linespacing="125%"
-             transform="matrix(0,1,-1,0,0,0)"><tspan
-               sodipodi:role="line"
-               id="tspan5767"
-               x="743.9646"
-               y="-545.56702"
-               style="font-size:22.5px">Rémi: 06.58.15.37.86</tspan><tspan
-               sodipodi:role="line"
-               x="743.9646"
-               y="-517.44202"
-               id="tspan5769"
-               style="font-size:22.5px">services-libreinfo.ddns.net</tspan></text>
-        </g>
+         id="g6935">
+        <rect
+           transform="matrix(0,1,-1,0,0,0)"
+           y="-507.09631"
+           x="792.49304"
+           height="58.324055"
+           width="253.58028"
+           id="rect5763"
+           style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.61102557;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <text
+           transform="matrix(0,1.0062292,-0.99380932,0,0,0)"
+           sodipodi:linespacing="125%"
+           id="text5765"
+           y="-485.11945"
+           x="793.48065"
+           style="font-style:normal;font-weight:normal;font-size:22.15160179px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             style="font-size:18.1240387px"
+             y="-485.11945"
+             x="793.48065"
+             id="tspan5767"
+             sodipodi:role="line">Rémi: 06.58.15.37.86</tspan><tspan
+             style="font-size:18.1240387px"
+             id="tspan5769"
+             y="-456.99445"
+             x="793.48065"
+             sodipodi:role="line">services-libreinfo.ddns.net</tspan></text>
       </g>
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-75.637199"
+         x="792.49304"
+         height="58.324055"
+         width="253.58028"
+         id="rect6397"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.61102557;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         transform="matrix(0,1.0062292,-0.99380932,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6399"
+         y="-50.972664"
+         x="793.48065"
+         style="font-style:normal;font-weight:normal;font-size:22.15160179px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:18.1240387px"
+           y="-50.972664"
+           x="793.48065"
+           id="tspan6401"
+           sodipodi:role="line">Rémi: 06.58.15.37.86</tspan><tspan
+           style="font-size:18.1240387px"
+           id="tspan6403"
+           y="-22.847664"
+           x="793.48065"
+           sodipodi:role="line">services-libreinfo.ddns.net</tspan></text>
     </g>
+    <g
+       transform="translate(-383.22961,-71.720831)"
+       id="g6491">
+      <flowRoot
+         transform="translate(385.64298,349.15602)"
+         style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#252525;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot6529"
+         xml:space="preserve"><flowRegion
+           id="flowRegion6531"><rect
+             y="94.566399"
+             x="23.233509"
+             height="405.0712"
+             width="496.99506"
+             id="rect6533"
+             style="fill:#252525;fill-opacity:1" /></flowRegion><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.25px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#252525;fill-opacity:1"
+           id="flowPara6574">L'informatique à votre service,</flowPara><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.25px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#252525;fill-opacity:1"
+           id="flowPara6582">Et pas le contraire !</flowPara></flowRoot>    </g>
   </g>
 </svg>
