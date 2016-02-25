@@ -2,6 +2,13 @@
 
 include './classPage.php';
 
+$sectionOpenSource = <<<EOT
+        <p style='font-style: italic; font-size: 80%'>
+            Site internet réalisé entièrement avec des technologies libres ou open source, de l'hébergement 
+            jusqu'à la conception.
+        </p>
+EOT;
+
 $introContent = <<<EOT
     
     <h1>Bienvenue !</h1>
@@ -12,7 +19,9 @@ $introContent = <<<EOT
             page pour me proposer vos projets.<p>
 
         <p><a href="#section5" class="button scrolly">En savoir plus</a></p>
-    </div>
+        
+        $sectionOpenSource
+   </div>
         
 EOT;
 
@@ -278,6 +287,8 @@ $contents[] = <<<EOT
             <a class="button special disabled">remi.pace88[#]gmail.com</a>
             <a class="button special disabled">06 58 15 37 86</a>
         </p>
+        
+        $sectionOpenSource
         
     </div>   
 EOT;
