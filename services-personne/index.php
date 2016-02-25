@@ -142,18 +142,18 @@ $contents[] = <<<EOT
     <div>
         <p><b>Reprenez le contrôle de vos données !</b> Hébergez vos sites et vos données personnelles
             grâce à des applications libres et robustes. Sur demande, formation complète à l'installation 
-                et à l'utilisation des applications. Ce site ainsi que 
+                et à l'utilisation d'applications professionnelles. Ce site ainsi que 
                 d'autres services utilisés quotidiennement sont installés sur un hébergement personnel.</p>
         
         <p>Pack formation à l'auto-hébergement: à partir de 45€ de matériel + 
                 forfait installation, hébergez vos sites web chez vous sans frais supplémentaires et
-            sans limites de durée, pour 7€ d'électricité par an. Plusieurs applications disponibles
+            sans limites de durée, pour seulement 7€ d'électricité par an. Plusieurs applications sont disponibles
                 sur demande: </p>
 
 
             <ul>
-                <li>OwnCloud: Découvrez la plateforme libre de stockage de données en ligne. Avec une interface 
-                    épurées, uploadez vers votre propre plateforme personnelle en ligne tous vos documents.</li>
+                <li>OwnCloud: Découvrez la plateforme libre de stockage de données en ligne. Uploadez tous vos documents
+                    vers votre propre plateforme personnelle, grâce à une interface web épurée et intuitive,</li>
                 <li>Installez un wiki, un forum, un Wordpress ou tout autre CMS ...</li>
                 <li>Phplist: gérer votre liste mail d'information pour garder le lien avec votre public,</li>
                 <li>Développez vos propres applications: PHP, MySQL/MariaDB, virtualisation et conteneurs Docker, 
@@ -189,12 +189,12 @@ $fares[] = array(
     "60€"
 );
 $fares[] = array(
-    "Récupération de données",
-    "60€"
-);
-$fares[] = array(
     "Nettoyage anti-virus / anti-publicitaires",
     "à partir de 30€"
+);
+$fares[] = array(
+    "Récupération de données",
+    "60€"
 );
 $fares[] = array(
     "Récupération de données supprimées",
