@@ -184,6 +184,10 @@ $fares[] = array(
     "60€"
 );
 $fares[] = array(
+    "Nettoyage anti-virus / anti-publicitaires",
+    "à partir de 30€"
+);
+$fares[] = array(
     "Récupération de données supprimées",
     "à partir de 60€"
 );
@@ -193,6 +197,10 @@ $fares[] = "Installation";
 $fares[] = array(
     "Installation du système de votre choix + pack d'application",
     "80€"
+);
+$fares[] = array(
+    "Pack d'applications: multimédia, bureautique, développement web, programmation, ...",
+    "30€"
 );
 $fares[] = array(
     "Installation de périphérique",
