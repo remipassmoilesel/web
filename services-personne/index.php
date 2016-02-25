@@ -4,8 +4,8 @@ include './classPage.php';
 
 $sectionOpenSource = <<<EOT
         <p style='font-style: italic; font-size: 80%'>
-            Site internet réalisé entièrement avec des technologies libres ou open source, de l'hébergement 
-            jusqu'à la conception.
+            Site internet réalisé entièrement avec des technologies libres ou open source, de la conception 
+                jusqu'à l'hébergement.
         </p>
 EOT;
 
