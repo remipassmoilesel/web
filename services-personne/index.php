@@ -172,12 +172,65 @@ $contents[] = <<<EOT
         </div>
 EOT;
 
+$fares = array();
+
+$fares[] = "Dépannage";
+$fares[] = array(
+    "Restauration système",
+    "60€"
+);
+$fares[] = array(
+    "Récupération de données",
+    "60€"
+);
+$fares[] = array(
+    "Récupération de données supprimées",
+    "à partir de 60€"
+);
+
+
+$fares[] = "Installation";
+$fares[] = array(
+    "Installation du système de votre choix + pack d'application",
+    "80€"
+);
+$fares[] = array(
+    "Installation de périphérique",
+    "30€"
+);
+$fares[] = array(
+    "Installation serveur et réseau local",
+    "Prix du matériel + devis personnalisé"
+);
+
+function getFaresHTML() {
+
+    global $fares;
+
+    $output = "<table>";
+    foreach ($fares as $c => $v) {
+        // titre
+        if (is_array($v) == false) {
+            $output.= "<tr><th colspan='2' style='text-align: center'>$v</th></tr>";
+        }
+        // tarifs
+        else {
+            $output.= "<tr><td>$v[0]</td><td>$v[1]</td></tr>";
+        }
+    }
+    $output .= "</table>";
+
+    return $output;
+}
+
+$faresHTML = getFaresHTML();
+
 $titles[] = "Tarifs";
 $contents[] = <<<EOT
         <div>
-            <ul>
-                <li>...</li>
-            </ul>
+           <p>N'hésitez pas à me faire part de vos projets pour établir un devis personnalisé.</p>
+        
+           $faresHTML
         </div>
 EOT;
 
