@@ -150,7 +150,6 @@ $contents[] = <<<EOT
             sans limites de durée, pour seulement 7€ d'électricité par an. Plusieurs applications sont disponibles
                 sur demande: </p>
 
-
             <ul>
                 <li>OwnCloud: Découvrez la plateforme libre de stockage de données en ligne. Uploadez tous vos documents
                     vers votre propre plateforme personnelle, grâce à une interface web épurée et intuitive,</li>
