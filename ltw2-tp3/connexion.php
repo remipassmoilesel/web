@@ -6,7 +6,9 @@ include './classHtmlPage.php';
 if (loginOK($_POST['login'], $_POST['passwd'])) {
     
     session_start();
+    
     $_SESSION['login'] = $_POST['login'];
+    $_SESSION['cacahuete'] = "Yes we can !";
 
     // rediriger vers la page d'appel
     header('Location: ' . $_SERVER['HTTP_REFERER']);
