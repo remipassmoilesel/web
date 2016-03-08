@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Le Voyageur de Santé</title>
+	</head>
+	<body>
+		<h1>Le Voyageur de Santé</h1>
+		<form id="secretaire" name="input" action="/" method="POST">
+			<h2>Connectez vous en tant que secrétaire</h2>
+			<input value="Secretaire" type="hidden" name="login"></input>
+			<input type="submit" value="Connection"/>
+		</form>
+	
+		<form id="infirmier" name="input" action="/INFIRMIERE" method="POST">
+			<h2>Connectez vous en tant qu'infirmier</h2>
+			<label class="login">
+				Identifiant : 
+				<input list="logins" type="text" name="id"></input>
+			</label>
+			<datalist id="logins"></datalist>
+			<input type="submit" value="Connection"/>
+		</form>
+	</body>
+</html>
