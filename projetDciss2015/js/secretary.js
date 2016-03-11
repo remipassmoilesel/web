@@ -1,1 +1,0 @@
-require( "./secretary.css" );
