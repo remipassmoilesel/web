@@ -1,5 +1,8 @@
+
 require("./secretary.css");
 var utils = require("./utils.js");
+
+
 var req = utils.XHR('GET', 'data/cabinetInfirmier.xml');
 
 req.then(function (xhr) {

@@ -1,0 +1,11 @@
+
+// initialiser un répertoire avec npm, de manière interactive
+$ npm init
+
+// installer toutes les dépendances du fichier package.json
+$ npm install
+
+// installer une dépendance et l'enregistrer dans le fichier package.json
+$ npm install angular --save
+
+
