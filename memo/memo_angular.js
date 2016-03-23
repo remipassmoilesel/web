@@ -8,7 +8,7 @@ app.component("bshm-liste", {
     template: "...", // tamplate HTML
     binding: {}, // equivalent à scope,
     controller: function(){
-        
+        // le controleur sera accessible via $ctrl
     }
 }); 
 
