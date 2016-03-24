@@ -1,0 +1,10 @@
+Les fichiers cabinetInfirmier.xml et actes.xml ont été scindés 
+en plusieurs fichiers:
+
+actions.xml: actes médicaux,
+informations.xml: les informations sur le cabinet,
+patients.xml: les patients,
+nurses.xml: les infirmiers,
+
+Les anciens fichiers ont été conservés pour le bon fonctionnement du fichier
+serverCabinetMedical.js.

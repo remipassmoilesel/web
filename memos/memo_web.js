@@ -16,9 +16,6 @@ A voir: les bases de modules
 */
 
 
-
-
-
 // ancienne méthode de séparation de code
 (function () {
     // création de fonction et appel

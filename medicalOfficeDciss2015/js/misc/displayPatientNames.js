@@ -2,7 +2,6 @@
 require("./secretary.css");
 var utils = require("./utils.js");
 
-
 var req = utils.XHR('GET', 'data/cabinetInfirmier.xml');
 
 req.then(function (xhr) {
@@ -25,13 +24,16 @@ req.then(function (xhr) {
     //console.log(patients);
 
     var displayArea = document.getElementById("playground");
-    
-    for (var i = 0; i < patients.length; i++){
+
+    displayArea.innerHTML += "Liste des patients: <br/>";
+
+
+    for (var i = 0; i < patients.length; i++) {
         var p = patients[i];
         console.log(p.querySelector("nom").textContent);
-     
-        displayArea.innerHTML += p.querySelector("nom").textContent + "<br>";
-        
+
+        displayArea.innerHTML += p.querySelector("nom").textContent + "<br/>";
+
     }
 
 
