@@ -6,7 +6,7 @@ require("angular-material/angular-material.css");
 // créer un module angular
 var newModule = angular.module("newModuleAppName", [angularMaterial]);
 
-// récupérer le template et le stocker 
+// récupérer le template et le stocker
 var template = require("./componentTemplate.html");
 
 // Controlleur instancié à la création du composant
@@ -21,6 +21,3 @@ newModule.component("newModuleTagName", {
     bindings: {},
     controller: controller
 });
-
-
-
