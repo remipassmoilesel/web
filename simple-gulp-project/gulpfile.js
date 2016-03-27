@@ -3,10 +3,11 @@
 Projet simple Gulp, pour essai
 Sources:    http://julienrenaux.fr/2014/05/25/introduction-to-gulp-js-with-practical-examples/
 https://www.smashingmagazine.com/2014/06/building-with-gulp/
+
 */
 
 /*
-* Commandes préalables:
+* Commandes préalables - sous GNU/Linux :)
 * Initialiser le répertoire avec un pakage.json
 * $ npm init
 *
