@@ -151,3 +151,19 @@ Ajouter une directive, toutes les balises bshm-liste d'un document html seront "
         }
       };
     });
+
+Rafraichir si on utilise des mecanismes non interne à angular (par exemple les promesses javascript)
+    // si pas d'utilisation des promesses angular, via les méthodes http et tout ça, mettre à jour angular
+    // en appelant cette méthode
+    $scope.$apply();
+
+    // avec eventuellement
+    object.$inject = ["$scope"];
+
+Lister un attribut composé du controleur dans la vue:
+    <ul>
+        <li ng-repeat="inf in $ctrl.informations">
+            {{ inf | json }}
+        </li>
+    </ul>
+    

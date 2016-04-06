@@ -1,4 +1,19 @@
 
+// iterer un tableau
+for (var i = 0; i < array.length; i++) {
+    alert(array[i]);
+}
+
+/*
+ * Attention, le for in sert à itérer les propriétés d'un objet, pas un tableau. Dans l'exemple ci-dessous:
+ * "a", "b", "c" et "foo!"
+ */
+Array.prototype.foo = "foo!";
+var array = ['a', 'b', 'c'];
+
+for (var i in array) {
+    alert(array[i]);
+}
 
 // garder une reference à un this défini
 // sans l'usage de self, le this de la fonction ne sera peut être pas celui que l'on désire
