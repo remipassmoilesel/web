@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <script type="text/javascript" src=".../angular/..."></script>
-        <meta charset="UTF-8">
-    </head>
-    
-    <body ng-app="newModuleAppName">
-        <new-module-tag-name></new-module-tag-name>
-    </body>
-    
-</html>
+<!-- components match only elements -->
+<div ng-controller="mainCtrl as ctrl">
+  <b>Hero</b><br>
+  <hero-detail hero="ctrl.hero"></hero-detail>
+</div>

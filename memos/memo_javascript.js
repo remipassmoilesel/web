@@ -1,5 +1,16 @@
 
 
+// garder une reference à un this défini
+// sans l'usage de self, le this de la fonction ne sera peut être pas celui que l'on désire
+function Object() {
+
+    var self = this;
+    return function doSomething() {
+        self.data = "something";
+    };
+
+}
+
 // Afficher tout d'un objet sauf ses fonctions
 function displayAllPropertiesFrom(obj) {
 

@@ -1,8 +1,11 @@
 
+
 Installation:
     $ npm install --save-dev angular angular-material angular-animate angular-aria
 
 /!\ ng-model: correspond à du two-way data binding
+
+/!\ Attention: les promesses angular ne sont pas celle de Javascript
 
 Utilisation des services: injection d'arguments dans la création du controlleur.
 
@@ -109,7 +112,7 @@ Ajouter un composant
       template: "...",
       // Ajouter des liaisons de donnée, ici un argument spécial de la balise
       bindings: {
-        customArg: "@",
+        customArg: "@", // prendra la valeur de l'attribut html customarg
         customArg2: "<", // < = synchronisation unidirectionnelle, si customArg2 est modifié, l'affichage sera modifié.
       },
       controller: function() {
