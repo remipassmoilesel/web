@@ -1,0 +1,8 @@
+<div class="medicalOffice">
+    <h1>{{$ctrl.informations.name}}</h1>
+    <!--<div><pre>Contrôleur: {{$ctrl}}</pre></div>-->
+    <h2>Liste des infirmiers</h2>
+    <div ng-repeat="inf in $ctrl.nurses">
+        <nurse data="inf"></nurse>
+    </div>
+</div>

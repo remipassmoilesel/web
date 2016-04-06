@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cabinet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xmlns="http://www.ujf-grenoble.fr/l3miage/cabinet" 
+		 xsi:schemaLocation="http://www.ujf-grenoble.fr/l3miage/cabinet ../schema/cabinet.xsd"
+		 >
+	<nom>Soins à Grenoble</nom>
+	<adresse>
+		<numero>60</numero>
+		<rue>rue de la Chimie</rue>
+		<ville>Grenoble</ville>
+		<codePostal>38041</codePostal>
+	</adresse>
+	<infirmiers>
+		<infirmier id="001">
+			<nom>Versaire</nom>
+			<prenom>Annie</prenom>
+			<photo>images/homer1.gif</photo>
+		</infirmier>
+		<infirmier id="002">
+			<nom>Cent</nom>
+			<prenom>Sally</prenom>
+			<photo>images/lisa111.gif</photo>
+		</infirmier>
+		<infirmier id="003">
+			<nom>Nouie</nom>
+			<prenom>Eva</prenom>
+			<photo>images/maggie111.gif</photo>
+		</infirmier>
+	</infirmiers>
+	<patients>
+		<patient>
+			<nom>Aire</nom>
+			<prenom>Axel</prenom>
+			<sexe>M</sexe>
+			<naissance>1993-06-13</naissance>
+			<!-- Homme, ne en juin 93 en France, à Marseille (n° 55 en bouches du rhône) 
+            453e naissance (cle calculee: 19)-->
+			<numero>193061305545319</numero>
+			<adresse>
+				<etage>4</etage>
+				<numero>46</numero>
+				<rue>avenue Felix Viallet</rue>
+				<ville>Grenoble</ville>
+				<codePostal>38031</codePostal>            
+			</adresse>
+			<!-- Ici, j'ai choisi d'identifier l'infirmiere par un numero.
+                Un prenom peut porter à confusion.
+                Un login peut etre ok -->
+
+			<!-- 
+                Axel a eu un accident de moto à cause duquel il a dû etre opere.
+                Il est immobilise pour un mois et doit donc recevoir des injections
+                sous-cutanees d'anti-coagulant tous les jours pendant une semaine pour eviter les flebites.
+                (Q: Peut-on ajouter la contrainte qu'elles doievent etre faites à la meme heure chaque jour ?)
+                L'intervenant qui prend en charge Axel est le n°2. Cet intervenant
+                ne travaille pas le mercredi et doit donc ceder sa place à l'intervenant
+                n°1 ce jour là.
+                Lors de la derniere visite, l'intervenant doit aussi enlever les 25 points de suture de son operation.
+                -->
+			<visite date="2014-12-08" intervenant="001">
+				<acte id="109"/>               
+			</visite>
+
+		</patient>
+		<patient>        
+			<nom>Orouge</nom>
+			<prenom>Elvire</prenom>
+			<sexe>F</sexe>
+			<naissance>1980-03-08</naissance>
+			<!-- Femme, nee en mars 80 en France, à Lyon (n° 23 dans le rhône) 
+            52e naissance (cle calculee: 19)-->
+			<numero>280036902305219</numero>        
+			<adresse>
+				<rue>Rond-Point de la Croix de Vie</rue> 
+				<ville>La Tronche</ville>
+				<codePostal>38700</codePostal>           
+			</adresse>
+			<!-- 
+                Elvire a ete gravement brulee, et l'intervenant doit changer son 
+                pansement tous les 2 jours
+                (Pansement de brûlure etendue ou de plaie chimique ou thermique etendue,
+                    sur une surface superieure à 5 % de la surface corporelle.....)
+                -->
+			<visite date="2014-12-08" intervenant="003">
+				<acte id="300"/>               
+			</visite>
+
+		</patient>
+		<patient>        
+			<nom>Oscare</nom>
+			<prenom>Pien</prenom>
+			<sexe>M</sexe>
+			<naissance>1975-10-25</naissance>
+			<!-- Homme, nee en octobre 75 en France, à Chambery (n° 65 dans la Savoie) 
+            692e naissance (cle calculee: 67)-->
+			<numero>175107306569267</numero>
+			<adresse>
+				<rue>rue Casimir Brenier</rue>
+				<ville>Grenoble</ville>
+				<codePostal>38000</codePostal>
+			</adresse>
+			<!-- 
+                Oscar s'est casse l'os du pied en jouant au foot. d
+                Il a besoin d'un prelevement par ponction veineuse directe le premier
+                jour et injection intraveineuse directe isolee d'anthalgiques les 
+                autres jours.
+                -->
+			<visite date="2014-12-08" intervenant="001">
+				<acte id="101"/>
+				<acte id="104"/>               
+			</visite>
+
+		</patient>
+		<patient>        
+			<nom>Xavier</nom>
+			<prenom>Kapoëtla</prenom>
+			<sexe>M</sexe>
+			<naissance>2010-08-02</naissance>
+			<!-- Garçon (4 ans) ne en août 2010 en France, à Bordeaux (n° 63 dans la Gironde) 
+            35e naissance (cle calculee: 70)-->
+			<numero>110083306303570</numero>
+			<adresse>
+				<numero>25</numero>
+				<rue>rue des Martyrs</rue>
+				<ville>Grenoble</ville>
+				<codePostal>38042</codePostal>
+			</adresse>
+			<!-- 
+                Le jeune Xavier est en cours de desensibilation alergique.
+                Il doit recevoir tous les jours, l'injection de plusieurs allergenes, etc.
+                -->
+			<visite date="2014-12-08" intervenant="001">
+				<acte id="111"/>               
+			</visite>
+
+		</patient>
+		<patient>
+			<nom>Peplu</nom>
+			<prenom>Jean</prenom>
+			<sexe>M</sexe>
+			<naissance>1910-08-02</naissance>
+			<!-- Ne dans le Doubs, il y a 104 ans dans le commune de Les Combes 
+            (n° 160), 20e naissance (cle calculee: 10) -->
+			<numero>110082516002010</numero>
+			<adresse>            
+				<numero>655</numero>
+				<rue>Avenue de l'Europe</rue>
+				<ville>Montbonnot-Saint-Martin</ville>
+				<codePostal>38330</codePostal>
+			</adresse>
+			<visite date="2014-12-08" intervenant="001">
+				<acte id="401"/>
+			</visite>
+
+		</patient>
+	</patients>
+</cabinet>
