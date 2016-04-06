@@ -1,21 +1,43 @@
 
 Initialiser un répertoire avec npm, de manière interactive
-$ npm init
+    $ npm init
 
 Installer toutes les dépendances du fichier package.json
-$ npm install
+    $ npm install
 
 Installer une dépendance et l'enregistrer dans le fichier package.json
-$ npm install angular --save
+    $ npm install angular angular-material--save
 
 Afficher en console en couleur
-$ npm install colors
+    $ npm install colors
 
-  Puis:
-  var colors = require('colors/safe');
-   
-  console.log(colors.green('hello')); // outputs green text
-  console.log(colors.red.underline('i like cake and pies')) // outputs red underlined text
-  console.log(colors.inverse('inverse the color')); // inverses the color
-  console.log(colors.rainbow('OMG Rainbows!')); // rainbow
-  console.log(colors.trap('Run the trap')); // Drops the bass
+    Puis:
+    var colors = require('colors/safe');
+
+    console.log(colors.green('hello')); // outputs green text
+    console.log(colors.red.underline('i like cake and pies')) // outputs red underlined text
+    console.log(colors.inverse('inverse the color')); // inverses the color
+    console.log(colors.rainbow('OMG Rainbows!')); // rainbow
+    console.log(colors.trap('Run the trap')); // Drops the bass
+
+Créer des scripts pour utilisation avec npm
+    Exemple avec le fichier package.json de https://github.com/angular/angular-phonecat.git 
+    {
+      "version": "0.0.0",
+       "....": "...",
+      "scripts": {
+        "postinstall": "bower install",
+
+        "prestart": "npm install",
+        "start": "http-server -a 0.0.0.0 -p 8000",
+
+        "pretest": "npm install",
+        "test": "node node_modules/karma/bin/karma start test/karma.conf.js",
+        "test-single-run": "node node_modules/karma/bin/karma start test/karma.conf.js  --single-run",
+        }
+    }
+
+    Lancement: 
+    $ npm start
+    $ npm test
+    $ ...

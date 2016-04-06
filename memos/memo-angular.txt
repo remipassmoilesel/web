@@ -1,0 +1,150 @@
+
+Installation:
+    $ npm install --save-dev angular angular-material angular-animate angular-aria
+
+/!\ ng-model: correspond à du two-way data binding
+
+Utilisation des services: injection d'arguments dans la création du controlleur.
+
+    Fichier 'service.js'
+    --------------------
+    
+    // créer le service avec une/des méthode(s) utiles
+    var serviceAngular = function($http){
+        this.doSomething = function(){
+            console.log("Something done !");
+        };
+    }
+
+    // injecter les dépendances utiles (arguments utilisés lors de l'instanciation)
+    serviceAngular.$inject = [ "$http" ]; //Injection de dépendances
+
+    // retourne une fonction qui permet d'enregistrer un service dans un mdoule angular
+    module.exports = function(moduleAngular) {
+
+        // nom du service
+        var id = "serviceAngular";
+
+        // enregistrer le service
+        moduleAngular.service(id, serviceAngular);
+
+        // retourner l'id
+        return id;
+    };
+
+    Fichier utilisateurService.js
+    -----------------------------
+    
+    // créer un module angular
+    var moduleAngular = angular.module("module", []);
+
+    // enregistrer le sevice dans le module et récupérer son identifiant (string)
+    var idService = require( "./service.js" )(moduleAngular);
+
+    // créer l'objet utilisant le service
+    var controller = function( service ) {
+        service.doSomething();
+    }
+
+    // injecter le service
+    controller.$inject = [ idService ];
+
+
+Informations sur Angular:
+    http://www.johnpapa.net
+    IRC: #javascript, #angular (freenode)
+
+Formulaires avec Angular
+    <form layout="column" ng-submit="code javascript">
+        <!-- L'attribut layout est défini par Material Design et permet d'afficher en colonne le contenu -->
+        <!-- L'attribut ng-submit est défini par Angular et permet d'éxécuter du code Javascript à l'envoi du formulaire -->
+
+        <input ng-model="$ctrl.field" type="text" />
+        <!-- Synchronisation bi-directionnelle avec le champs 'field'. Si le modéle est modifié l'affichage sera modifié,
+            si l'affichage est modifié le modele sera modifié -->
+    
+           
+        <md-button ng-click="$ctrl.dosomething()" ...>
+        <!-- ng-click permet d'éxecuter du code javascript dans le bon contexte -->
+
+    </form>
+
+Faire un boucle avec des directives Angular
+    <... ng-controller="PhoneListCtrl">
+
+      <ul>
+        <!-- Créer un element LI par 'phone' -->
+        <li ng-repeat="phone in phones">
+          <span>{{phone.name}}</span>
+          <p>{{phone.snippet}}</p>
+        </li>
+      </ul>
+
+    </...>
+
+Appeler Angular et Angular-material avec webpack/gulp
+    var angular = require("angular");
+    var angularMaterial = require("angular-material");
+    require("angular-material/angular-material.css");
+
+Créer un nouveau module Angular vide
+
+    // /!\ Les modules angular sont différents des modules CommonJS/Webpack
+
+    var mod = angular.module("module", []);
+    
+    // ou créer un nouveau module contenant des élements d'autres modules
+    var extMod = angular.module("moduleEtendu", [angularMaterial]);
+
+
+
+Ajouter un composant
+
+    Remarque sur les noms: Dans la déclaration Angular le nom doit respecter
+    la norme Camel Case (ecritCommeCa) alors que dans le code html les mots sont
+    séparés par des tirets (ecrit-comme-ca)
+
+    mod.component("nomComposant", {
+      // Le template HTML à charger, éventuellement chargé à partir d'un fichier
+      template: "...",
+      // Ajouter des liaisons de donnée, ici un argument spécial de la balise
+      bindings: {
+        customArg: "@",
+        customArg2: "<", // < = synchronisation unidirectionnelle, si customArg2 est modifié, l'affichage sera modifié.
+      },
+      controller: function() {
+        // Le controleur est un objet instancié à chaque création de composant.
+        // Cette fonction agit comme un constructeur. Il sera ensuite disponible
+        // dans le composant via $ctrl
+      }
+    });
+
+    Appel dans le fichier HTML
+        <body ng-app="module">
+        ...
+        <nom-composant customArg='value'>
+        ...
+        {{$ctrl.doSomething()}}
+
+
+Méthode angular de création de directives, à utiliser uniquement
+pour les besoins spécifiques. Préférer les constructeurs de composants.
+ 
+
+Exemple de balise:
+    <bhsm-liste data="myDataObject" titre="Ma liste de course" onModified="console.log('hello!');">
+
+Ajouter une directive, toutes les balises bshm-liste d'un document html seront "compilés"
+    app.directive("bshm-liste", function() {
+      return {
+        restrict: 'E', // 'E' pour balise, 'A' pour attribut
+        binToController: true,
+        controllerAs: "ctrl", // nom du controlleur, ou définition: function(){
+        template: "...", // template html de l'élément
+        scope: {
+          data: "<", // valeur sera un objets
+          titre: "@", // valeur sera du texte
+          onModified: "&" // evaluer comme du javascript
+        }
+      };
+    });
