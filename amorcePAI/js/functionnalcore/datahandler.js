@@ -1,3 +1,13 @@
+/**
+ * 
+ * Equivalent renommé du Noyau Fonctionnel du TP. Permet de manipuler 
+ * les données (consultation et modification)
+ * 
+ * La fonction asyncXmlParse est juste une fonction utilitaire qui permet de 
+ * réduire un peu le code.
+ * 
+ */
+
 
 var constants = require("../constants.js");
 
@@ -86,7 +96,8 @@ DataHandler.prototype.getNurses = function () {
                             output.push({
                                 name: tag.querySelector("nom").innerHTML,
                                 firstname: tag.querySelector("prenom").innerHTML,
-                                imagePath: tag.querySelector("photo").innerHTML
+                                imagePath: tag.querySelector("photo").innerHTML,
+                                id: tag.getAttribute("id")
                             });
                         }
 
