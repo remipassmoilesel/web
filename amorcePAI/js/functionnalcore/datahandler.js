@@ -11,6 +11,12 @@
 
 var constants = require("../constants.js");
 
+var DataHandler = function ($http) {
+    this.$http = $http;
+};
+// Injection de dépendances
+DataHandler.$inject = ["$http"];
+
 /**
  * Fonction utilitaire permettant d'harmoniser le code des promesses pour les différentes extractions XML
  * 
@@ -20,10 +26,10 @@ var constants = require("../constants.js");
  * @param {type} callbackError
  * @returns {Promise}
  */
-function asyncXmlParse($http, dataLocation, callbackThen, callbackError) {
+DataHandler.prototype.asyncXmlParse = function (dataLocation, callbackThen, callbackError) {
 
     // appel asynchrone des données
-    return $http.get(dataLocation)
+    return this.$http.get(dataLocation)
 
             // appel réussi
             .then(function (response) {
@@ -43,9 +49,9 @@ function asyncXmlParse($http, dataLocation, callbackThen, callbackError) {
                 }
             });
 
-}
+};
 
-function agregate(domElement) {
+DataHandler.prototype.agregate = function (domElement) {
 
     var output = "";
 
@@ -61,20 +67,14 @@ function agregate(domElement) {
     return output;
 }
 
-var DataHandler = function ($http) {
-    this.$http = $http;
-};
-// Injection de dépendances
-DataHandler.$inject = ["$http"];
-
 /**
  * Renvoi une promesse qui returne un objet contenant toutes les informations du cabinet
  * @returns {Promise}
  */
 DataHandler.prototype.getOfficeInformations = function () {
 
-    return asyncXmlParse(
-            this.$http,
+    var self = this;
+    return this.asyncXmlParse(
             // document à parser
             constants.dataOffice,
             // cb en cas de succès
@@ -82,7 +82,7 @@ DataHandler.prototype.getOfficeInformations = function () {
                         // iterer et formatter les infirmiers
                         return {
                             name: xmlDoc.querySelector("cabinet nom").innerHTML,
-                            completeAdress: agregate(xmlDoc
+                            completeAdress: self.agregate(xmlDoc
                                     , "cabinet adresse numero"
                                     , "cabinet adresse rue"
                                     , "cabinet adresse ville"
@@ -97,8 +97,7 @@ DataHandler.prototype.getOfficeInformations = function () {
  */
 DataHandler.prototype.getNurses = function () {
 
-    return asyncXmlParse(
-            this.$http,
+    return this.asyncXmlParse(
             // document à parser
             constants.dataOffice,
             // cb en cas de succès
@@ -128,8 +127,8 @@ DataHandler.prototype.getNurses = function () {
  */
 DataHandler.prototype.getPatients = function () {
 
-    return asyncXmlParse(
-            this.$http,
+    var self = this;
+    return this.asyncXmlParse(
             // document à parser
             constants.dataOffice,
             // cb en cas de succès
@@ -149,7 +148,7 @@ DataHandler.prototype.getPatients = function () {
                                 gender: patientTag.querySelector("sexe").innerHTML,
                                 birthday: patientTag.querySelector("naissance").innerHTML,
                                 ssid: patientTag.querySelector("numero").innerHTML,
-                                completeAdress: agregate(xmlDoc
+                                completeAdress: self.agregate(xmlDoc
                                         , "adresse numero"
                                         , "adresse rue"
                                         , "adresse codePostal"
@@ -173,9 +172,7 @@ DataHandler.prototype.getPatients = function () {
                                 var actionTagArray = visitTag.getElementsByTagName("acte");
                                 for (var k = 0; k < actionTagArray.length; k++) {
                                     var actionTag = actionTagArray[k];
-                                    
-                                    console.log(actionTag);
-                                    
+
                                     visitObj.actions.push(actionTag.getAttribute("id"));
                                 }
 
