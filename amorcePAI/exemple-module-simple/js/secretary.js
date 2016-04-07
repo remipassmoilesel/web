@@ -7,7 +7,7 @@ var angular = require("angular");
 var angularMaterial = require("angular-material");
 require("angular-material/angular-material.css");
 
-// déclarer un module pour le cabinet médical, avec comme dépendance angular-material
+// déclarer un module pour le cabinet médical
 var officeModule = angular.module( "officeModule", [ angularMaterial ] );
 
 // définir le composant cabinet medical

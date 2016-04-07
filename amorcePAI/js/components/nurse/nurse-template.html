@@ -1,6 +1,17 @@
-<div class="nurse">
-    <!--<div>Controleur: {{$ctrl}}</div>-->
-    <div>Nom: {{$ctrl.data.name}}</div>
-    <div>Prénom: {{$ctrl.data.firstname}}</div>
-    <img src="{{$ctrl.data.photo}}" alt="Photo de {{$ctrl.data.name + ' ' + $ctrl.data.firstname}}"/>
-</div>
+<md-card>
+    <md-card-title>
+        <md-card-title-text layout="row">
+            <span class="md-headline">{{$ctrl.data.name}} {{$ctrl.data.firstname}}</span>
+            <img ng-src="{{$ctrl.data.imagePath}}" class="Photo de {{$ctrl.data.name + ' ' + $ctrl.data.firstname}}">
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <p>
+            {{$ctrl}}
+        </p>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+    </md-card-actions>
+</md-card>

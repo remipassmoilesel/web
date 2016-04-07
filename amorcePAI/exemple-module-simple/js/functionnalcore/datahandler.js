@@ -5,15 +5,15 @@ var constants = require("../constants.js");
  * Fonction utilitaire permettant d'harmoniser le code des promesses pour les différentes extractions XML
  * 
  * @param {type} $http
- * @param {type} dataLocation
- * @param {type} callbackThen
+ * @param {type} docLocation
+ * @param {type} callbackSuccess
  * @param {type} callbackError
  * @returns {Promise}
  */
-function asyncXmlParse($http, dataLocation, callbackThen, callbackError) {
+function asyncXmlParse($http, docLocation, callbackSuccess, callbackError) {
 
     // appel asynchrone des données
-    return $http.get(dataLocation)
+    return $http.get(docLocation)
 
             // appel réussi
             .then(function (response) {
@@ -23,7 +23,7 @@ function asyncXmlParse($http, dataLocation, callbackThen, callbackError) {
                 var xmlDoc = parser.parseFromString(response.data, "text/xml");
 
                 // terminer la promesse
-                return callbackThen(xmlDoc);
+                return callbackSuccess(xmlDoc);
             })
 
             // erreur lors de la promesse, appel de callback uniquement si est défini comme une fonction
@@ -98,7 +98,7 @@ DataHandler.prototype.getNurses = function () {
  * Renvoi une promesse qui retourne un tableaux d'objet sur les infirmiers
  * @returns {Promise}
  */
-DataHandler.prototype.getPatients = function () {
+DataHandler.prototype.getPatient = function () {
 
     return asyncXmlParse(
             this.$http,

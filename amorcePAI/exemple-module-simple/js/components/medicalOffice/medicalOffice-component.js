@@ -9,14 +9,23 @@ module.exports = function (angularMod) {
 
         // faire référence à self pour avoir un this correct dans la fonction suivante
         var vm = this;
-
-        datah.getOfficeInformations().then(function (response){
+        
+        // récupérer les informations du cabinet en asynchrone
+        datah.getOfficeInformations().then(function (response) {
             vm.informations = response;
+            // si pas d'utilisation des promesses angular, via les méthodes http et tout ça, mettre à jour angular 
+            // en appelant cette méthode
+            $scope.$apply();
         });
         
-        datah.getNurses().then(function (response){
+        // récupérer les infirmiers du cabinet en asynchrone
+        datah.getNurses().then(function (response) {
             vm.nurses = response;
+            // si pas d'utilisation des promesses angular, via les méthodes http et tout ça, mettre à jour angular 
+            // en appelant cette méthode
+            $scope.$apply();
         });
+        
 
     };
 
