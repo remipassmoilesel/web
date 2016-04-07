@@ -1,9 +1,14 @@
 <div class="medicalOffice">
     <h1>{{$ctrl.informations.name}}</h1>
-    <p>Adresse: {{$ctrl.informations.adress}}</p>
+    <p>Adresse: {{$ctrl.informations.completeAdress}}</p>
     <!--<div><pre>Contrôleur: {{$ctrl}}</pre></div>-->
     <h2>Liste des infirmiers</h2>
-    <div ng-repeat="inf in $ctrl.nurses">
-        <nurse data="inf"></nurse>
+    <div ng-repeat="elmt in $ctrl.nurses">
+        <nurse data="elmt"></nurse>
+    </div>
+
+    <h2>Liste des patients</h2>
+    <div ng-repeat="elmt in $ctrl.patients">
+        <patient data="elmt"></patient>
     </div>
 </div>

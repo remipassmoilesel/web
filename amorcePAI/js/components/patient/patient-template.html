@@ -2,17 +2,10 @@
     <md-card-title>
         <md-card-title-text>
             <span class="md-headline">{{$ctrl.data.name + ' ' + $ctrl.data.firstname}}</span>
-            <span class="md-subhead">Identifiant: {{$ctrl.data.id}}</span>
         </md-card-title-text>
-        <md-card-title-media>
-            <div class="md-media-sm card-media">
-                <img src="{{$ctrl.data.imagePath}}" 
-                     alt ="Photo de {{$ctrl.data.name + ' ' + $ctrl.data.firstname}}"/>
-            </div>
-        </md-card-title-media>
     </md-card-title>
     <md-card-content>
-        <!--{{$ctrl}}-->
+        {{$ctrl}}
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
         <md-button>Modifier</md-button>

@@ -16,3 +16,6 @@ require("./components/medicalOffice/medicalOffice-component.js")(officeModule);
 // définir le composant infirmier
 require("./components/nurse/nurse-component.js")(officeModule);
 
+// définir le composant patient
+require("./components/patient/patient-component.js")(officeModule);
+

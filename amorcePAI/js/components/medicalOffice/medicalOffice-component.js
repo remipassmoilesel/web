@@ -17,6 +17,10 @@ module.exports = function (angularMod) {
         datah.getNurses().then(function (response){
             vm.nurses = response;
         });
+        
+        datah.getPatients().then(function (response){
+            vm.patients = response;
+        });
 
     };
 
