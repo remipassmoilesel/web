@@ -152,5 +152,20 @@
             </visite>
 
         </patient>
+        
+        <!-- ajouté pour tests de patients non affecté -->
+         <patient>
+            <nom>Claude</nom>
+            <prenom>Jean</prenom>
+            <sexe>M</sexe>
+            <naissance>1910-08-02</naissance>
+            <numero>11008251</numero>
+            <adresse>            
+                <numero>655</numero>
+                <rue>Avenue de l'Europe</rue>
+                <ville>Montbonnot-Saint-Martin</ville>
+                <codePostal>38330</codePostal>
+            </adresse>
+        </patient>
     </patients>
 </cabinet>

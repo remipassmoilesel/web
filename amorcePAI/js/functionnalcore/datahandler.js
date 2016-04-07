@@ -51,6 +51,11 @@ DataHandler.prototype.asyncXmlParse = function (dataLocation, callbackThen, call
 
 };
 
+/**
+ * Méthode utilitaire permettant d'gréger le contenu de plusieurs balises XML
+ * @param {type} domElement
+ * @returns {DataHandler.prototype.agregate.output|String}
+ */
 DataHandler.prototype.agregate = function (domElement) {
 
     var output = "";
@@ -122,10 +127,10 @@ DataHandler.prototype.getNurses = function () {
         };
 
 /**
- * Renvoi une promesse qui retourne un tableaux d'objet sur les infirmiers
+ * Renvoi une promesse qui retourne un tableaux d'objet sur les patients
  * @returns {Promise}
  */
-DataHandler.prototype.getPatients = function () {
+DataHandler.prototype.getAllPatients = function () {
 
     var self = this;
     return this.asyncXmlParse(
@@ -188,6 +193,28 @@ DataHandler.prototype.getPatients = function () {
                         return output;
                     });
         };
+
+/**
+ * Renvoi une promesse qui retourne un tableaux d'objet sur les patients sans infirmiers
+ * @returns {Promise}
+ */
+DataHandler.prototype.getNonAffectedPatients = function () {
+
+    return this.getAllPatients().then(function (patients) {
+        
+        var output = [];
+        for (var i = 0; i < patients.length; i++) {
+            var pat = patients[i];
+            if (pat.visits.length === 0) {
+                output.push(pat);
+            }
+        }
+        
+        return output;
+    });
+
+};
+
 
 module.exports = function (angularMod) {
     var id = "functionnalCore";

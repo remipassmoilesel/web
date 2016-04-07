@@ -2,13 +2,22 @@
     <h1>{{$ctrl.informations.name}}</h1>
     <p>Adresse: {{$ctrl.informations.completeAdress}}</p>
     <!--<div><pre>Contrôleur: {{$ctrl}}</pre></div>-->
+
+    <h2>Nouveau patient</h2>
+    <form-new-patient></form-new-patient>
+
     <h2>Liste des infirmiers</h2>
     <div ng-repeat="elmt in $ctrl.nurses">
         <nurse data="elmt"></nurse>
     </div>
 
+    <h2>Liste des patients non-affectés</h2>
+    <div ng-repeat="elmt in $ctrl.nonAffectedPatients">
+        <patient data="elmt"></patient>
+    </div>
+
     <h2>Liste des patients</h2>
-    <div ng-repeat="elmt in $ctrl.patients">
+    <div ng-repeat="elmt in $ctrl.allPatients">
         <patient data="elmt"></patient>
     </div>
 </div>

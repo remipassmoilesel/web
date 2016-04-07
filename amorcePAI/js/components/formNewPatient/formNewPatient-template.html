@@ -1,0 +1,55 @@
+<md-content layout-padding>
+    <form name="newPatientForm" ng-submit="$ctrl.addPatient()">
+
+        <!-- prénom du patient -->
+        <md-input-container class="md-block">
+            <label>Prénom</label>
+            <input md-maxlength="50" required name="firstname"  
+                   ng-pattern="$ctrl.patientNamePattern" ng-model="$ctrl.patient.firstname">
+            <div ng-messages="newPatientForm.firstname.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                    Utilisez seulement les caractères [ a-z A-Z - ]. 
+                    Champs obligatoire. 
+                    50 caractères maximum. 
+                </div>
+            </div>
+        </md-input-container>
+
+        <!-- nom du patient -->
+        <md-input-container class="md-block">
+            <label>Nom</label>
+            <input md-maxlength="50" required name="name"  
+                   ng-pattern="$ctrl.patientNamePattern" ng-model="$ctrl.patient.name">
+            <div ng-messages="newPatientForm.name.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                    Utilisez seulement les caractères [ a-z A-Z - ]. 
+                    Champs obligatoire. 
+                    50 caractères maximum. 
+                </div>
+            </div>
+        </md-input-container>
+
+        <!-- Infirmier -->
+        <md-input-container class="md-block">
+            <label>Infirmier associé</label>
+            <input md-maxlength="50" required name="nurse"  
+                   ng-pattern="$ctrl.patientNamePattern" ng-model="$ctrl.patient.nurse">
+            <div ng-messages="newPatientForm.nurse.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                    Utilisez seulement les caractères [ a-z A-Z - ]. 
+                    Champs obligatoire. 
+                    50 caractères maximum. 
+                </div>
+            </div>
+        </md-input-container>
+
+        <md-button class="md-raised md-hue-2" type="submit">Ajouter le patient</md-button>
+
+    </form>
+
+    <div>
+
+        {{$ctrl}}
+    </div>
+
+</md-content>
