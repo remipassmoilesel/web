@@ -10,9 +10,15 @@ module.exports = {
     dataActions: "data/actes.xml",
     dataOffice: "data/cabinetInfirmier.xml",
     /*
+     * 
+     */
+    serviceDataHandler: "datahandler",
+    /*
      * Les noms des élements XML
      */
     tagNurse: "infirmier",
+    
+    
     /**
      * Afficher toutes les constantes et leurs types, hors fonctions.
      * @returns {undefined}

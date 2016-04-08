@@ -13,6 +13,9 @@ var angularMessages = require("angular-messages");
 // déclarer un module pour le cabinet médical, avec comme dépendance angular-material
 var officeModule = angular.module("officeModule", [angularMaterial, 'ngMessages']);
 
+// enregistrer le service de traitement des données
+require("./functionnalcore/datahandler.js")(officeModule);
+
 // définir le composant cabinet medical
 require("./components/medicalOffice/medicalOffice-component.js")(officeModule);
 

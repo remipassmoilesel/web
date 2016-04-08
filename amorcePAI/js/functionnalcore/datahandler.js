@@ -217,7 +217,7 @@ DataHandler.prototype.getNonAffectedPatients = function () {
 
 
 module.exports = function (angularMod) {
-    var id = "functionnalCore";
+    var id = constants.serviceDataHandler;
     angularMod.service(id, DataHandler);
     return id;
 };

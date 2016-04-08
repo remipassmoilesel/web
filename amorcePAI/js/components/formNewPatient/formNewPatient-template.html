@@ -8,8 +8,8 @@
             <div ng-message="maxlength">Vous ne pouvez utiliser que 50 caractères maximum.</div>
             <div ng-message="minlength">Vous devez utiliser 5 caractères minimum.</div>
             <div ng-message="valid">Format invalide.</div>
-            <div ng-message="mindate">Date minimum autorisée: {{$ctrl.lowestDate}}</div>
-            <div ng-message="maxdate">Date maximum autorisée: {{$ctrl.highestDate}}</div>
+            <div ng-message="mindate">Date minimum autorisée: {{$ctrl.utils.getPrettyDate($ctrl.lowestDate)}}</div>
+            <div ng-message="maxdate">Date maximum autorisée: {{$ctrl.utils.getPrettyDate($ctrl.highestDate)}}</div>
         </script>
 
         <md-input-container class="md-block">
@@ -59,11 +59,11 @@
 
     </form>
 
-    <div>
-        {{$ctrl}}
-    </div>
-    <div>
-        {{newPatientForm.birthdate.$error}}
-    </div>
+    <!--    <div>
+            {{$ctrl}}
+        </div>
+        <div>
+            {{newPatientForm.birthdate.$error}}
+        </div>-->
 
 </md-content>

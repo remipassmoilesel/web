@@ -5,7 +5,12 @@
         </md-card-title-text>
     </md-card-title>
     <md-card-content>
-        {{$ctrl}}
+        <ul>
+            <li ng-repeat="(k, v) in $ctrl.data">
+                {{k}}: {{v}}
+            </li>
+        </ul>
+        <!--{{$ctrl}}-->
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
         <md-button>Modifier</md-button>

@@ -1,4 +1,14 @@
 
+// dates
+var getPrettyDate = function (date) {
+    var sep = "/";
+    if (typeof date === "undefined") {
+        date = new Date();
+    }
+    return date.getDate()
+            + sep + date.getMonth()
+            + sep + date.getFullYear();
+};
 
 
 // iterer un tableau

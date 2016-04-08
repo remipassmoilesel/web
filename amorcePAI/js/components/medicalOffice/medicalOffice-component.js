@@ -1,5 +1,15 @@
+/**
+ * Composant de représentation d'un cabinet médical.
+ * @type Module medicalOffice-template|Module medicalOffice-template
+ */
+
+// récuperer le template et le css
 var template = require('./medicalOffice-template.html');
 require('./medicalOffice-component.css');
+
+// utilitaires et constantes
+var utils = require('../../functionnalcore/utils.js');
+var constants = require('../../constants.js');
 
 module.exports = function (angularMod) {
 
@@ -27,8 +37,7 @@ module.exports = function (angularMod) {
     };
 
     // injection de dépendance sous forme d'un tableau de chaine de caractères
-    var datahandler = require("../../functionnalcore/datahandler.js")(angularMod);
-    Controller.$inject = [datahandler];
+    Controller.$inject = [constants.serviceDataHandler];
 
     // création du composant
     angularMod.component("medicalOffice", {

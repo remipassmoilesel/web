@@ -221,3 +221,8 @@ Formulaires avec messages génériques:
         ...
 
         Possibilité d'override de messages
+
+Boucle ng-repeat:
+        <li ng-repeat="(k, v) in $ctrl.data">
+                {{k}}: {{v}}
+        </li>
