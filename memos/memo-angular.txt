@@ -177,3 +177,47 @@ Lister un attribut composé du controleur dans la vue:
         </li>
     </ul>
     
+Problème d'affichage de messages Input ANgular:
+    Inclure ngMessage
+
+Déclarer une variable sans affichage:
+    {{messageRequired="Ce champs est obligatoire."; ""}}
+    // Affiche ""
+
+
+Afficher le message d'erreur dans un formulaire Angular Material
+            <div ng-messages="newPatientForm.name.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                    Your email must be between 10 and 100 characters long and look like an e-mail address.
+                    {{newPatientForm.name.$error}}
+                </div>
+            </div>
+
+Débugger un formulaire: 
+        <div>
+            {{$ctrl}}
+        </div>
+        <div>
+            {{newPatientForm.name.$error}}
+        </div>
+
+Formulaires avec messages génériques:
+       <script type="text/ng-template" id="error-messages">
+            <div ng-message="required">Ce champs est requis.</div>
+            <div ng-message="pattern">Seuls les caractères suivants sont autorisés: [ a-z A-Z - ].</div>
+            <div ng-message="maxlength">Vous ne pouvez utiliser que 50 caractères maximum.</div>
+            <div ng-message="minlength">Vous devez utiliser 5 caractères minimum.</div>
+        </script>
+
+        <md-input-container class="md-block">
+            <label>Name</label>
+            <input name="name" ng-model="$ctrl.patient.name"
+                   ng-minlength="5" ng-maxlength="50"  required  ng-messages-multiple/>
+            <div ng-messages="newPatientForm.name.$error" role="alert" >
+                <div ng-messages-include="error-messages"></div>
+            </div>
+        </md-input-container>
+
+        ...
+
+        Possibilité d'override de messages

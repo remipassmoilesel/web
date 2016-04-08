@@ -7,17 +7,27 @@ module.exports = function (angularMod) {
 
     var Controller = function ($http, datah) {
 
-        // conserver la référence pour requêtes
+        // conserver les références des services
         this.$http = $http;
         this.datah = datah;
 
-        this.patientNamePattern = "/^ *[a-zA-Z-]+ *$/";
+        // pattern affectant les champs de texte
+        this.patientInfoPattern = '^ *[a-zA-Z -]+ *$';
 
-        // faire référence à self pour avoir un this correct dans la fonction suivante
+        // dates utiles
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDay() - 1);
+        this.lowestDate = new Date(1900, 01, 01);
+        this.highestDate = new Date();
+
+        
+        
         this.patient = {
-            firstname: "",
-            name: "",
-            nurse: ""
+            firstname: "Prénom",
+            name: "Nom",
+            nurse: "id",
+            gender: "A",
+            birthdate: yesterday
         };
 
     };
@@ -27,7 +37,9 @@ module.exports = function (angularMod) {
 
     Controller.prototype.addPatient = function () {
 
-        //console.log("Ajout de : " + this.patient);
+        console.log("Ajout de : " + this.patient);
+
+        
 
         // vérfier le nom et le prénom 
 

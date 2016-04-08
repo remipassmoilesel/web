@@ -151,7 +151,7 @@ DataHandler.prototype.getAllPatients = function () {
                                 name: patientTag.querySelector("nom").innerHTML,
                                 firstname: patientTag.querySelector("prenom").innerHTML,
                                 gender: patientTag.querySelector("sexe").innerHTML,
-                                birthday: patientTag.querySelector("naissance").innerHTML,
+                                birthdate: patientTag.querySelector("naissance").innerHTML,
                                 ssid: patientTag.querySelector("numero").innerHTML,
                                 completeAdress: self.agregate(xmlDoc
                                         , "adresse numero"

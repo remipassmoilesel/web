@@ -1,7 +1,7 @@
-.medicalOffice{
-    background: silver;
-}
-
-.medicalOffice h1{
-    font-size: 20px;
+.formErrorMessage{
+    color: rgb(221, 44, 0);
+    display: block;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    height: 14px;
 }

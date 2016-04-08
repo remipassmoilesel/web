@@ -1,55 +1,69 @@
 <md-content layout-padding>
     <form name="newPatientForm" ng-submit="$ctrl.addPatient()">
 
-        <!-- prénom du patient -->
-        <md-input-container class="md-block">
-            <label>Prénom</label>
-            <input md-maxlength="50" required name="firstname"  
-                   ng-pattern="$ctrl.patientNamePattern" ng-model="$ctrl.patient.firstname">
-            <div ng-messages="newPatientForm.firstname.$error" role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                    Utilisez seulement les caractères [ a-z A-Z - ]. 
-                    Champs obligatoire. 
-                    50 caractères maximum. 
-                </div>
-            </div>
-        </md-input-container>
+        <!-- Messages d'indication de formulaires -->
+        <script type="text/ng-template" id="error-messages">
+            <div ng-message="required">Ce champs est requis.</div>
+            <div ng-message="pattern">Seuls les caractères suivants sont autorisés: [ a-z A-Z - ].</div>
+            <div ng-message="maxlength">Vous ne pouvez utiliser que 50 caractères maximum.</div>
+            <div ng-message="minlength">Vous devez utiliser 5 caractères minimum.</div>
+            <div ng-message="valid">Format invalide.</div>
+            <div ng-message="mindate">Date minimum autorisée: {{$ctrl.lowestDate}}</div>
+            <div ng-message="maxdate">Date maximum autorisée: {{$ctrl.highestDate}}</div>
+        </script>
 
-        <!-- nom du patient -->
         <md-input-container class="md-block">
             <label>Nom</label>
-            <input md-maxlength="50" required name="name"  
-                   ng-pattern="$ctrl.patientNamePattern" ng-model="$ctrl.patient.name">
-            <div ng-messages="newPatientForm.name.$error" role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                    Utilisez seulement les caractères [ a-z A-Z - ]. 
-                    Champs obligatoire. 
-                    50 caractères maximum. 
-                </div>
+            <input name="name" ng-model="$ctrl.patient.name" ng-pattern="$ctrl.patientInfoPattern" 
+                   ng-minlength="5" ng-maxlength="50"  required  ng-messages-multiple/>
+            <div ng-messages="newPatientForm.name.$error" role="alert" >
+                <div ng-messages-include="error-messages"></div>
             </div>
         </md-input-container>
 
-        <!-- Infirmier -->
         <md-input-container class="md-block">
-            <label>Infirmier associé</label>
-            <input md-maxlength="50" required name="nurse"  
-                   ng-pattern="$ctrl.patientNamePattern" ng-model="$ctrl.patient.nurse">
-            <div ng-messages="newPatientForm.nurse.$error" role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                    Utilisez seulement les caractères [ a-z A-Z - ]. 
-                    Champs obligatoire. 
-                    50 caractères maximum. 
-                </div>
+            <label>Prénom</label>
+            <input name="firstname" ng-model="$ctrl.patient.firstname" ng-pattern="$ctrl.patientInfoPattern" 
+                   ng-minlength="5" ng-maxlength="50"  required  ng-messages-multiple/>
+            <div ng-messages="newPatientForm.firstname.$error" role="alert" >
+                <div ng-messages-include="error-messages"></div>
             </div>
         </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Infirmier associé</label>
+            <input name="nurse" ng-model="$ctrl.patient.nurse" ng-pattern="$ctrl.patientInfoPattern" 
+                   ng-minlength="5" ng-maxlength="50"  required  ng-messages-multiple/>
+            <div ng-messages="newPatientForm.nurse.$error" role="alert" >
+                <div ng-messages-include="error-messages"></div>
+            </div>
+        </md-input-container>
+
+        <div style="margin: 30px">
+            <md-datepicker name=birthdate ng-model="$ctrl.patient.birthdate" 
+                           md-placeholder="Date de naissance"
+                           required md-min-date="$ctrl.lowestDate" md-max-date="$ctrl.highestDate">
+            </md-datepicker>
+            <div class="formErrorMessage" ng-messages="newPatientForm.birthdate.$error" role="alert">
+                <div ng-messages-include="error-messages"></div>
+            </div>
+        </div>
+
+        <md-radio-group ng-model="$ctrl.patient.gender" name="gender">
+            <md-radio-button value="F">Femme</md-radio-button>
+            <md-radio-button value="H">Homme</md-radio-button>
+            <md-radio-button value="A">Autre</md-radio-button>
+        </md-radio-group>
 
         <md-button class="md-raised md-hue-2" type="submit">Ajouter le patient</md-button>
 
     </form>
 
     <div>
-
         {{$ctrl}}
+    </div>
+    <div>
+        {{newPatientForm.birthdate.$error}}
     </div>
 
 </md-content>
