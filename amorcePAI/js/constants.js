@@ -3,22 +3,20 @@
  * Les scripts et les ressources sont référencées ici pour faciliter les modifications.
  */
 module.exports = {
-    
     /*
      * Les emplacements des différents fichiers de données, relatifs à la racine du projet
      */
     dataActions: "data/actes.xml",
     dataOffice: "data/cabinetInfirmier.xml",
     /*
-     * 
+     * Noms de services enregistrés dans angular
      */
     serviceDataHandler: "datahandler",
     /*
-     * Les noms des élements XML
+     * Exceptions. Stocker les exceptions en tant que constante permet de faire 
+     * des récupération fines d'exception avec des tests (ex: e === NO_PATIENT_DEFINED)
      */
-    tagNurse: "infirmier",
-    
-    
+    NO_PATIENT_DEFINED: "NO_PATIENT_DEFINED",
     /**
      * Afficher toutes les constantes et leurs types, hors fonctions.
      * @returns {undefined}

@@ -194,6 +194,15 @@ DataHandler.prototype.getAllPatients = function () {
                     });
         };
 
+
+DataHandler.prototype.addPatient = function (patient) {
+
+    if (typeof patient === "undefined") {
+        throw constants.NO_PATIENT_DEFINED;
+    }
+
+};
+
 /**
  * Renvoi une promesse qui retourne un tableaux d'objet sur les patients sans infirmiers
  * @returns {Promise}
@@ -201,7 +210,7 @@ DataHandler.prototype.getAllPatients = function () {
 DataHandler.prototype.getNonAffectedPatients = function () {
 
     return this.getAllPatients().then(function (patients) {
-        
+
         var output = [];
         for (var i = 0; i < patients.length; i++) {
             var pat = patients[i];
@@ -209,7 +218,7 @@ DataHandler.prototype.getNonAffectedPatients = function () {
                 output.push(pat);
             }
         }
-        
+
         return output;
     });
 

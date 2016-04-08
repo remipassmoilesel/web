@@ -23,7 +23,7 @@ module.exports = function (angularMod) {
         this.utils = utils;
 
         // pattern affectant les champs de texte
-        this.patientInfoPattern = '^ *[a-zA-Z -]+ *$';
+        this.patientInfoPattern = '^ *[a-zA-Z éàï-]+ *$';
 
         // dates utiles
         var yesterday = new Date();
@@ -33,9 +33,9 @@ module.exports = function (angularMod) {
 
         // le modèle manipulé
         this.patient = {
-            firstname: "Prénom",
-            name: "Nom",
-            nurse: "id",
+            firstname: "Jean-claude",
+            name: "DuGenou",
+            nurse: "idInfirmier",
             gender: "A",
             birthdate: yesterday
         };
@@ -47,9 +47,28 @@ module.exports = function (angularMod) {
 
     Controller.prototype.addPatient = function () {
 
-        console.log("Ajout de : " + this.patient);
+        console.log("Ajout de : " + this.patient.name);
+        console.log(this.patient);
 
-        // vérfier le nom et le prénom 
+        // reinitialiser le message d'erreur
+        this.errorMessage = "";
+
+        // vérfier les informations
+        var patt = new RegExp(this.patientInfoPattern);
+        if (patt.test(this.patient.name) === false) {
+            this.errorMessage = "Nom invalide";
+        }
+
+        var patt = new RegExp(this.patientInfoPattern);
+        if (patt.test(this.patient.firstname) === false) {
+            this.errorMessage = "Prénom invalide";
+        }
+
+        //TODO
+        // .... faire les autres tests
+
+        // envoyer le patient
+        this.datah.addPatient(this.patient);
 
     };
 

@@ -1,5 +1,6 @@
 <md-content layout-padding>
-    <form name="newPatientForm" ng-submit="$ctrl.addPatient()">
+    <form name="newPatientForm" 
+          ng-submit="newPatientForm.$valid && $ctrl.addPatient()">
 
         <!-- Messages d'indication de formulaires -->
         <script type="text/ng-template" id="error-messages">
