@@ -161,6 +161,7 @@ function init(port, applicationServerIP, applicationServerPort) {
                 req.body.patientStreet = req.body.patientStreet || '';
                 req.body.patientPostalCode = req.body.patientPostalCode || '';
                 req.body.patientCity = req.body.patientCity || '';
+                req.body.patientAdressNumber = req.body.patientAdressNumber || '';
 
                 var patients = doc.getElementsByTagName('patients')[0];
                 // Is it a new patient or not ?
@@ -204,7 +205,8 @@ function init(port, applicationServerIP, applicationServerPort) {
                 etage.appendChild(doc.createTextNode(req.body.patientFloor));
                 adresse.appendChild(etage);
                 var numAdress = doc.createElement('numero');
-                numAdress.appendChild(doc.createTextNode(req.body.patientFloor));
+                // Modification: le numéro d'étage était inséré à la place du numéro de la rue
+                numAdress.appendChild(doc.createTextNode(req.body.patientAdressNumber));
                 adresse.appendChild(numAdress);
                 var rue = doc.createElement('rue');
                 rue.appendChild(doc.createTextNode(req.body.patientStreet));

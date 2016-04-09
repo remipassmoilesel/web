@@ -147,17 +147,23 @@ DataHandler.prototype.getAllPatients = function () {
                             var patientTag = patientTagArray[i];
 
                             // récuperer les informations sur le patient
+                            var tmp;
                             var patientObj = {
                                 name: patientTag.querySelector("nom").innerHTML,
                                 firstname: patientTag.querySelector("prenom").innerHTML,
                                 gender: patientTag.querySelector("sexe").innerHTML,
                                 birthdate: patientTag.querySelector("naissance").innerHTML,
                                 ssid: patientTag.querySelector("numero").innerHTML,
-                                completeAdress: self.agregate(xmlDoc
+                                adressComplete: self.agregate(xmlDoc
                                         , "adresse numero"
                                         , "adresse rue"
                                         , "adresse codePostal"
-                                        , "adresse ville")
+                                        , "adresse ville"),
+                                adressNumber: (tmp = patientTag.querySelector("adresse numero") !== null) ? tmp.innerHTML : '',
+                                adressStreet: (tmp = patientTag.querySelector("adresse rue") !== null) ? tmp.innerHTML : '',
+                                adressPostcode: (tmp = patientTag.querySelector("adresse codePostal") !== null) ? tmp.innerHTML : '',
+                                adressCity: (tmp = patientTag.querySelector("adresse ville") !== null) ? tmp.innerHTML : '',
+                                adressFloor: (tmp = patientTag.querySelector("adresse etage") !== null) ? tmp.innerHTML : ''
                             };
 
                             // itérer les visites par patient
@@ -194,12 +200,67 @@ DataHandler.prototype.getAllPatients = function () {
                     });
         };
 
-
+/**
+ * Ajoute un patient et retourne la promesse de la requête
+ * @param {type} patient
+ * @returns {unresolved}
+ */
 DataHandler.prototype.addPatient = function (patient) {
 
     if (typeof patient === "undefined") {
         throw constants.NO_PATIENT_DEFINED;
     }
+
+    /*
+     Informations requises coté serveur
+     req.body.patientName = req.body.patientName || '';
+     req.body.patientForname = req.body.patientForname || '';
+     req.body.patientNumber = req.body.patientNumber || '';
+     req.body.patientSex = req.body.patientSex || '';
+     req.body.patientBirthday = req.body.patientBirthday || '';
+     req.body.patientFloor = req.body.patientFloor || '';
+     req.body.patientStreet = req.body.patientStreet || '';
+     req.body.patientPostalCode = req.body.patientPostalCode || '';
+     req.body.patientCity = req.body.patientCity || '';
+     req.body.patientAdressNumber = req.body.patientAdressNumber || '';
+     */
+
+    /*
+     // Structure d'un objet patient coté client
+     var patientObj = {
+     name: patientTag.querySelector("nom").innerHTML,
+     firstname: patientTag.querySelector("prenom").innerHTML,
+     gender: patientTag.querySelector("sexe").innerHTML,
+     birthdate: patientTag.querySelector("naissance").innerHTML,
+     ssid: patientTag.querySelector("numero").innerHTML,
+     adressComplete: self.agregate(xmlDoc
+     , "adresse numero"
+     , "adresse rue"
+     , "adresse codePostal"
+     , "adresse ville"),
+     adressNumber: patientTag.querySelector("adresse numero").innerHTML,
+     adressStreet: patientTag.querySelector("adresse rue").innerHTML,
+     adressPostcode: patientTag.querySelector("adresse codePostal").innerHTML,
+     adressCity: patientTag.querySelector("adresse ville").innerHTML,
+     adressFloor: patientTag.querySelector("adresse etage").innerHTML
+     };
+     */
+    var dataToSend = {
+        patientName: patient.name || '',
+        patientForname: patient.firstname || '',
+        patientSex: patient.gender || '',
+        patientBirthday: patient.birthdate || '',
+        patientNumber: patient.ssid || '',
+        patientStreet: patient.adressStreet || '',
+        patientPostalCode: patient.adressPostcode || '',
+        patientCity: patient.adressCity,
+        patientFloor: patient.adressFloor || '',
+        patientAdressNumber: patient.adressNumber || ''
+    };
+
+    console.log(dataToSend);
+
+    return this.$http.post("/addPatient", dataToSend);
 
 };
 
