@@ -4,8 +4,8 @@
  */
 
 // récuperer le template et le css
-var template = require('./formNewPatient-template.html');
-require('./formNewPatient-component.css');
+var template = require('./formPatient-template.html');
+require('./formPatient-component.css');
 
 // utilitaires et constantes
 var utils = require('../../functionnalcore/utils');
@@ -104,7 +104,7 @@ module.exports = function (angularMod) {
 
     };
 
-    angularMod.component("formNewPatient", {
+    angularMod.component("formPatient", {
         template: template,
         controller: Controller,
         bindings: {

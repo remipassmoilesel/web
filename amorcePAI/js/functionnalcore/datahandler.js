@@ -87,7 +87,7 @@ DataHandler.prototype.getOfficeInformations = function () {
                         // iterer et formatter les infirmiers
                         return {
                             name: xmlDoc.querySelector("cabinet nom").innerHTML,
-                            completeAdress: self.agregate(xmlDoc
+                            adressComplete: self.agregate(xmlDoc
                                     , "cabinet adresse numero"
                                     , "cabinet adresse rue"
                                     , "cabinet adresse ville"

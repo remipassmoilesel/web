@@ -1,23 +1,44 @@
-<div class="medicalOffice">
-    <h1>{{$ctrl.informations.name}}</h1>
-    <p>Adresse: {{$ctrl.informations.adressComplete}}</p>
-    <!--<div><pre>Contrôleur: {{$ctrl}}</pre></div>-->
+<div layout="row" id="medicalOffice">
 
-    <h2>Nouveau patient</h2>
-    <form-new-patient></form-new-patient>
-
-    <h2>Liste des infirmiers</h2>
-    <div ng-repeat="elmt in $ctrl.nurses">
-        <nurse data="elmt"></nurse>
+    <!-- Espace d'affichage du menu (à gauche de la page) -->
+    <div flex="30" id="medicalOfficeMenu">
+        <h2>Menu</h2>
+        <!-- Iterer les les elements à afficher et créer des liens vers les actions respectives. Les actions
+        prennent en paramètre leur controleur et leur element d'appartance.
+        -->
+        <div ng-repeat="(k, element) in $ctrl.menuElements">
+            <a ng-click="element.action($ctrl, element)" href="#">
+                {{element.label}}
+            </a>
+        </div>
     </div>
 
-    <h2>Liste des patients non-affectés</h2>
-    <div ng-repeat="elmt in $ctrl.nonAffectedPatients">
-        <patient data="elmt"></patient>
-    </div>
 
-    <h2>Liste des patients</h2>
-    <div ng-repeat="elmt in $ctrl.allPatients">
-        <patient data="elmt"></patient>
+    <!-- Espace de travail (au centre de la page) -->
+    <div flex id="medicalOfficeWorkspace">
+        <h2>Espace de travail</h2>
+
+        <display-office-informations></display-office-informations>
+
+        <h2>Nouveau patient</h2>
+        <form-patient></form-patient>
+
+        <h2>Liste des infirmiers</h2>
+        <div ng-repeat="elmt in $ctrl.nurses">
+            <nurse data="elmt"></nurse>
+        </div>
+
+        <h2>Liste des patients non-affectés</h2>
+        <div ng-repeat="elmt in $ctrl.nonAffectedPatients">
+            <patient data="elmt"></patient>
+        </div>
+
+        <h2>Liste des patients</h2>
+        <div ng-repeat="elmt in $ctrl.allPatients">
+            <patient data="elmt"></patient>
+        </div>
+
     </div>
+</div>
+
 </div>

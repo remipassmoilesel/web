@@ -8,7 +8,7 @@ var angular = require("angular");
 var angularMaterial = require("angular-material");
 require("angular-material/angular-material.css");
 // Messages d'erreur pour champs input
-var angularMessages = require("angular-messages");
+require("angular-messages");
 
 // déclarer un module pour le cabinet médical, avec comme dépendance angular-material
 var officeModule = angular.module("officeModule", [angularMaterial, 'ngMessages']);
@@ -26,5 +26,8 @@ require("./components/nurse/nurse-component.js")(officeModule);
 require("./components/patient/patient-component.js")(officeModule);
 
 // définir le composant patient
-require("./components/formNewPatient/formNewPatient-component.js")(officeModule);
+require("./components/formPatient/formPatient-component.js")(officeModule);
+
+// affichage d'informations sur le cabinet
+require("./components/displayOfficeInformations/displayOfficeInformations-component.js")(officeModule);
 

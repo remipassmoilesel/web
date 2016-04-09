@@ -1,3 +1,19 @@
-.medicalOffice{
+#medicalOffice{
     background: #EEEEEE;
+    height: 100%;
+    padding: 10px;
+}
+
+#medicalOfficeWorkspace {
+    padding: 10px;
+}
+
+#medicalOfficeMenu {
+    padding: 10px;
+    border: solid 3px rgba(200, 200, 200, .5);
+}
+
+#medicalOfficeMenu div {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
