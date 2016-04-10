@@ -139,13 +139,17 @@ var Controller = function (datah, $scope, $compile) {
      de déclencher les actions. Pour ajouter un element dans le menu, ajouter un objet.
      */
     this.menuElements = {
-        displayOfficeInfos: {
-            label: "Informations sur le cabinet",
-            action: actions.displayOfficeInformations
-        },
         displaySearchPatients: {
             label: "Rechercher un patient",
             action: actions.displaySearchPatient
+        },
+        displayAddPatientForm: {
+            label: "Ajouter un patient",
+            action: actions.displayAddPatientForm
+        },
+        displayNonAffectedPatients: {
+            label: "Liste des patients non affectés",
+            action: actions.displayNonAffectedPatients
         },
         displayAllPatients: {
             label: "Liste de tous les patients",
@@ -155,13 +159,9 @@ var Controller = function (datah, $scope, $compile) {
             label: "Liste de tous les infirmiers",
             action: actions.displayAllNurses
         },
-        displayNonAffectedPatients: {
-            label: "Liste des patients non affectés",
-            action: actions.displayNonAffectedPatients
-        },
-        displayAddPatientForm: {
-            label: "Ajouter un patient",
-            action: actions.displayAddPatientForm
+        displayOfficeInfos: {
+            label: "Informations sur le cabinet",
+            action: actions.displayOfficeInformations
         }
     };
 

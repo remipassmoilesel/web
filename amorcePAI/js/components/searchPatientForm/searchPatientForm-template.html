@@ -19,6 +19,7 @@
 
     </form>
 
+    <!-- Affichage des résultats, uniquement si plus d'un -->
     <div>
         <b ng-show="$ctrl.results.length > 1">{{$ctrl.results.length}} résultats(s) </b>
         <patient data="elmt" ng-repeat="elmt in $ctrl.results"></patient>

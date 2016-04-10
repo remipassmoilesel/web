@@ -39,6 +39,7 @@ Controller.prototype.searchPatients = function () {
 
     // enlever les précédents résultats
     this.results = [];
+    this.showFormMessage("");
 
     // vérifier le format des champs
     if (this.patient.name.length < 1 &&
@@ -57,7 +58,7 @@ Controller.prototype.searchPatients = function () {
 
         // pas de résultats
         else {
-            vm.showFormMessage("Aucun patient ne correspond à vos critères.");
+            vm.showFormMessage("Aucun patient ne correspond à vos critères.", 5000);
         }
     });
 
