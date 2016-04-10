@@ -19,10 +19,21 @@ var Controller = function ($http, datah, $scope) {
     this.utils = utils;
     this.$scope = $scope;
 
+    // recuperer les informations (adresse, ...)
     var vm = this;
     datah.getOfficeInformations().then(function (response) {
         vm.informations = response;
     });
+
+    // récupérer des statistiques
+    datah.getAllPatients().then(function (response) {
+        vm.totalPatients = response.length;
+    });
+    datah.getNurses().then(function (response) {
+        vm.totalNurses = response.length;
+    });
+
+
 };
 // injection de dépendance sous forme d'un tableau de chaine de caractères
 Controller.$inject = ["$http", constants.serviceDataHandler, "$scope"];

@@ -1,18 +1,24 @@
-<md-card>
+<md-card ng-class="{'patientFemale': $ctrl.data.gender === 'F', 'patientMale': $ctrl.data.gender === 'M'}">
     <md-card-title>
         <md-card-title-text>
             <span class="md-headline">{{$ctrl.data.name + ' ' + $ctrl.data.firstname}}</span>
         </md-card-title-text>
     </md-card-title>
     <md-card-content>
-        <ul>
-            <li ng-repeat="(k, v) in $ctrl.data">
-                {{k}}: {{v}}
-            </li>
-        </ul>
-        <!--{{$ctrl}}-->
+        <table style="width: 100%">
+            <tr ng-repeat="(kinfo, info) in $ctrl.displayableDatas">
+                <td class="patientInfoLabel">{{kinfo}}</td>
+                <td>{{info}}</td>
+            </tr>
+        </table>
+        <!--        <ul>
+                    <li ng-repeat="(k, v) in $ctrl.data">
+                        {{k}}: {{v}}
+                    </li>
+                </ul>-->
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="$ctrl.displayVisits($event)">Plus de détails</md-button>
         <md-button>Modifier</md-button>
         <md-button>Supprimer</md-button>
     </md-card-actions>

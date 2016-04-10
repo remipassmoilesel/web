@@ -88,7 +88,6 @@ MenuActions.prototype.displayAllNurses = function (ctrl, ownerElement) {
  */
 MenuActions.prototype.displayNonAffectedPatients = function (ctrl, ownerElement) {
 
-
     // mettre à jour les patients
     ctrl.datah.getNonAffectedPatients().then(function (response) {
         ctrl.nonAffectedPatients = response;
@@ -174,8 +173,9 @@ var Controller = function (datah, $scope, $compile) {
     }
 
     // affichage lors de la création du composant
-    this.displaySection(this.menuElements.displaySearchPatients);
-
+    this.menuElements.displayNonAffectedPatients.action(this, 
+                    this.menuElements.displayNonAffectedPatients);
+    
 };
 
 /**

@@ -159,12 +159,18 @@ DataHandler.prototype.getAllPatients = function () {
                                         , "adresse rue"
                                         , "adresse codePostal"
                                         , "adresse ville"),
-                                adressNumber: (tmp = patientTag.querySelector("adresse numero") !== null) ? tmp.innerHTML : '',
-                                adressStreet: (tmp = patientTag.querySelector("adresse rue") !== null) ? tmp.innerHTML : '',
-                                adressPostcode: (tmp = patientTag.querySelector("adresse codePostal") !== null) ? tmp.innerHTML : '',
-                                adressCity: (tmp = patientTag.querySelector("adresse ville") !== null) ? tmp.innerHTML : '',
-                                adressFloor: (tmp = patientTag.querySelector("adresse etage") !== null) ? tmp.innerHTML : ''
+                                adressNumber: (tmp = patientTag.querySelector("adresse numero")) !== null ? tmp.innerHTML : '',
+                                adressStreet: (tmp = patientTag.querySelector("adresse rue")) !== null ? tmp.innerHTML : '',
+                                adressPostcode: (tmp = patientTag.querySelector("adresse codePostal")) !== null ? tmp.innerHTML : '',
+                                adressCity: (tmp = patientTag.querySelector("adresse ville")) !== null ? tmp.innerHTML : '',
+                                adressFloor: (tmp = patientTag.querySelector("adresse etage")) !== null ? tmp.innerHTML : ''
                             };
+
+                            // calcul de l'age
+                            var dateParts = patientObj.birthdate.split("-");
+                            patientObj.age = ((new Date().getTime() 
+                                    - new Date(dateParts[2], dateParts[1], 
+                                    dateParts[0]).getTime()) / 31536000000).toFixed(0);
 
                             // itérer les visites par patient
                             patientObj.visits = [];
@@ -257,8 +263,6 @@ DataHandler.prototype.addPatient = function (patient) {
         patientFloor: patient.adressFloor || '',
         patientAdressNumber: patient.adressNumber || ''
     };
-
-    console.log(dataToSend);
 
     return this.$http.post("/addPatient", dataToSend);
 

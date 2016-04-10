@@ -1,0 +1,11 @@
+.patientMale{
+    background: #d7d7d7;
+}
+
+.patientFemale{
+    background: #fecaca;
+}
+
+.patientInfoLabel{
+    font-weight: bolder;
+}

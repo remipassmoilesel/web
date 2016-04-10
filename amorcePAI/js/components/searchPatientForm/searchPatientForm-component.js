@@ -53,7 +53,6 @@ Controller.prototype.searchPatients = function () {
 
         if (response.length > 0) {
             vm.results = response;
-            console.log(response);
         }
 
         // pas de résultats
