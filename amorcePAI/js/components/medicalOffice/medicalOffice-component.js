@@ -32,7 +32,21 @@ function MenuActions() {}
  * @returns {undefined}
  */
 MenuActions.prototype.displayOfficeInformations = function (ctrl, ownerElement) {
-    ctrl.displayWorkspaceElements("<office-informations></office-informations>");
+    // afficher les informations
+    ctrl.displaySection(ownerElement);
+
+};
+
+/**
+ * Afficher le formulaire de recherche de patients
+ * @param {type} ownerElement
+ * @returns {undefined}
+ */
+MenuActions.prototype.displaySearchPatient = function (ctrl, ownerElement) {
+
+    // afficher les informations
+    ctrl.displaySection(ownerElement);
+
 };
 
 /**
@@ -40,12 +54,78 @@ MenuActions.prototype.displayOfficeInformations = function (ctrl, ownerElement) 
  * @param {type} ownerElement
  * @returns {undefined}
  */
-MenuActions.prototype.displayPatients = function (ctrl, ownerElement) {
+MenuActions.prototype.displayAllPatients = function (ctrl, ownerElement) {
+
+    // mettre à jour les patients
+    ctrl.datah.getAllPatients().then(function (response) {
+        ctrl.allPatients = response;
+    });
+
+    // afficher les informations
+    ctrl.displaySection(ownerElement);
+
+};
+/**
+ * Afficher tous les patients dans l'espace de travail
+ * @param {type} ownerElement
+ * @returns {undefined}
+ */
+MenuActions.prototype.displayAllNurses = function (ctrl, ownerElement) {
+
+    // mettre à jour les patients
+    ctrl.datah.getNurses().then(function (response) {
+        ctrl.allNurses = response;
+    });
+
+    // afficher les informations
+    ctrl.displaySection(ownerElement);
+
+};
+/**
+ * Afficher tous les patients dans l'espace de travail
+ * @param {type} ownerElement
+ * @returns {undefined}
+ */
+MenuActions.prototype.displayNonAffectedPatients = function (ctrl, ownerElement) {
+
+
+    // mettre à jour les patients
+    ctrl.datah.getNonAffectedPatients().then(function (response) {
+        ctrl.nonAffectedPatients = response;
+    });
+
+    // afficher les informations
+    ctrl.displaySection(ownerElement);
+
+};
+/**
+ * Afficher le formulaire d'ajout de patient
+ * @param {type} ownerElement
+ * @returns {undefined}
+ */
+MenuActions.prototype.displayAddPatientForm = function (ctrl, ownerElement) {
+
+    // afficher les informations
+    ctrl.displaySection(ownerElement);
+
+};
+/**
+ * Afficher le formulaire d'ajout de patient
+ * @param {type} ownerElement
+ * @returns {undefined}
+ */
+MenuActions.prototype.showController = function (ctrl, ownerElement) {
+
+    // afficher les informations
+    ctrl.displaySection(ownerElement);
 
 };
 
 
 var Controller = function (datah, $scope, $compile) {
+
+    // si vrai, affiche des informations supplémentaires sur le controleur et autre..
+    this.debugMode = true;
 
     // conserver une reference vers les services
     this.datah = datah;
@@ -63,13 +143,17 @@ var Controller = function (datah, $scope, $compile) {
             label: "Informations sur le cabinet",
             action: actions.displayOfficeInformations
         },
-        displayPatients: {
-            label: "Afficher tous les patients",
-            action: actions.displayPatients
+        displaySearchPatients: {
+            label: "Rechercher un patient",
+            action: actions.displaySearchPatient
         },
-        displayNurses: {
+        displayAllPatients: {
+            label: "Afficher tous les patients",
+            action: actions.displayAllPatients
+        },
+        displayAllNurses: {
             label: "Afficher tous les infirmiers",
-            action: actions.displayPatients
+            action: actions.displayAllNurses
         },
         displayNonAffectedPatients: {
             label: "Afficher les patients non affectés",
@@ -81,24 +165,31 @@ var Controller = function (datah, $scope, $compile) {
         }
     };
 
-    // section à recycler en actions de menu
-    var vm = this;
-    datah.getNurses().then(function (response) {
-        vm.nurses = response;
-    });
-    datah.getAllPatients().then(function (response) {
-        vm.allPatients = response;
-    });
-    datah.getNonAffectedPatients().then(function (response) {
-        vm.nonAffectedPatients = response;
-    });
+    if (this.debugMode) {
+        this.menuElements.showController = {
+            label: "Afficher le contrôleur de la page",
+            action: actions.showController
+        };
+    }
 
+};
+
+/**
+ * Masque tous les elements de menu et affiche l'element passe en parametre
+ * @param {type} menuElementToShow
+ * @returns {undefined}
+ */
+Controller.prototype.displaySection = function (menuElementToShow) {
+
+    for (var elmt in this.menuElements) {
+        this.menuElements[elmt].visible = false;
+    }
+
+    menuElementToShow.visible = true;
 };
 
 // injection de dépendance sous forme d'un tableau de chaine de caractères
 Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile"];
-
-
 
 module.exports = function (angularMod) {
     // création du composant

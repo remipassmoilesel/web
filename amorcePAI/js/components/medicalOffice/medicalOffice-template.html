@@ -11,34 +11,60 @@
                 {{element.label}}
             </a>
         </div>
+
+        <div ng-show="$ctrl.debugMode"><b>Mode débuggage actif</b></div>
     </div>
 
 
-    <!-- Espace de travail (au centre de la page) -->
+    <!-- Espace de travail (au centre de la page) 
+    
+    Contient une succession d'elements masqués qui seront (peut être...) affiché lors d'un 
+    clic et du declenchement d'une action.
+    
+    -->
     <div flex id="medicalOfficeWorkspace">
+
         <h2>Espace de travail</h2>
 
-        <display-office-informations></display-office-informations>
-
-        <h2>Nouveau patient</h2>
-        <form-patient></form-patient>
-
-        <h2>Liste des infirmiers</h2>
-        <div ng-repeat="elmt in $ctrl.nurses">
-            <nurse data="elmt"></nurse>
+        <div id="displayOfficeInfos" ng-show="$ctrl.menuElements.displayOfficeInfos.visible">
+            <display-office-informations></display-office-informations>
         </div>
 
-        <h2>Liste des patients non-affectés</h2>
-        <div ng-repeat="elmt in $ctrl.nonAffectedPatients">
-            <patient data="elmt"></patient>
+        <div id="displaySearchPatients" ng-show="$ctrl.menuElements.displaySearchPatients.visible">
+            displaySearchPatients
         </div>
 
-        <h2>Liste des patients</h2>
-        <div ng-repeat="elmt in $ctrl.allPatients">
-            <patient data="elmt"></patient>
+        <div id="displayAllPatients" ng-show="$ctrl.menuElements.displayAllPatients.visible">
+            <h2>Liste des patients</h2>
+            <div ng-repeat="elmt in $ctrl.allPatients">
+                <patient data="elmt"></patient>
+            </div>
         </div>
+
+        <div id="displayAllNurses" ng-show="$ctrl.menuElements.displayAllNurses.visible">
+            <h2>Liste des infirmiers</h2>
+            <div ng-repeat="elmt in $ctrl.allNurses">
+                <nurse data="elmt"></nurse>
+            </div>
+        </div>
+
+        <div id="displayNonAffectedPatients" ng-show="$ctrl.menuElements.displayNonAffectedPatients.visible">
+            <h2>Liste des patients non-affectés</h2>
+            <div ng-repeat="elmt in $ctrl.nonAffectedPatients">
+                <patient data="elmt"></patient>
+            </div>
+        </div>
+
+        <div id="displayAddPatientForm" ng-show="$ctrl.menuElements.displayAddPatientForm.visible">
+            <h2>Nouveau patient</h2>
+            <form-patient></form-patient>
+        </div>
+
+        <div id="showController" ng-show="$ctrl.menuElements.showController.visible">
+            <h2>Controlleur de cabinet médical</h2>
+            <json-pretty-print show="$ctrl"></json-pretty-print>
+        </div>
+
 
     </div>
-</div>
-
 </div>

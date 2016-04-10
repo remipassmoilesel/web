@@ -15,6 +15,7 @@
     "angular-material": "^1.0.7",
     "angular-messages": "^1.5.3",
     "body-parser": "^1.13.3",
+    "circular-json": "^0.3.0",
     "express": "^4.13.3",
     "fs-extra": "^0.24.0",
     "http-static-gzip-regexp": "0.0.2",

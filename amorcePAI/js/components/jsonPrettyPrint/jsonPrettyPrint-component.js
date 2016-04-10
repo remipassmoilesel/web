@@ -1,15 +1,17 @@
 /**
- * Formulaire d'inscription et de modification de patient.
+ * Afficher un objet JSON de manière lisible
  * @type Module formNewPatient-template|Module formNewPatient-template
  */
 
 // récuperer le template et le css
-var template = require('./displayOfficeInformations-template.html');
-require('./displayOfficeInformations-component.css');
+var template = require('./jsonPrettyPrint-template.html');
+require('./jsonPrettyPrint-component.css');
 
 // utilitaires et constantes
 var utils = require('../../functionnalcore/utils');
 var constants = require('../../constants.js');
+
+var circular = require('circular-json');
 
 module.exports = function (angularMod) {
 
@@ -23,18 +25,17 @@ module.exports = function (angularMod) {
         this.utils = utils;
         this.$scope = $scope;
 
-        var vm = this;
-        datah.getOfficeInformations().then(function (response){
-            vm.informations = response;
-        });
+        this.prettyString = circular.stringify(this.show, null, 1);
+
     };
     // injection de dépendance sous forme d'un tableau de chaine de caractères
     Controller.$inject = ["$http", constants.serviceDataHandler, "$scope"];
 
-    angularMod.component("displayOfficeInformations", {
+    angularMod.component("jsonPrettyPrint", {
         template: template,
         controller: Controller,
         bindings: {
+            show: "<"
         }
     });
 };
