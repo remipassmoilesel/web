@@ -4,14 +4,19 @@ require("../css/secretary.css");
 
 // Chargement d'angular
 var angular = require("angular");
+
 // Elements d'interface
 var angularMaterial = require("angular-material");
 require("angular-material/angular-material.css");
+
 // Messages d'erreur pour champs input
 require("angular-messages");
 
+// Transition douces animées
+require("angular-animate");
+
 // déclarer un module pour le cabinet médical, avec comme dépendance angular-material
-var officeModule = angular.module("officeModule", [angularMaterial, 'ngMessages']);
+var officeModule = angular.module("officeModule", [angularMaterial, 'ngMessages', 'ngAnimate']);
 
 // enregistrer le service de traitement des données
 require("./functionnalcore/datahandler.js")(officeModule);

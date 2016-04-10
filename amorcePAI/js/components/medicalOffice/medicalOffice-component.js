@@ -32,6 +32,7 @@ function MenuActions() {}
  * @returns {undefined}
  */
 MenuActions.prototype.displayOfficeInformations = function (ctrl, ownerElement) {
+    
     // afficher les informations
     ctrl.displaySection(ownerElement);
 
@@ -173,10 +174,13 @@ var Controller = function (datah, $scope, $compile) {
     }
 
     // affichage lors de la création du composant
-    this.menuElements.displayNonAffectedPatients.action(this, 
-                    this.menuElements.displayNonAffectedPatients);
-    
+    this.menuElements.displayNonAffectedPatients.action(this,
+            this.menuElements.displayNonAffectedPatients);
+
 };
+
+// injection de dépendance sous forme d'un tableau de chaine de caractères
+Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile"];
 
 /**
  * Masque tous les elements de menu et affiche l'element passe en parametre
@@ -192,8 +196,7 @@ Controller.prototype.displaySection = function (menuElementToShow) {
     menuElementToShow.visible = true;
 };
 
-// injection de dépendance sous forme d'un tableau de chaine de caractères
-Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile"];
+
 
 module.exports = function (angularMod) {
 

@@ -226,3 +226,26 @@ Boucle ng-repeat:
         <li ng-repeat="(k, v) in $ctrl.data">
                 {{k}}: {{v}}
         </li>
+
+Remplir un vide entre des élements:
+    <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+        More on Wikipedia
+    </md-button>
+    <span flex></span>
+    <md-button ng-c<lick="answer('not useful')">
+        Not Useful
+    </md-button>
+
+
+Appeler une fenetre popup et y transmettre des données:
+    var dialogTemplate = require("./patient-dialogtemplate.html");
+
+    this.$mdDialog.show({
+        locals: {parentCtrl: this}, // parametre a passer a l'instanciation du controleur
+        controller: DialogController,
+        controllerAs: '$ctrl', // le nom du controleur dans le code HTML du dialogue
+        template: dialogTemplate,
+        targetEvent: event,
+        clickOutsideToClose: true,
+        fullscreen: false
+    });

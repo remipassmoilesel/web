@@ -21,6 +21,7 @@ module.exports = {
      * des récupération fines d'exception avec des tests (ex: e === NO_PATIENT_DEFINED)
      */
     NO_PATIENT_DEFINED: "NO_PATIENT_DEFINED",
+    INVALID_ARGUMENT: "INVALID_ARGUMENT",
     /**
      * Afficher toutes les constantes et leurs types, hors fonctions.
      * @returns {undefined}

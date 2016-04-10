@@ -1,25 +1,77 @@
-<md-card ng-class="{'patientFemale': $ctrl.data.gender === 'F', 'patientMale': $ctrl.data.gender === 'M'}">
+<md-card ng-class="{
+            'patientFemale': $ctrl.data.gender === 'F', 'patientMale': $ctrl.data.gender === 'M'}">
+
     <md-card-title>
         <md-card-title-text>
             <span class="md-headline">{{$ctrl.data.name + ' ' + $ctrl.data.firstname}}</span>
         </md-card-title-text>
     </md-card-title>
+
     <md-card-content>
-        <table style="width: 100%">
-            <tr ng-repeat="(kinfo, info) in $ctrl.displayableDatas">
-                <td class="patientInfoLabel">{{kinfo}}</td>
-                <td>{{info}}</td>
-            </tr>
-        </table>
+
+        <div  ng-switch on="$ctrl.displayMode">
+
+            <!-- Affichage des informations de base -->
+            <div ng-switch-when="summary">
+                <table style="width: 100%">
+                    <tr ng-repeat="(kinfo, info) in $ctrl.summaryDatas">
+                        <td class="patientInfoLabel">{{kinfo}}</td>
+                        <td>{{info}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Affichage toutes les informations -->
+            <div ng-switch-when="complete">
+                <table style="width: 100%">
+                    <tr ng-repeat="(kinfo, info) in $ctrl.formatedDatas">
+                        <td class="patientInfoLabel">{{kinfo}}</td>
+                        <td>{{info}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Affichage toutes les visites -->
+            <div  ng-switch-when="visits">
+                <table style="width: 100%">
+                    <tr ng-repeat="(kinfo, info) in $ctrl.data.visits">
+                        <td class="patientInfoLabel">{{kinfo}}</td>
+                        <td>{{info}}</td>
+                    </tr>
+                </table>
+                <span ng-show="$ctrl.data.visits.length < 1">Aucune visite à afficher</span>
+            </div>
+
+            <!-- Modifier le patient -->
+            <div ng-switch-when="modification">
+                <table style="width: 100%">
+                    <tr ng-repeat="(kinfo, info) in $ctrl.formatedDatas">
+                        <td class="patientInfoLabel">{{kinfo}}</td>
+                        <td>
+                            <input name="name" ng-model="$ctrl.formatedDatas[kinfo]" 
+                                   ng-minlength="5" ng-maxlength="50"  required  ng-messages-multiple/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
         <!--        <ul>
-                    <li ng-repeat="(k, v) in $ctrl.data">
-                        {{k}}: {{v}}
-                    </li>
-                </ul>-->
+        <li ng-repeat="(k, v) in $ctrl.data">
+        {{k}}: {{v}}
+        </li>
+       </ul>-->
+
     </md-card-content>
+
+    <!-- Boutons d'action -->
     <md-card-actions layout="row" layout-align="end center">
-        <md-button ng-click="$ctrl.displayVisits($event)">Plus de détails</md-button>
-        <md-button>Modifier</md-button>
+        <md-button ng-click="$ctrl.setDisplayMode('summary')">Replier</md-button>
+        <md-button ng-click="$ctrl.setDisplayMode('complete')">Détails</md-button>
+        <md-button ng-click="$ctrl.setDisplayMode('visits')">Visites</md-button>
+        <md-button ng-click="$ctrl.setDisplayMode('modification')">Modifier</md-button>
         <md-button>Supprimer</md-button>
     </md-card-actions>
+
 </md-card>

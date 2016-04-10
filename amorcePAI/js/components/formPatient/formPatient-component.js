@@ -11,96 +11,96 @@ require('./formPatient-component.css');
 var utils = require('../../functionnalcore/utils');
 var constants = require('../../constants.js');
 
- //var datahandler = require("../../functionnalcore/datahandler.js")(angularMod);
+//var datahandler = require("../../functionnalcore/datahandler.js")(angularMod);
 
-    var Controller = function ($http, datah, $scope) {
+var Controller = function ($http, datah, $scope) {
 
-        // conserver les références des services
-        this.$http = $http;
-        this.datah = datah;
-        this.utils = utils;
-        this.$scope = $scope;
+    // conserver les références des services
+    this.$http = $http;
+    this.datah = datah;
+    this.utils = utils;
+    this.$scope = $scope;
 
-        // pattern affectant les champs de texte
-        this.patientInfoPattern = constants.patientInformationPattern;
+    // pattern affectant les champs de texte
+    this.patientInfoPattern = constants.patientInformationPattern;
 
-        // dates utiles
-        var yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        this.lowestDate = new Date(1900, 01, 01);
-        this.highestDate = new Date();
+    // dates utiles
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    this.lowestDate = new Date(1900, 01, 01);
+    this.highestDate = new Date();
 
-        // le modèle manipulé
-        this.patient = {
-            firstname: "Jean-claude",
-            name: "DuGenou",
-            nurse: "idInfirmier",
-            gender: "A",
-            birthdate: yesterday
-        };
-
-    };
-    // injection de dépendance sous forme d'un tableau de chaine de caractères
-    Controller.$inject = ["$http", constants.serviceDataHandler, "$scope"];
-
-    /**
-     * Affiche un message dans le formulaire pour une durée déterminée en ms (temps optionnel)
-     * @param {type} msg
-     * @param {type} timeDisplayMs
-     * @returns {undefined}
-     */
-    Controller.prototype.showFormMessage = function (msg, timeDisplayMs) {
-
-        // afficher le message
-        this.controllerMessageSpace = msg;
-
-        // si le temps est déterminé l'effacer
-        if (typeof timeDisplayMs !== "undefined") {
-
-            var vm = this;
-            setTimeout(function () {
-                vm.controllerMessageSpace = " ";
-                vm.$scope.$apply();
-            }, timeDisplayMs);
-        }
-
+    // le modèle manipulé
+    this.patient = {
+        firstname: "Jean-claude",
+        name: "DuGenou",
+        nurse: "idInfirmier",
+        gender: "A",
+        birthdate: yesterday
     };
 
-    Controller.prototype.addPatient = function () {
+};
+// injection de dépendance sous forme d'un tableau de chaine de caractères
+Controller.$inject = ["$http", constants.serviceDataHandler, "$scope"];
 
-        console.log("Ajout de : " + this.patient.name);
+/**
+ * Affiche un message dans le formulaire pour une durée déterminée en ms (temps optionnel)
+ * @param {type} msg
+ * @param {type} timeDisplayMs
+ * @returns {undefined}
+ */
+Controller.prototype.showFormMessage = function (msg, timeDisplayMs) {
 
-        // reinitialiser les messages du GUI
-        this.showFormMessage("Enregistrement en cours");
+    // afficher le message
+    this.controllerMessageSpace = msg;
 
-        // vérfier les informations
-        var patt = new RegExp(this.patientInfoPattern);
-        if (patt.test(this.patient.name) === false) {
-            this.showFormMessage("Nom invalide");
-            return;
-        }
+    // si le temps est déterminé l'effacer
+    if (typeof timeDisplayMs !== "undefined") {
 
-        if (patt.test(this.patient.firstname) === false) {
-            this.showFormMessage("Prénom invalide");
-            return;
-        }
-
-        //TODO
-        // verifier que le patient n'existe pas déjà
-        // .... faire les autres tests
-
-        // envoyer le patient
         var vm = this;
-        this.datah.addPatient(this.patient).then(function (response) {
-            console.log(response);
-            vm.showFormMessage("Enregistrement réussi.", 2000);
+        setTimeout(function () {
+            vm.controllerMessageSpace = " ";
+            vm.$scope.$apply();
+        }, timeDisplayMs);
+    }
 
-        }).catch(function (response) {
-            console.log(response);
-            vm.showFormMessage("Erreur lors de l'enregistrement.");
-        });
+};
 
-    };
+Controller.prototype.addPatient = function () {
+
+    //console.log("Ajout de : " + this.patient.name);
+
+    // reinitialiser les messages du GUI
+    this.showFormMessage("Enregistrement en cours...");
+
+    // vérfier les informations
+    var patt = new RegExp(this.patientInfoPattern);
+    if (patt.test(this.patient.name) === false) {
+        this.showFormMessage("Nom invalide");
+        return;
+    }
+
+    if (patt.test(this.patient.firstname) === false) {
+        this.showFormMessage("Prénom invalide");
+        return;
+    }
+
+    //TODO
+    // verifier que le patient n'existe pas déjà
+    // .... faire les autres tests
+
+    // envoyer le patient
+    var vm = this;
+    this.datah.addPatient(this.patient).then(function (response) {
+        console.log(response);
+        vm.showFormMessage("Enregistrement réussi.", 2000);
+
+    }).catch(function (response) {
+        console.log(response);
+        vm.showFormMessage("Erreur lors de l'enregistrement.");
+    });
+
+};
 
 module.exports = function (angularMod) {
 

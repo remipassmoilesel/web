@@ -132,7 +132,7 @@ DataHandler.prototype.getNurses = function () {
  */
 DataHandler.prototype.getAllPatients = function () {
 
-    var self = this;
+    var vm = this;
     return this.asyncXmlParse(
             // document à parser
             constants.dataOffice,
@@ -154,7 +154,7 @@ DataHandler.prototype.getAllPatients = function () {
                                 gender: patientTag.querySelector("sexe").innerHTML,
                                 birthdate: patientTag.querySelector("naissance").innerHTML,
                                 ssid: patientTag.querySelector("numero").innerHTML,
-                                adressComplete: self.agregate(xmlDoc
+                                adressComplete: vm.agregate(xmlDoc
                                         , "adresse numero"
                                         , "adresse rue"
                                         , "adresse codePostal"
@@ -168,9 +168,9 @@ DataHandler.prototype.getAllPatients = function () {
 
                             // calcul de l'age
                             var dateParts = patientObj.birthdate.split("-");
-                            patientObj.age = ((new Date().getTime() 
-                                    - new Date(dateParts[2], dateParts[1], 
-                                    dateParts[0]).getTime()) / 31536000000).toFixed(0);
+                            patientObj.age = ((new Date().getTime()
+                                    - new Date(dateParts[2], dateParts[1],
+                                            dateParts[0]).getTime()) / 31536000000).toFixed(0);
 
                             // itérer les visites par patient
                             patientObj.visits = [];
