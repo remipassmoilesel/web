@@ -11,25 +11,23 @@ require('./displayOfficeInformations-component.css');
 var utils = require('../../functionnalcore/utils');
 var constants = require('../../constants.js');
 
+var Controller = function ($http, datah, $scope) {
+
+    // conserver les références des services
+    this.$http = $http;
+    this.datah = datah;
+    this.utils = utils;
+    this.$scope = $scope;
+
+    var vm = this;
+    datah.getOfficeInformations().then(function (response) {
+        vm.informations = response;
+    });
+};
+// injection de dépendance sous forme d'un tableau de chaine de caractères
+Controller.$inject = ["$http", constants.serviceDataHandler, "$scope"];
+
 module.exports = function (angularMod) {
-
-    //var datahandler = require("../../functionnalcore/datahandler.js")(angularMod);
-
-    var Controller = function ($http, datah, $scope) {
-
-        // conserver les références des services
-        this.$http = $http;
-        this.datah = datah;
-        this.utils = utils;
-        this.$scope = $scope;
-
-        var vm = this;
-        datah.getOfficeInformations().then(function (response){
-            vm.informations = response;
-        });
-    };
-    // injection de dépendance sous forme d'un tableau de chaine de caractères
-    Controller.$inject = ["$http", constants.serviceDataHandler, "$scope"];
 
     angularMod.component("displayOfficeInformations", {
         template: template,

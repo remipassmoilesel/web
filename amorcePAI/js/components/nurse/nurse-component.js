@@ -10,11 +10,11 @@ require('./nurse-component.css');
 var utils = require('../../functionnalcore/utils.js');
 var constants = require('../../constants.js');
 
+var Controller = function () {
+
+};
+
 module.exports = function (angularMod) {
-
-    var Controller = function () {
-
-    };
 
     angularMod.component("nurse", {
         template: template,

@@ -34,3 +34,6 @@ require("./components/displayOfficeInformations/displayOfficeInformations-compon
 // affichage d'informations sur le cabinet
 require("./components/jsonPrettyPrint/jsonPrettyPrint-component.js")(officeModule);
 
+// recherche de patients
+require("./components/searchPatientForm/searchPatientForm-component.js")(officeModule);
+

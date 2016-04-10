@@ -13,6 +13,10 @@ module.exports = {
      */
     serviceDataHandler: "datahandler",
     /*
+     * Expressions régulières courantes
+     */
+    patientInformationPattern: '^ *[a-zA-Z éàï-]+ *$',
+    /*
      * Exceptions. Stocker les exceptions en tant que constante permet de faire 
      * des récupération fines d'exception avec des tests (ex: e === NO_PATIENT_DEFINED)
      */

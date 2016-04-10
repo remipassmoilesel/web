@@ -164,5 +164,5 @@
                 <codePostal>38330</codePostal>
             </adresse>
         </patient>
-    <patient><nom>DuGenou</nom><prenom>Jean-claude</prenom><numero></numero><sexe>A</sexe><naissance>2016-04-08T16:51:37.123Z</naissance><visite date="2014-12-08"/><adresse><etage></etage><numero></numero><rue></rue><ville></ville><codePostal></codePostal></adresse></patient></patients>
+    <patient><nom>DuGenou</nom><prenom>Jean-claude</prenom><numero></numero><sexe>A</sexe><naissance>2016-04-09T08:53:32.788Z</naissance><visite date="2014-12-08"/><adresse><etage></etage><numero></numero><rue></rue><ville></ville><codePostal></codePostal></adresse></patient></patients>
 </cabinet>

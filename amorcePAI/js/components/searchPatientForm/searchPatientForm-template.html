@@ -1,0 +1,37 @@
+<md-content layout-padding>
+    <form name="searchPatientForm" 
+          ng-submit="searchPatientForm.$valid && $ctrl.searchPatients()">
+
+        <md-input-container class="md-block">
+            <label>Nom</label>
+            <input name="name" ng-model="$ctrl.patient.name" ng-maxlength="50" />
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Prénom</label>
+            <input name="firstname" ng-model="$ctrl.patient.firstname" 
+                   ng-maxlength="50"/>
+        </md-input-container>
+
+        <md-button class="md-raised md-hue-2" type="submit">Rechercher le patient</md-button>
+
+        <div>{{$ctrl.controllerMessageSpace}}</div>
+
+    </form>
+
+    <div>
+        <b ng-show="$ctrl.results.length > 1">{{$ctrl.results.length}} résultats(s) </b>
+        <patient data="elmt" ng-repeat="elmt in $ctrl.results"></patient>
+    </div>
+
+    <!--    <div>
+            {{$ctrl}}
+        </div>
+        <div>
+            {{searchPatientForm.name.$error}}
+        </div>
+        <div>
+            {{searchPatientForm.firstname.$error}}
+        </div>-->
+
+</md-content>

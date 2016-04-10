@@ -148,15 +148,15 @@ var Controller = function (datah, $scope, $compile) {
             action: actions.displaySearchPatient
         },
         displayAllPatients: {
-            label: "Afficher tous les patients",
+            label: "Liste de tous les patients",
             action: actions.displayAllPatients
         },
         displayAllNurses: {
-            label: "Afficher tous les infirmiers",
+            label: "Liste de tous les infirmiers",
             action: actions.displayAllNurses
         },
         displayNonAffectedPatients: {
-            label: "Afficher les patients non affectés",
+            label: "Liste des patients non affectés",
             action: actions.displayNonAffectedPatients
         },
         displayAddPatientForm: {
@@ -165,12 +165,16 @@ var Controller = function (datah, $scope, $compile) {
         }
     };
 
+    // listes des elements affichés uniquement en mode debug
     if (this.debugMode) {
         this.menuElements.showController = {
-            label: "Afficher le contrôleur de la page",
+            label: "Contrôleur de cabinet médical",
             action: actions.showController
         };
     }
+
+    // affichage lors de la création du composant
+    this.displaySection(this.menuElements.displaySearchPatients);
 
 };
 
@@ -192,7 +196,8 @@ Controller.prototype.displaySection = function (menuElementToShow) {
 Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile"];
 
 module.exports = function (angularMod) {
-    // création du composant
+
+    // création du composant cabinet medical
     angularMod.component("medicalOffice", {
         template: template,
         controller: Controller

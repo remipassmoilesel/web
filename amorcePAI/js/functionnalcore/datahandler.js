@@ -285,6 +285,58 @@ DataHandler.prototype.getNonAffectedPatients = function () {
 
 };
 
+/**
+ * Renvoi une promesse qui retourne un tableaux de patient correspondant aux critères en argument
+ * @returns {Promise}
+ */
+DataHandler.prototype.searchPatients = function (wanted) {
+
+    return this.getAllPatients().then(function (patients) {
+
+        var output = [];
+
+        // itérer les patients
+        for (var i = 0; i < patients.length; i++) {
+            var p = patients[i];
+
+            /*
+             * Utilisation d'une méthode simplifiée (pt trop ?) pour tester les patients. 
+             * Les critéres à comparer sont inséré dans deux tableaux aux mêmes indices.
+             * Si les critères sont non-vide ils sont comparés entre eux
+             */
+            var testsPartA = [];
+            var testsPartB = [];
+
+            // nom
+            testsPartA.push((wanted.name || '').toLocaleLowerCase());
+            testsPartB.push((p.name || '').toLocaleLowerCase());
+
+            // prénom
+            testsPartA.push((wanted.firstname || '').toLocaleLowerCase());
+            testsPartB.push((p.firstname || '').toLocaleLowerCase());
+
+            // iterer les tests
+            for (var j = 0; j < testsPartA.length; j++) {
+                var a = testsPartA[j];
+                var b = testsPartB[j];
+
+                // verifier que les parties ne soient pas vides
+                if (a.length > 0 && b.length > 0) {
+
+                    // test
+                    if (a.includes(b) || b.includes(a)) {
+                        output.push(p);
+                        break;
+                    }
+                }
+            }
+        }
+
+        return output;
+    });
+
+};
+
 
 module.exports = function (angularMod) {
     var id = constants.serviceDataHandler;

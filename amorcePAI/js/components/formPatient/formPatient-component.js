@@ -11,9 +11,7 @@ require('./formPatient-component.css');
 var utils = require('../../functionnalcore/utils');
 var constants = require('../../constants.js');
 
-module.exports = function (angularMod) {
-
-    //var datahandler = require("../../functionnalcore/datahandler.js")(angularMod);
+ //var datahandler = require("../../functionnalcore/datahandler.js")(angularMod);
 
     var Controller = function ($http, datah, $scope) {
 
@@ -24,7 +22,7 @@ module.exports = function (angularMod) {
         this.$scope = $scope;
 
         // pattern affectant les champs de texte
-        this.patientInfoPattern = '^ *[a-zA-Z éàï-]+ *$';
+        this.patientInfoPattern = constants.patientInformationPattern;
 
         // dates utiles
         var yesterday = new Date();
@@ -103,6 +101,8 @@ module.exports = function (angularMod) {
         });
 
     };
+
+module.exports = function (angularMod) {
 
     angularMod.component("formPatient", {
         template: template,
