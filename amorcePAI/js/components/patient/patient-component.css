@@ -1,11 +1,15 @@
-.patientMale{
-    background: #d7d7d7;
-}
-
-.patientFemale{
-    background: #fecaca;
-}
-
 .patientInfoLabel{
     font-weight: bolder;
+}
+
+.patientInformationsContainer md-content {
+    /*background: inherit;*/
+    height: 100%;
+}
+
+.largeContent{
+    height: 220px;
+}
+.smallContent{
+    height: 70px;
 }

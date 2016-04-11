@@ -152,7 +152,7 @@ DataHandler.prototype.getAllPatients = function () {
                                 name: patientTag.querySelector("nom").innerHTML,
                                 firstname: patientTag.querySelector("prenom").innerHTML,
                                 gender: patientTag.querySelector("sexe").innerHTML,
-                                birthdate: patientTag.querySelector("naissance").innerHTML,
+                                birthdate: new Date(patientTag.querySelector("naissance").innerHTML),
                                 ssid: patientTag.querySelector("numero").innerHTML,
                                 adressComplete: vm.agregate(xmlDoc
                                         , "adresse numero"
@@ -167,10 +167,8 @@ DataHandler.prototype.getAllPatients = function () {
                             };
 
                             // calcul de l'age
-                            var dateParts = patientObj.birthdate.split("-");
                             patientObj.age = ((new Date().getTime()
-                                    - new Date(dateParts[2], dateParts[1],
-                                            dateParts[0]).getTime()) / 31536000000).toFixed(0);
+                                    - patientObj.birthdate.getTime()) / 31536000000).toFixed(0);
 
                             // itérer les visites par patient
                             patientObj.visits = [];

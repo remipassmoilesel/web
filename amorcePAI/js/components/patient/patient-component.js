@@ -18,28 +18,26 @@ var Controller = function ($mdDialog, $scope) {
     this.$scope = $scope;
     this.utils = utils;
 
+    this.smallContent = "100px";
+    this.largeContent = "200px";
+
+    // copie des données pour modification dans le formulaire
+    this.modificationsData = JSON.parse(JSON.stringify(this.data || {}));
+    this.modificationsData.birthdate = new Date(this.modificationsData.birthdate);
+
     // données formattées à afficher en résumé
-    var dateParts = this.data.birthdate.split("-");
-    var prettyBirthdate = dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
+    var d = this.data.birthdate;
+    var prettyBirthdate = d.getUTCDate() + "/" + d.getUTCMonth() + "/" + d.getUTCFullYear();
     this.summaryDatas = {
         "NSS": this.data.ssid,
         "Née le": prettyBirthdate + " (" + this.data.age + " ans)",
         "Adresse": this.data.adressComplete
     };
 
-    // données formattées à afficher 
-    this.formatedDatas = {
-        "Genre": this.data.gender === "M" ? "Homme" : "Femme",
-        "Age": this.data.age,
-        "Date de naissance": prettyBirthdate,
-        "NSS": this.data.ssid,
-        "Adresse": this.data.adressComplete,
-        "Etage": this.data.adress
-    };
-
     // les modes d'affichage du patient
     this.availablesDisplayModes = ["summary", "complete", "visits", "modification"];
     this.setDisplayMode("summary");
+
 };
 Controller.$inject = ["$mdDialog", "$scope"];
 

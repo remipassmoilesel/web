@@ -22,5 +22,23 @@ Utils.prototype.getPrettyDate = function (date) {
 
 };
 
+/**
+ * Conversion de date à partir du format YYYY-MM-DD
+ * @param {type} stringDate
+ * @returns {undefined}
+ */
+Utils.prototype.stringToDateObject = function (stringDate) {
+    return new Date(stringDate.trim());
+};
+
+/**
+ * Conversion de date vers le format YYYY-MM-DD
+ * @param {type} stringDate
+ * @returns {undefined}
+ */
+Utils.prototype.dateObjectToString = function (objectDate) {
+    return objectDate.toISOString().substr(0, 10);
+};
+
 module.exports = new Utils();
 

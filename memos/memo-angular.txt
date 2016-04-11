@@ -249,3 +249,8 @@ Appeler une fenetre popup et y transmettre des données:
         clickOutsideToClose: true,
         fullscreen: false
     });
+
+ng-class: spécifier une ou des classes CSS conditionnelles
+
+Bloc md-content permet dafficher du contenu dans un panneau scrollable (overflow: auto)
+/!\: spécifier la hauteur pour que ça fonctionne (height: 100%)

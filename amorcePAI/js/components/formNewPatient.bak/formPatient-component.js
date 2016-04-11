@@ -21,41 +21,27 @@ var Controller = function ($http, datah, $scope) {
     this.utils = utils;
     this.$scope = $scope;
 
-    // identifiant unique de formulaire
-    this.formId = new Date().getTime();
-
     // pattern affectant les champs de texte
     this.patientInfoPattern = constants.patientInformationPattern;
 
-    // dates utilisées dans les vérifications de formulaires
+    // dates utiles
     var yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     this.lowestDate = new Date(1900, 01, 01);
     this.highestDate = new Date();
 
-    // le modèle manipulé, défini ici uniquement si non fourni en argument
-    if (typeof this.patient === "undefined") {
-        this.patient = {
-            firstname: "Jean-claude",
-            name: "DuGenou",
-            nurse: "idInfirmier",
-            gender: "A",
-            birthdate: yesterday
-        };
-    }
-
-    // l'état du fomulaire, défini uniquement si non fourni en argument
-    if (typeof this.disabled === "undefined") {
-        this.disabled = false;
-    }
+    // le modèle manipulé
+    this.patient = {
+        firstname: "Jean-claude",
+        name: "DuGenou",
+        nurse: "idInfirmier",
+        gender: "A",
+        birthdate: yesterday
+    };
 
 };
 // injection de dépendance sous forme d'un tableau de chaine de caractères
-Controller.$inject = ["$http", constants.serviceDataHandler, "$scope", "$mdToast"];
-
-Controller.prototype.showAlert = function (message) {
-
-};
+Controller.$inject = ["$http", constants.serviceDataHandler, "$scope"];
 
 /**
  * Affiche un message dans le formulaire pour une durée déterminée en ms (temps optionnel)
@@ -122,8 +108,6 @@ module.exports = function (angularMod) {
         template: template,
         controller: Controller,
         bindings: {
-            patient: "<",
-            disabled: "<",
         }
     });
 };

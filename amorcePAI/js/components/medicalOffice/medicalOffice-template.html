@@ -1,4 +1,4 @@
-<div layout="row" id="medicalOffice">
+<div layout="row" class="medicalOffice">
 
     <!-- Espace d'affichage du menu (à gauche de la page) -->
     <md-sidenav
@@ -11,16 +11,16 @@
             <h1 class="md-toolbar-tools">Menu</h1>
         </md-toolbar>
 
-        <md-content layout-padding id="medicalOfficeMenu">
+        <md-content layout-padding class="medicalOfficeMenu">
             <!-- Iterer les les elements à afficher et créer des liens vers les actions respectives. Les actions
             prennent en paramètre leur controleur et leur element d'appartance.
             -->
-            <md-button ng-repeat="(k, element) in $ctrl.menuElements"
+            <md-button ng-repeat="(k, element) in $ctrl.menuElements" class="medicalOfficeMenuButton"
                        ng-click="element.action($ctrl, element)">
                 {{element.label}}
             </md-button>
 
-            <div ng-show="$ctrl.debugMode" id="medicalOfficeDebugIndicator">
+            <div ng-show="$ctrl.debugMode" class="medicalOfficeDebugIndicator">
                 Mode débuggage actif</div>
         </md-content>
 
@@ -32,52 +32,55 @@
     clic et du declenchement d'une action.
     
     -->
-    <md-content flex layout-padding id="medicalOfficeWorkspace">
+    <md-content flex class="medicalOfficeWorkspace">
 
-        <div id="displayOfficeInfos" ng-show="$ctrl.menuElements.displayOfficeInfos.visible">
-            <h2>{{$ctrl.menuElements.displayOfficeInfos.label}}</h2>
 
-            <display-office-informations></display-office-informations>
-
-        </div>
-
-        <div id="displaySearchPatients" ng-show="$ctrl.menuElements.displaySearchPatients.visible">
-            <h2>{{$ctrl.menuElements.displaySearchPatients.label}}</h2>
+        <div ng-show="$ctrl.menuElements.displaySearchPatients.visible">
+            <h2 class="officePanelTitle">{{$ctrl.menuElements.displaySearchPatients.label}}</h2>
 
             <search-patient-form></search-patient-form>
 
         </div>
 
-        <div id="displaySearchPatientForm" ng-show="$ctrl.menuElements.displayAllPatients.visible">
-            <h2>{{$ctrl.menuElements.displayAllPatients.label}}</h2>
-
-            <patient data="elmt" ng-repeat="elmt in $ctrl.allPatients"></patient>
-
-        </div>
-
-        <div id="displayAllNurses" ng-show="$ctrl.menuElements.displayAllNurses.visible">
-            <h2>{{$ctrl.menuElements.displayAllNurses.label}}</h2>
-
-            <nurse ng-repeat="elmt in $ctrl.allNurses" data="elmt"></nurse>
-
-        </div>
-
-        <div id="displayNonAffectedPatients" ng-show="$ctrl.menuElements.displayNonAffectedPatients.visible">
-            <h2>{{$ctrl.menuElements.displayNonAffectedPatients.label}}</h2>
-
-            <patient ng-repeat="elmt in $ctrl.nonAffectedPatients" data="elmt"></patient>
-
-        </div>
-
-        <div id="displayAddPatientForm" ng-show="$ctrl.menuElements.displayAddPatientForm.visible">
-            <h2>{{$ctrl.menuElements.displayAddPatientForm.label}}</h2>
+        <div ng-show="$ctrl.menuElements.displayAddPatientForm.visible">
+            <h2 class="officePanelTitle">{{$ctrl.menuElements.displayAddPatientForm.label}}</h2>
 
             <form-patient></form-patient>
 
         </div>
 
-        <div id="showController" ng-show="$ctrl.menuElements.showController.visible">
-            <h2>{{$ctrl.menuElements.showController.label}}</h2>
+        <div ng-show="$ctrl.menuElements.displayAllPatients.visible">
+            <h2 class="officePanelTitle">{{$ctrl.menuElements.displayAllPatients.label}}</h2>
+
+            <patient data="elmt" ng-repeat="elmt in $ctrl.allPatients"></patient>
+
+        </div>
+
+        <div ng-show="$ctrl.menuElements.displayAllNurses.visible">
+            <h2 class="officePanelTitle">{{$ctrl.menuElements.displayAllNurses.label}}</h2>
+
+            <nurse ng-repeat="elmt in $ctrl.allNurses" data="elmt"></nurse>
+
+        </div>
+
+        <div ng-show="$ctrl.menuElements.displayNonAffectedPatients.visible">
+            <h2 class="officePanelTitle">{{$ctrl.menuElements.displayNonAffectedPatients.label}}</h2>
+
+            <patient ng-repeat="elmt in $ctrl.nonAffectedPatients" data="elmt"></patient>
+
+        </div>
+
+
+
+        <div ng-show="$ctrl.menuElements.displayOfficeInfos.visible">
+            <h2 class="officePanelTitle">{{$ctrl.menuElements.displayOfficeInfos.label}}</h2>
+
+            <display-office-informations></display-office-informations>
+
+        </div>
+
+        <div ng-show="$ctrl.menuElements.showController.visible">
+            <h2 class="officePanelTitle">{{$ctrl.menuElements.showController.label}}</h2>
 
             <json-pretty-print show="$ctrl"></json-pretty-print>
 

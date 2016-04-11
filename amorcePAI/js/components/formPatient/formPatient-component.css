@@ -1,3 +1,35 @@
+.formPatient{
+    overflow: visible;
+}
+.formPatient table{
+    padding: 0px;
+    margin: 0px;
+}
+.formPatient table td{
+    padding: 5px;
+    margin: 0px;
+}
+
+/** Etiquette de champs de tableau */
+.formPatientLabel{
+    width: 23%;
+    font-weight: bolder;
+}
+
+.formPatient md-datepicker{
+    background: white;
+}
+
+.formPatient md-datepicker md-content{
+    background: white;
+}
+
+.formPatient md-input-container{
+    margin: 0;
+    max-height: 40px;
+
+}
+
 .formErrorMessage{
     color: rgb(221, 44, 0);
     display: block;
@@ -5,3 +37,4 @@
     font-size: 12px;
     height: 14px;
 }
+
