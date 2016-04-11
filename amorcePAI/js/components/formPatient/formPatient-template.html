@@ -1,18 +1,7 @@
 <div class="formPatient">
     <!--<div><json-pretty-print show="$ctrl"></json-pretty-print></div>-->
-    <form name="$ctrl.formId" 
-          ng-submit="$ctrl.disabled !== true && newPatientForm.$valid && $ctrl.addPatient()">
-
-        <!-- Messages d'indication de formulaires -->
-        <script type="text/ng-template" id="error-messages">
-            <div ng-message="">Ce champs est requis.</div>
-            <div ng-message="pattern">Seuls les caractères suivants sont autorisés: [ a-z A-Z - ].</div>
-            <div ng-message="maxlength">Vous ne pouvez utiliser que 50 caractères maximum.</div>
-            <div ng-message="minlength">Vous devez utiliser 5 caractères minimum.</div>
-            <div ng-message="valid">Format invalide.</div>
-            <div ng-message="mindate">Date minimum autorisée: {{$ctrl.utils.getPrettyDate($ctrl.lowestDate)}}</div>
-            <div ng-message="maxdate">Date maximum autorisée: {{$ctrl.utils.getPrettyDate($ctrl.highestDate)}}</div>
-        </script>
+    <form name="formPatient" 
+          ng-submit="$ctrl.disabled !== true && formPatient.$valid && $ctrl.addPatient()">
 
         <table style="width: 100%">
 
@@ -21,11 +10,8 @@
                 <td>
             <md-input-container>
                 <input name="name" ng-model="$ctrl.patient.name" ng-pattern="$ctrl.patientInfoPattern" 
-                       ng-minlength="5" ng-maxlength="50" ng-disabled="$ctrl.disabled"
-                       ng-messages-multiple autocomplete="off"/>
-                <div ng-messages="newPatientForm.name.$error" role="alert"  >
-                    <div ng-messages-include="error-messages"></div>
-                </div>
+                       ng-minlength="3" ng-maxlength="50" ng-disabled="$ctrl.disabled"
+                       autocomplete="off"/>
             </md-input-container>
             </td>
             </tr>
@@ -35,24 +21,29 @@
                 <td>
             <md-input-container>
                 <input name="firstname" ng-model="$ctrl.patient.firstname" ng-pattern="$ctrl.patientInfoPattern" 
-                       ng-minlength="5" ng-maxlength="50"    ng-messages-multiple  
+                       ng-minlength="3" ng-maxlength="50"   
                        ng-disabled="$ctrl.disabled" autocomplete="off"/>
-                <div ng-messages="newPatientForm.firstname.$error" role="alert"/>
-                <div ng-messages-include="error-messages"></div>
-                </div>
             </md-input-container>
             </td>
             </tr>
 
             <tr>
                 <td class="formPatientLabel">Genre:</td>
-                <td>
-            <md-radio-group ng-model="$ctrl.patient.gender" name="gender" 
-                            layout="row" ng-disabled="$ctrl.disabled">
-                <md-radio-button value="F">Femme</md-radio-button>
-                <md-radio-button value="H">Homme</md-radio-button>
-                <md-radio-button value="A">Autre</md-radio-button>
+
+                <td ng-switch="$ctrl.disabled">
+
+                    <span ng-switch-when="true" ng-model="$ctrl.patient.gender" name="gender" 
+                          layout="row">
+                        {{$ctrl.prettyGender}}
+                    </span>
+
+            <md-radio-group ng-switch-default ng-model="$ctrl.patient.gender" name="gender" 
+                            layout="row">
+                <md-radio-button value="F" ng-disabled="$ctrl.disabled">Femme</md-radio-button>
+                <md-radio-button value="H" ng-disabled="$ctrl.disabled">Homme</md-radio-button>
+                <md-radio-button value="A" ng-disabled="$ctrl.disabled">Autre</md-radio-button>
             </md-radio-group>
+
             </td>
             </tr>
 
@@ -61,11 +52,8 @@
                 <td>
             <md-input-container>
                 <input name="nurse" ng-model="$ctrl.patient.nurse" ng-pattern="$ctrl.patientInfoPattern" 
-                       ng-minlength="5" ng-maxlength="50"    ng-messages-multiple  
+                       ng-minlength="3" ng-maxlength="50"      
                        ng-disabled="$ctrl.disabled" autocomplete="off"/>
-                <div ng-messages="newPatientForm.nurse.$error" role="alert"/> 
-                <div ng-messages-include="error-messages"></div>
-                </div>
             </md-input-container>
             </td>
             </tr>
@@ -79,9 +67,6 @@
                            autocomplete="off"
                            />
             </md-datepicker>
-            <div class="formErrorMessage" ng-messages="newPatientForm.birthdate.$error" role="alert">
-                <div ng-messages-include="error-messages"></div>
-            </div>
             </td>
             </tr>   
 

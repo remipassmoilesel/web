@@ -24,10 +24,20 @@
     background: white;
 }
 
+.formPatient input[disabled]{
+    color: black;
+}
+
+.formPatient md-radio-button[checked=true]{
+    color: black;
+}
+.formPatient md-radio-button[checked=false]{
+    color: silver;
+}
+
 .formPatient md-input-container{
     margin: 0;
     max-height: 40px;
-
 }
 
 .formErrorMessage{

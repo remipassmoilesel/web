@@ -1,12 +1,15 @@
-<md-card>
+<md-card class="patientComponent">
 
     <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">{{$ctrl.data.name + ' ' + $ctrl.data.firstname}}</span>
+        <md-card-title-text 
+            ng-class="{'patientFemale': $ctrl.data.gender === 'F', 'patientMale': $ctrl.data.gender === 'M', 'patientOther': $ctrl.data.gender === 'A'}">
+            <span class="md-headline">
+                {{$ctrl.data.name + ' ' + $ctrl.data.firstname}}
+            </span>
         </md-card-title-text>
     </md-card-title>
 
-    <md-card-content ng-switch on="$ctrl.displayMode" class="patientInformationsContainer"
+    <md-card-content ng-switch="$ctrl.displayMode" class="patientInformationsContainer"
                      ng-class="{
                                  largeContent: $ctrl.displayMode !== 'summary',
                                          smallContent: $ctrl.displayMode === 'summary'
