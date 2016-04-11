@@ -1,20 +1,30 @@
 <div layout="row" id="medicalOffice">
 
     <!-- Espace d'affichage du menu (à gauche de la page) -->
-    <div flex="30" id="medicalOfficeMenu">
-        <h2>Menu</h2>
-        <!-- Iterer les les elements à afficher et créer des liens vers les actions respectives. Les actions
-        prennent en paramètre leur controleur et leur element d'appartance.
-        -->
-        <div ng-repeat="(k, element) in $ctrl.menuElements">
-            <a ng-click="element.action($ctrl, element)" href="#">
+    <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="sidenav-left"
+        md-is-locked-open="true"
+        md-whiteframe="4">
+
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Menu</h1>
+        </md-toolbar>
+
+        <md-content layout-padding id="medicalOfficeMenu">
+            <!-- Iterer les les elements à afficher et créer des liens vers les actions respectives. Les actions
+            prennent en paramètre leur controleur et leur element d'appartance.
+            -->
+            <md-button ng-repeat="(k, element) in $ctrl.menuElements"
+                       ng-click="element.action($ctrl, element)">
                 {{element.label}}
-            </a>
-        </div>
+            </md-button>
 
-        <div ng-show="$ctrl.debugMode"><b>Mode débuggage actif</b></div>
-    </div>
+            <div ng-show="$ctrl.debugMode" id="medicalOfficeDebugIndicator">
+                Mode débuggage actif</div>
+        </md-content>
 
+    </md-sidenav>
 
     <!-- Espace de travail (au centre de la page) 
     
@@ -22,7 +32,7 @@
     clic et du declenchement d'une action.
     
     -->
-    <div flex id="medicalOfficeWorkspace">
+    <md-content flex layout-padding id="medicalOfficeWorkspace">
 
         <div id="displayOfficeInfos" ng-show="$ctrl.menuElements.displayOfficeInfos.visible">
             <h2>{{$ctrl.menuElements.displayOfficeInfos.label}}</h2>
@@ -72,9 +82,9 @@
             <json-pretty-print show="$ctrl"></json-pretty-print>
 
         </div>
-        
-        
 
+        <div flex></div>
 
-    </div>
+    </md-content>
+
 </div>

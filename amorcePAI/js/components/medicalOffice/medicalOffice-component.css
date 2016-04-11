@@ -8,12 +8,15 @@
     padding: 10px;
 }
 
-#medicalOfficeMenu {
-    padding: 10px;
-    border: solid 3px rgba(200, 200, 200, .5);
-}
-
 #medicalOfficeMenu div {
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+#medicalOfficeDebugIndicator{
+    margin-bottom: 25px;
+    font-size: 11px;
+    font-weight: bolder;
+    color: gray;
+    text-align: center;
 }
