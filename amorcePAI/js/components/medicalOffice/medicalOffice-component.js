@@ -10,7 +10,7 @@ require('./medicalOffice-component.css');
 var utils = require('../../functionnalcore/utils.js');
 var constants = require('../../constants.js');
 
-var Controller = function (datah, $scope, $compile, $mdToast) {
+var Controller = function (datah, $scope, $compile, $mdToast, $mdDialog) {
 
     // si vrai, affiche des informations supplémentaires sur le controleur et autre..
     this.debugMode = true;
@@ -20,6 +20,7 @@ var Controller = function (datah, $scope, $compile, $mdToast) {
     this.$scope = $scope;
     this.$compile = $compile;
     this.$mdToast = $mdToast;
+    this.$mdDialog = $mdDialog;
 
     var actions = require("./menuactions.js");
 
@@ -62,16 +63,6 @@ var Controller = function (datah, $scope, $compile, $mdToast) {
         };
     }
 
-    /*
-     * Tableau utilisées pour les requetes à tentatives multiples. 
-     * Voir this.newWomanRequest()
-     * 
-     * Ces tableaux conservent la traces des tentatives, sous la forme:
-     * requestTb[fonctionAppelante] = information
-     */
-    this.requestAttempts = [];
-    this.requestIntervals = [];
-
     // affichage lors de la création du composant
     this.menuElements.displayAllPatients.action(this,
             this.menuElements.displayAllPatients);
@@ -79,7 +70,7 @@ var Controller = function (datah, $scope, $compile, $mdToast) {
 };
 
 // injection de dépendance sous forme d'un tableau de chaine de caractères
-Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile", "$mdToast"];
+Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile", "$mdToast", "$mdDialog"];
 
 /**
  * Réclame les données sur les patients au serveur 
@@ -88,12 +79,15 @@ Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile", "$mdTo
 Controller.prototype.updateNonAffectedPatients = function () {
 
     var vm = this;
-    this.newWomanRequest(function () {
-        return vm.datah.getNonAffectedPatients();
-    }, function (response) {
-        // mettre à jour le modèle
-        vm.nonAffectedPatients = response;
-    });
+    this.newWomanRequest(
+            vm,
+            function () {
+                return vm.datah.getNonAffectedPatients();
+            },
+            function (response) {
+                // mettre à jour le modèle
+                vm.nonAffectedPatients = response;
+            });
 
 };
 
@@ -104,12 +98,15 @@ Controller.prototype.updateNonAffectedPatients = function () {
 Controller.prototype.updateNurses = function () {
 
     var vm = this;
-    this.newWomanRequest(function () {
-        return vm.datah.getNurses();
-    }, function (response) {
-        // mettre à jour le modèle
-        vm.allNurses = response;
-    });
+    this.newWomanRequest(
+            vm,
+            function () {
+                return vm.datah.getNurses();
+            },
+            function (response) {
+                // mettre à jour le modèle
+                vm.allNurses = response;
+            });
 
 };
 
@@ -120,12 +117,15 @@ Controller.prototype.updateNurses = function () {
 Controller.prototype.updatePatients = function () {
 
     var vm = this;
-    this.newWomanRequest(function () {
-        return vm.datah.getAllPatients();
-    }, function (response) {
-        // mettre à jour le modèle
-        vm.allPatients = response;
-    });
+    this.newWomanRequest(
+            vm,
+            function () {
+                return vm.datah.getAllPatients();
+            },
+            function (response) {
+                // mettre à jour le modèle
+                vm.allPatients = response;
+            });
 
 };
 
@@ -146,30 +146,36 @@ Controller.prototype.updatePatients = function () {
  * Test possible: lancer le cabinet médical, renommer le fichier source XML puis 
  * le renommer à son nom d'origine.
  * 
+ * @param {type} ctx Le contexte d'execution
  * @param {type} funcPromise
  * @param {type} cbSuccess
  * @param {type} cbCatch
  * @returns {undefined}
  */
-Controller.prototype.newWomanRequest = function (funcPromise, cbSuccess, cbCatch) {
+Controller.prototype.newWomanRequest = function (ctx, funcPromise, cbSuccess, cbCatch) {
 
-    var vm = this;
+    // initialisation de tableaux de variables pour suivre les requetes en cours
+    if (typeof ctx.requestAttempts === "undefined"
+            || typeof ctx.requestIntervals === "undefined") {
+        ctx.requestAttempts = [];
+        ctx.requestIntervals = [];
+    }
 
-    funcPromise.apply(vm)
+    funcPromise.apply(ctx)
 
             // requete réussie
             .then(function (response) {
 
                 // notification de reprise si nécéssaire
-                if (typeof vm.requestAttempts[funcPromise] !== "undefined" &&
-                        vm.requestAttempts[funcPromise] > 4) {
-                    vm.showAlert("Serveur à nouveau disponible.");
+                if (typeof ctx.requestAttempts[funcPromise] !== "undefined" &&
+                        ctx.requestAttempts[funcPromise] > 4) {
+                    ctx.showAlert("Serveur à nouveau disponible.");
                 }
 
                 // remettre à zéro les compteurs
-                vm.requestAttempts[funcPromise] = 0;
-                clearInterval(vm.requestIntervals[funcPromise]);
-                vm.requestIntervals[funcPromise] = undefined;
+                ctx.requestAttempts[funcPromise] = 0;
+                clearInterval(ctx.requestIntervals[funcPromise]);
+                ctx.requestIntervals[funcPromise] = undefined;
 
                 cbSuccess(response);
 
@@ -181,21 +187,20 @@ Controller.prototype.newWomanRequest = function (funcPromise, cbSuccess, cbCatch
                 console.log("Request fail: ", funcPromise, response);
 
                 // lancer un compteur si besoin
-                if (typeof vm.requestIntervals[funcPromise] === "undefined") {
+                if (typeof ctx.requestIntervals[funcPromise] === "undefined") {
 
-                    vm.requestAttempts[funcPromise] = 1;
+                    ctx.requestAttempts[funcPromise] = 1;
 
-                    vm.requestIntervals[funcPromise] = setInterval(function () {
+                    ctx.requestIntervals[funcPromise] = setInterval(function () {
                         // re-executer funcPromise 
-                        vm.womanRequest(funcPromise, cbSuccess, cbCatch);
-                        funcPromise();
+                        ctx.newWomanRequest(ctx, funcPromise, cbSuccess, cbCatch);
                     }, 400);
                 }
-                vm.requestAttempts[funcPromise]++;
+                ctx.requestAttempts[funcPromise]++;
 
                 // notification si arrêt prolongé du service
-                if (vm.requestAttempts[funcPromise] === 4) {
-                    vm.showAlert("Serveur indisponible pour le moment.");
+                if (ctx.requestAttempts[funcPromise] === 4) {
+                    ctx.showAlert("Serveur indisponible pour le moment.", 10000);
                 }
 
                 // execution du cbCatch
@@ -213,6 +218,7 @@ Controller.prototype.newWomanRequest = function (funcPromise, cbSuccess, cbCatch
  * @returns {undefined}
  */
 Controller.prototype.showAlert = function (message, delay) {
+
     this.$mdToast.show(
             this.$mdToast.simple()
             .textContent(message)

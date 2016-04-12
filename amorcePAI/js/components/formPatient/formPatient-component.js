@@ -65,6 +65,7 @@ Controller.$inject = ["$http", constants.serviceDataHandler, "$scope", "$mdToast
  * @returns {undefined}
  */
 Controller.prototype.showAlert = function (message, delay) {
+
     this.$mdToast.show(
             this.$mdToast.simple()
             .textContent(message)
@@ -73,17 +74,76 @@ Controller.prototype.showAlert = function (message, delay) {
             );
 };
 
-Controller.prototype.addPatient = function () {
+/**
+ * 
+ * @param {type} message
+ * @param {type} delay
+ * @returns {undefined}
+ */
+Controller.prototype.showFormError = function (element) {
+
+    // le controlleur de la popup
+    var ToastController = function ($mdToast) {
+
+        this.$mdToast = $mdToast;
+
+        // nom
+        if ("name" === element) {
+            this.formErrorLabel = "Nom invalide";
+            this.formErrorMessage = "Seuls les caractères suivants sont autorisés: [a-zA-Z ]";
+        }
+        // prénom
+        else if ("firstname" === element) {
+            this.formErrorLabel = "Prénom invalide";
+            this.formErrorMessage = "Seuls les caractères suivants sont autorisés: [a-zA-Z ]";
+        }
+        // element non reconnu: erreur
+        else {
+            throw constants.INVALID_ARGUMENT + ": " + element;
+        }
+
+        console.log(this);
+    };
+    ToastController.$inject = ['$mdToast'];
+
+    var vm = this;
+    this.$mdToast.show(
+            {
+                hideDelay: 6000,
+                position: 'top right',
+                controller: ToastController,
+                controllerAs: "$ctrl",
+                template: require("./formErrorToast.html")
+            })
+            // fin de l'affichage
+            .then(function () {
+                vm.formErrorLabel = "";
+                vm.formErrorMessage = "";
+                vm.formErrorShowed = false;
+            });
+};
+
+
+
+/**
+ * Valider le formulaire et l'envoyer
+ * @returns {undefined}
+ */
+Controller.prototype.validFormAndSendData = function () {
 
     // vérfier les informations
+    /*
+     * /!\ Penser à vérifier si les variables sont indéfinies, ou le test regex passera
+     */
     var patt = new RegExp(this.patientInfoPattern);
-    if (patt.test(this.patient.name) === false) {
-        this.showAlert("Nom invalide");
+
+    if (typeof this.patient.name === "undefined" || patt.test(this.patient.name) === false) {
+        this.showFormError("name");
         return;
     }
 
-    if (patt.test(this.patient.firstname) === false) {
-        this.showAlert("Prénom invalide");
+    if (typeof this.patient.firstname === "undefined" || patt.test(this.patient.firstname) === false) {
+        this.showFormError("firstname");
         return;
     }
 

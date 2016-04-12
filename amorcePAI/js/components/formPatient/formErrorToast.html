@@ -1,0 +1,12 @@
+<md-toast class="patientFormErrorLabel">
+
+    <span flex>
+        <b>{{$ctrl.formErrorLabel}}</b><br>
+        {{$ctrl.formErrorMessage}}
+    </span>
+
+    <md-button ng-click="$ctrl.$mdToast.hide()">
+        X
+    </md-button>
+
+</md-toast>

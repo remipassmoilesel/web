@@ -1,7 +1,7 @@
 <div class="formPatient">
     <!--<div><json-pretty-print show="$ctrl"></json-pretty-print></div>-->
     <form name="formPatient" 
-          ng-submit="$ctrl.disabled !== true && formPatient.$valid && $ctrl.addPatient()">
+          ng-submit="$ctrl.disabled !== true && $ctrl.validFormAndSendData()">
 
         <table style="width: 100%">
 
