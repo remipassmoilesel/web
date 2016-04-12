@@ -51,7 +51,7 @@
             </visite>
 
         </patient>
-        <patient><nom>Xaviersasasas</nom><prenom>Kapoetlasssssssss</prenom><numero>110083306303570</numero><sexe>M</sexe><naissance>2010-08-02T00:00:00.000Z</naissance><visite date="2014-12-08"/><adresse><etage></etage><numero>25</numero><rue>rue des Martyrs</rue><ville>Grenoble</ville><codePostal>38042</codePostal></adresse></patient>
+        <patient><nom>Xavier</nom><prenom>Kapoetla</prenom><numero>110083306303570</numero><sexe>M</sexe><naissance>2010-08-02T00:00:00.000Z</naissance><visite date="2014-12-08"/><adresse><etage></etage><numero>25</numero><rue>rue des Martyrs</rue><ville>Grenoble</ville><codePostal>38042</codePostal></adresse></patient>
         <patient>
             <nom>Peplu</nom>
             <prenom>Jean</prenom>

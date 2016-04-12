@@ -171,9 +171,17 @@ var Controller = function (datah, $scope, $compile) {
         };
     }
 
+    /*
+     * Elements de mise à jour des patients
+     */
+    this.patientUpdateAttempt = 0;
+    this.patientUpdater = undefined;
+
     // affichage lors de la création du composant
     this.menuElements.displayAllPatients.action(this,
             this.menuElements.displayAllPatients);
+
+
 
 };
 
@@ -185,15 +193,34 @@ Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile"];
  * @returns {undefined}
  */
 Controller.prototype.updatePatients = function () {
-    
+
     var vm = this;
 
-    this.datah.getAllPatients().then(function (response) {
-        vm.allPatients = response;
-    }).catch(function (resp) {
-        console.err("Fail !", resp);
-        setInterval(updatePatients, 300);
-    });
+    this.datah.getAllPatients()
+
+            // requete réussie
+            .then(function (response) {
+                // mettre à jour le modèle
+                vm.allPatients = response;
+
+                // remettre à zéro les essais
+                vm.patientUpdateAttempt = 0;
+                clearInterval(vm.patientUpdater);
+                vm.patientUpdater = undefined;
+            })
+
+            // erreur: signaler puis réessayer
+            .catch(function (resp) {
+                console.log("Request fail: ", resp);
+                console.log(vm.patientUpdater);
+                console.log(vm.patientUpdateAttempt);
+                if (typeof vm.patientUpdater === "undefined") {
+                    vm.patientUpdater = setInterval(function () {
+                        vm.updatePatients.apply(vm);
+                    }, 400);
+                }
+                vm.patientUpdateAttempt++;
+            });
 
 };
 

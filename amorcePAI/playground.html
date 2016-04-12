@@ -13,25 +13,7 @@ Fichier utilisé pour essais
 
         <script type="text/javascript">
 
-            // promesse attendant 3 seconde avant de se résoudre
-            var p = new Promise(function (resolve, reject) {
-
-                setTimeout(resolve, 3000);
-
-            });
-
-            function testPromise() {
-                return p.then(function () {
-                    console.log("Hello !");
-                    return "Text";
-                }).then(function (resp) {
-                    console.log("Hello 2 !");
-                    console.log(resp);
-                });
-            }
-
-            console.log("Appel de la fonction avec promesse");
-            testPromise();
+            alert("hello");
 
         </script>
 

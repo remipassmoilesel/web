@@ -26,10 +26,7 @@ DataHandler.$inject = ["$http"];
  * @param {type} callbackError
  * @returns {Promise}
  */
-DataHandler.prototype.asyncXmlParse = function (dataLocation, callbackThen, callbackError) {
-
-    // pour simuler un echec
-    var dataLocation = "";
+DataHandler.prototype.asyncXmlParse = function (dataLocation) {
 
     // appel asynchrone des données
     return this.$http.get(dataLocation)
@@ -41,22 +38,7 @@ DataHandler.prototype.asyncXmlParse = function (dataLocation, callbackThen, call
                 var parser = new DOMParser();
                 var xmlDoc = parser.parseFromString(response.data, "text/xml");
 
-                // terminer la promesse
-                try {
-                    return callbackThen(xmlDoc);
-                } catch (err) {
-                    console.error("Handled error in datahandler: ", err);
-                    if (typeof callbackError === "function") {
-                        return callbackError(response);
-                    }
-                }
-            })
-
-            // erreur lors de la promesse, appel de callback uniquement si est défini comme une fonction
-            .catch(function (response) {
-                if (typeof callbackError === "function") {
-                    return callbackError(response);
-                }
+                return xmlDoc;
             });
 
 };
@@ -91,7 +73,7 @@ DataHandler.prototype.getOfficeInformations = function () {
     var self = this;
     return this.asyncXmlParse(
             // document à parser
-            constants.dataOffice,
+            constants.dataOffice).then(
             // cb en cas de succès
                     function (xmlDoc) {
                         // iterer et formatter les infirmiers
@@ -114,7 +96,7 @@ DataHandler.prototype.getNurses = function () {
 
     return this.asyncXmlParse(
             // document à parser
-            constants.dataOffice,
+            constants.dataOffice).then(
             // cb en cas de succès
                     function (xmlDoc) {
 
@@ -145,7 +127,7 @@ DataHandler.prototype.getAllPatients = function () {
     var vm = this;
     return this.asyncXmlParse(
             // document à parser
-            constants.dataOffice,
+            constants.dataOffice).then(
             // cb en cas de succès
                     function (xmlDoc) {
 
