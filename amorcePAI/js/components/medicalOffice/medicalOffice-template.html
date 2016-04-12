@@ -52,7 +52,8 @@
         <div ng-show="$ctrl.menuElements.displayAllPatients.visible">
             <h2 class="officePanelTitle">{{$ctrl.menuElements.displayAllPatients.label}}</h2>
 
-            <patient data="elmt" ng-repeat="elmt in $ctrl.allPatients"></patient>
+            <patient data="elmt" ng-repeat="elmt in $ctrl.allPatients"
+                     on-patient-modified="$ctrl.updatePatients()"></patient>
 
         </div>
 

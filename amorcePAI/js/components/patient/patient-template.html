@@ -35,7 +35,8 @@
         <!-- Modifier le patient. 
         Les données sont différentes de celles qui sont affichées plus haut-->
         <md-content ng-switch-when="modification" flex >
-            <form-patient patient="$ctrl.modificationsData" disabled="false"></form-patient>
+            <form-patient patient="$ctrl.modificationsData" disabled="false"
+                          on-form-validated="$ctrl.formHasBeenValidated()"></form-patient>
         </md-content>
 
         <!-- Affichage toutes les visites -->
@@ -53,7 +54,7 @@
 
     <!-- Boutons d'action -->
     <md-card-actions layout="row" layout-align="end center">
-        <md-button ng-click="$ctrl.setDisplayMode('summary')" ng-show="$ctrl.displayMode != 'summary'">
+        <md-button ng-click="$ctrl.setDisplayMode('summary')" ng-show="$ctrl.displayMode !== 'summary'">
             Replier</md-button>
         <md-button ng-click="$ctrl.setDisplayMode('visits')">Visites</md-button>
         <md-button ng-click="$ctrl.setDisplayMode('complete')">Détails</md-button>

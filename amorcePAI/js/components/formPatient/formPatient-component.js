@@ -105,6 +105,11 @@ Controller.prototype.addPatient = function () {
         vm.showAlert("Erreur lors de l'enregistrement.");
     });
 
+    // notification du composant parent si necessaire
+    if (typeof this.onFormValidated !== "undefined") {
+        console.log("Appel de :", this.onFormValidated);
+        this.onFormValidated();
+    }
 };
 
 module.exports = function (angularMod) {
@@ -115,6 +120,7 @@ module.exports = function (angularMod) {
         bindings: {
             patient: "<",
             disabled: "<",
+            onFormValidated: "&"
         }
     });
 };

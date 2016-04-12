@@ -32,7 +32,7 @@ function MenuActions() {}
  * @returns {undefined}
  */
 MenuActions.prototype.displayOfficeInformations = function (ctrl, ownerElement) {
-    
+
     // afficher les informations
     ctrl.displaySection(ownerElement);
 
@@ -58,11 +58,9 @@ MenuActions.prototype.displaySearchPatient = function (ctrl, ownerElement) {
 MenuActions.prototype.displayAllPatients = function (ctrl, ownerElement) {
 
     // mettre à jour les patients
-    ctrl.datah.getAllPatients().then(function (response) {
-        ctrl.allPatients = response;
-    });
+    ctrl.updatePatients();
 
-    // afficher les informations
+    // afficher la section de page, avant l'arrivée des données
     ctrl.displaySection(ownerElement);
 
 };
@@ -78,7 +76,7 @@ MenuActions.prototype.displayAllNurses = function (ctrl, ownerElement) {
         ctrl.allNurses = response;
     });
 
-    // afficher les informations
+    // afficher la section de page, avant l'arrivée des données
     ctrl.displaySection(ownerElement);
 
 };
@@ -94,7 +92,7 @@ MenuActions.prototype.displayNonAffectedPatients = function (ctrl, ownerElement)
         ctrl.nonAffectedPatients = response;
     });
 
-    // afficher les informations
+    // afficher la section de page, avant l'arrivée des données
     ctrl.displaySection(ownerElement);
 
 };
@@ -105,7 +103,7 @@ MenuActions.prototype.displayNonAffectedPatients = function (ctrl, ownerElement)
  */
 MenuActions.prototype.displayAddPatientForm = function (ctrl, ownerElement) {
 
-    // afficher les informations
+    // afficher la section de page, avant l'arrivée des données
     ctrl.displaySection(ownerElement);
 
 };
@@ -116,7 +114,7 @@ MenuActions.prototype.displayAddPatientForm = function (ctrl, ownerElement) {
  */
 MenuActions.prototype.showController = function (ctrl, ownerElement) {
 
-    // afficher les informations
+    // afficher la section de page, avant l'arrivée des données
     ctrl.displaySection(ownerElement);
 
 };
@@ -174,13 +172,31 @@ var Controller = function (datah, $scope, $compile) {
     }
 
     // affichage lors de la création du composant
-    this.menuElements.displayNonAffectedPatients.action(this,
-            this.menuElements.displayNonAffectedPatients);
+    this.menuElements.displayAllPatients.action(this,
+            this.menuElements.displayAllPatients);
 
 };
 
 // injection de dépendance sous forme d'un tableau de chaine de caractères
 Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile"];
+
+/**
+ * Réclame au serveur et mets à jour la liste des patients 
+ * @returns {undefined}
+ */
+Controller.prototype.updatePatients = function () {
+    
+    var vm = this;
+
+    this.datah.getAllPatients().then(function (response) {
+        vm.allPatients = response;
+    }).catch(function (resp) {
+        console.err("Fail !", resp);
+        setInterval(updatePatients, 300);
+    });
+
+};
+
 
 /**
  * Masque tous les elements de menu et affiche l'element passe en parametre
@@ -195,8 +211,6 @@ Controller.prototype.displaySection = function (menuElementToShow) {
 
     menuElementToShow.visible = true;
 };
-
-
 
 module.exports = function (angularMod) {
 

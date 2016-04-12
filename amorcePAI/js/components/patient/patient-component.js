@@ -51,12 +51,15 @@ Controller.prototype.setDisplayMode = function (mode) {
 };
 
 /**
- * Controleur de la boite de dialogue de détil du patient
+ * L'utilisateur vient de modifier le patient, notifier le parent si necessaire
+ * @returns {undefined}
  */
-var DialogController = function ($mdDialog, parentCtrl) {
-    this.parentCtrl = parentCtrl;
-    this.$mdDialog = $mdDialog;
-    this.patient = parentCtrl.data;
+Controller.prototype.formHasBeenValidated = function () {
+    // notification du composant parent si necessaire
+    if (typeof this.onPatientModified !== "undefined") {
+        console.log("Appel de :", this.onPatientModified);
+        this.onPatientModified();
+    }
 };
 
 module.exports = function (angularMod) {
@@ -64,7 +67,8 @@ module.exports = function (angularMod) {
     angularMod.component("patient", {
         template: template,
         bindings: {
-            data: "<"
+            data: "<",
+            onPatientModified: "&"
         },
         controller: Controller
     });

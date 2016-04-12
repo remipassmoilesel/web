@@ -28,6 +28,9 @@ DataHandler.$inject = ["$http"];
  */
 DataHandler.prototype.asyncXmlParse = function (dataLocation, callbackThen, callbackError) {
 
+    // pour simuler un echec
+    var dataLocation = "";
+
     // appel asynchrone des données
     return this.$http.get(dataLocation)
 
@@ -39,7 +42,14 @@ DataHandler.prototype.asyncXmlParse = function (dataLocation, callbackThen, call
                 var xmlDoc = parser.parseFromString(response.data, "text/xml");
 
                 // terminer la promesse
-                return callbackThen(xmlDoc);
+                try {
+                    return callbackThen(xmlDoc);
+                } catch (err) {
+                    console.error("Handled error in datahandler: ", err);
+                    if (typeof callbackError === "function") {
+                        return callbackError(response);
+                    }
+                }
             })
 
             // erreur lors de la promesse, appel de callback uniquement si est défini comme une fonction
@@ -140,6 +150,7 @@ DataHandler.prototype.getAllPatients = function () {
                     function (xmlDoc) {
 
                         var output = [];
+
                         var patientTagArray = xmlDoc.querySelector("patients").getElementsByTagName("patient");
 
                         // itérer les patients

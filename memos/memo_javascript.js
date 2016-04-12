@@ -101,3 +101,16 @@ var object = {
         }
     }
 };
+
+
+// executer quelque chose et eventuellement recommencer
+function foo() {
+    // do stuff
+    // ...
+
+    // and schedule a repeat
+    setTimeout(foo, delay);
+}
+
+// start the cycle
+foo();

@@ -24,31 +24,8 @@
         </infirmier>
     </infirmiers>
     <patients>
-        <patient><nom>Aire</nom><prenom>Axel</prenom><numero>193061305545319</numero><sexe>F</sexe><naissance>1993-06-13T00:00:00.000Z</naissance><visite date="2014-12-08"/><adresse><etage>4</etage><numero>46</numero><rue>avenue Felix Viallet</rue><ville>Grenoble</ville><codePostal>38031</codePostal></adresse></patient>
-        <patient>        
-            <nom>Orouge</nom>
-            <prenom>Elvire</prenom>
-            <sexe>F</sexe>
-            <naissance>1980-03-08</naissance>
-            <!-- Femme, nee en mars 80 en France, à Lyon (n° 23 dans le rhône) 
-            52e naissance (cle calculee: 19)-->
-            <numero>280036902305219</numero>        
-            <adresse>
-                <rue>Rond-Point de la Croix de Vie</rue> 
-                <ville>La Tronche</ville>
-                <codePostal>38700</codePostal>           
-            </adresse>
-            <!-- 
-            Elvire a ete gravement brulee, et l'intervenant doit changer son 
-            pansement tous les 2 jours
-            (Pansement de brûlure etendue ou de plaie chimique ou thermique etendue,
-                sur une surface superieure à 5 % de la surface corporelle.....)
-            -->
-            <visite date="2014-12-08" intervenant="003">
-                <acte id="300"/>               
-            </visite>
-
-        </patient>
+        <patient><nom>Aireaaaaaa</nom><prenom>Axelaaaabbbbb</prenom><numero>193061305545319</numero><sexe>F</sexe><naissance>1993-06-13T00:00:00.000Z</naissance><visite date="2014-12-08"/><adresse><etage>4</etage><numero>46</numero><rue>avenue Felix Viallet</rue><ville>Grenoble</ville><codePostal>38031</codePostal></adresse></patient>
+        <patient><nom>Orougesasa</nom><prenom>Elvireaasasas as a</prenom><numero>280036902305219</numero><sexe>F</sexe><naissance>1980-03-08T00:00:00.000Z</naissance><visite date="2014-12-08"/><adresse><etage></etage><numero></numero><rue>Rond-Point de la Croix de Vie</rue><ville>La Tronche</ville><codePostal>38700</codePostal></adresse></patient>
         <patient>        
             <nom>Oscare</nom>
             <prenom>Pien</prenom>
@@ -74,29 +51,7 @@
             </visite>
 
         </patient>
-        <patient>        
-            <nom>Xavier</nom>
-            <prenom>Kapoëtla</prenom>
-            <sexe>M</sexe>
-            <naissance>2010-08-02</naissance>
-            <!-- Garçon (4 ans) ne en août 2010 en France, à Bordeaux (n° 63 dans la Gironde) 
-            35e naissance (cle calculee: 70)-->
-            <numero>110083306303570</numero>
-            <adresse>
-                <numero>25</numero>
-                <rue>rue des Martyrs</rue>
-                <ville>Grenoble</ville>
-                <codePostal>38042</codePostal>
-            </adresse>
-            <!-- 
-            Le jeune Xavier est en cours de desensibilation alergique.
-            Il doit recevoir tous les jours, l'injection de plusieurs allergenes, etc.
-            -->
-            <visite date="2014-12-08" intervenant="001">
-                <acte id="111"/>               
-            </visite>
-
-        </patient>
+        <patient><nom>Xaviersasasas</nom><prenom>Kapoetlasssssssss</prenom><numero>110083306303570</numero><sexe>M</sexe><naissance>2010-08-02T00:00:00.000Z</naissance><visite date="2014-12-08"/><adresse><etage></etage><numero>25</numero><rue>rue des Martyrs</rue><ville>Grenoble</ville><codePostal>38042</codePostal></adresse></patient>
         <patient>
             <nom>Peplu</nom>
             <prenom>Jean</prenom>
@@ -118,7 +73,7 @@
         </patient>
         
         <!-- ajouté pour tests de patients non affecté -->
-        <patient><nom>Claudess</nom><prenom>Jeansss</prenom><numero>11008251</numero><sexe>F</sexe><naissance>1910-08-02T00:00:00.000Z</naissance><visite date="2014-12-08"/><adresse><etage></etage><numero>655</numero><rue>Avenue de l'Europe</rue><ville>Montbonnot-Saint-Martin</ville><codePostal>38330</codePostal></adresse></patient>
+        <patient><nom>Claudess</nom><prenom>Jeansss</prenom><numero>11008251</numero><sexe>F</sexe><naissance>1910-08-02T00:00:00.000Z</naissance><visite date="2014-12-08"/><adresse><etage/><numero>655</numero><rue>Avenue de l'Europe</rue><ville>Montbonnot-Saint-Martin</ville><codePostal>38330</codePostal></adresse></patient>
         
         <patient>
             <nom>DuGenou</nom>
