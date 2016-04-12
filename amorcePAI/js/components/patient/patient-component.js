@@ -57,7 +57,6 @@ Controller.prototype.setDisplayMode = function (mode) {
 Controller.prototype.formHasBeenValidated = function () {
     // notification du composant parent si necessaire
     if (typeof this.onPatientModified !== "undefined") {
-        console.log("Appel de :", this.onPatientModified);
         this.onPatientModified();
     }
 };

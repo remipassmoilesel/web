@@ -10,117 +10,7 @@ require('./medicalOffice-component.css');
 var utils = require('../../functionnalcore/utils.js');
 var constants = require('../../constants.js');
 
-
-/**
- * Objet rassemblant toutes les méthodes d'affichage des elements de menu.
- * 
- * Toutes ses méthode prennent en paramètre le controleur source et l'objet parent (contenant 
- * description et eventuellements caractéristiques supplémentaires.
- * 
- * Les actions n'ont pas été intégrées au controlleur pour éviter les problèmes de contexte
- * d'appel des fonctions (cause ng-click)
- * 
- * @returns {nm$_medicalOffice-component.DisplayActions}
- */
-function MenuActions() {}
-
-/**
- * Afficher les informations du le cabinet
- * 
- * @param {type} ctrl
- * @param {type} ownerElement
- * @returns {undefined}
- */
-MenuActions.prototype.displayOfficeInformations = function (ctrl, ownerElement) {
-
-    // afficher les informations
-    ctrl.displaySection(ownerElement);
-
-};
-
-/**
- * Afficher le formulaire de recherche de patients
- * @param {type} ownerElement
- * @returns {undefined}
- */
-MenuActions.prototype.displaySearchPatient = function (ctrl, ownerElement) {
-
-    // afficher les informations
-    ctrl.displaySection(ownerElement);
-
-};
-
-/**
- * Afficher tous les patients dans l'espace de travail
- * @param {type} ownerElement
- * @returns {undefined}
- */
-MenuActions.prototype.displayAllPatients = function (ctrl, ownerElement) {
-
-    // mettre à jour les patients
-    ctrl.updatePatients();
-
-    // afficher la section de page, avant l'arrivée des données
-    ctrl.displaySection(ownerElement);
-
-};
-/**
- * Afficher tous les patients dans l'espace de travail
- * @param {type} ownerElement
- * @returns {undefined}
- */
-MenuActions.prototype.displayAllNurses = function (ctrl, ownerElement) {
-
-    // mettre à jour les patients
-    ctrl.datah.getNurses().then(function (response) {
-        ctrl.allNurses = response;
-    });
-
-    // afficher la section de page, avant l'arrivée des données
-    ctrl.displaySection(ownerElement);
-
-};
-/**
- * Afficher tous les patients dans l'espace de travail
- * @param {type} ownerElement
- * @returns {undefined}
- */
-MenuActions.prototype.displayNonAffectedPatients = function (ctrl, ownerElement) {
-
-    // mettre à jour les patients
-    ctrl.datah.getNonAffectedPatients().then(function (response) {
-        ctrl.nonAffectedPatients = response;
-    });
-
-    // afficher la section de page, avant l'arrivée des données
-    ctrl.displaySection(ownerElement);
-
-};
-/**
- * Afficher le formulaire d'ajout de patient
- * @param {type} ownerElement
- * @returns {undefined}
- */
-MenuActions.prototype.displayAddPatientForm = function (ctrl, ownerElement) {
-
-    // afficher la section de page, avant l'arrivée des données
-    ctrl.displaySection(ownerElement);
-
-};
-/**
- * Afficher le formulaire d'ajout de patient
- * @param {type} ownerElement
- * @returns {undefined}
- */
-MenuActions.prototype.showController = function (ctrl, ownerElement) {
-
-    // afficher la section de page, avant l'arrivée des données
-    ctrl.displaySection(ownerElement);
-
-};
-
-
-var Controller = function (datah, $scope, $compile) {
+var Controller = function (datah, $scope, $compile, $mdToast) {
 
     // si vrai, affiche des informations supplémentaires sur le controleur et autre..
     this.debugMode = true;
@@ -129,8 +19,9 @@ var Controller = function (datah, $scope, $compile) {
     this.datah = datah;
     this.$scope = $scope;
     this.$compile = $compile;
+    this.$mdToast = $mdToast;
 
-    var actions = new MenuActions();
+    var actions = require("./menuactions.js");
 
     /* 
      Les élements affichés dans le menu et les fonctions associées permettant 
@@ -172,56 +63,162 @@ var Controller = function (datah, $scope, $compile) {
     }
 
     /*
-     * Elements de mise à jour des patients
+     * Tableau utilisées pour les requetes à tentatives multiples. 
+     * Voir this.newWomanRequest()
+     * 
+     * Ces tableaux conservent la traces des tentatives, sous la forme:
+     * requestTb[fonctionAppelante] = information
      */
-    this.patientUpdateAttempt = 0;
-    this.patientUpdater = undefined;
+    this.requestAttempts = [];
+    this.requestIntervals = [];
 
     // affichage lors de la création du composant
     this.menuElements.displayAllPatients.action(this,
             this.menuElements.displayAllPatients);
 
-
-
 };
 
 // injection de dépendance sous forme d'un tableau de chaine de caractères
-Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile"];
+Controller.$inject = [constants.serviceDataHandler, "$scope", "$compile", "$mdToast"];
 
 /**
- * Réclame au serveur et mets à jour la liste des patients 
+ * Réclame les données sur les patients au serveur 
+ * @returns {undefined}
+ */
+Controller.prototype.updateNonAffectedPatients = function () {
+
+    var vm = this;
+    this.newWomanRequest(function () {
+        return vm.datah.getNonAffectedPatients();
+    }, function (response) {
+        // mettre à jour le modèle
+        vm.nonAffectedPatients = response;
+    });
+
+};
+
+/**
+ * Réclame les données sur les patients au serveur 
+ * @returns {undefined}
+ */
+Controller.prototype.updateNurses = function () {
+
+    var vm = this;
+    this.newWomanRequest(function () {
+        return vm.datah.getNurses();
+    }, function (response) {
+        // mettre à jour le modèle
+        vm.allNurses = response;
+    });
+
+};
+
+/**
+ * Réclame les données sur les patients au serveur 
  * @returns {undefined}
  */
 Controller.prototype.updatePatients = function () {
 
     var vm = this;
+    this.newWomanRequest(function () {
+        return vm.datah.getAllPatients();
+    }, function (response) {
+        // mettre à jour le modèle
+        vm.allPatients = response;
+    });
 
-    this.datah.getAllPatients()
+};
+
+/**
+ * Pure fonction javascript, plus longue à lire qu'a utiliser.
+ * 
+ * Permet de renouveller une action si elle échoue, et de prévenir l'utilisateur.
+ * A utiliser dans les requetes asynchrones. La requete est éxécutée une fois
+ * (funcpromise) et si elle réussi rien ne se passe d'autre.
+ * 
+ * Si elle échoue alors un compteur est déclenché qui tentera de renouveller cette requete
+ * indéfiniment (mettre un maximum ?)
+ * 
+ * Si elle échoue plus de 4 fois un message averti l'utilisateur.
+ * 
+ * /!\ funcPromise s'éxécute dans l'environnement du controlleur
+ * 
+ * Test possible: lancer le cabinet médical, renommer le fichier source XML puis 
+ * le renommer à son nom d'origine.
+ * 
+ * @param {type} funcPromise
+ * @param {type} cbSuccess
+ * @param {type} cbCatch
+ * @returns {undefined}
+ */
+Controller.prototype.newWomanRequest = function (funcPromise, cbSuccess, cbCatch) {
+
+    var vm = this;
+
+    funcPromise.apply(vm)
 
             // requete réussie
             .then(function (response) {
-                // mettre à jour le modèle
-                vm.allPatients = response;
 
-                // remettre à zéro les essais
-                vm.patientUpdateAttempt = 0;
-                clearInterval(vm.patientUpdater);
-                vm.patientUpdater = undefined;
+                // notification de reprise si nécéssaire
+                if (typeof vm.requestAttempts[funcPromise] !== "undefined" &&
+                        vm.requestAttempts[funcPromise] > 4) {
+                    vm.showAlert("Serveur à nouveau disponible.");
+                }
+
+                // remettre à zéro les compteurs
+                vm.requestAttempts[funcPromise] = 0;
+                clearInterval(vm.requestIntervals[funcPromise]);
+                vm.requestIntervals[funcPromise] = undefined;
+
+                cbSuccess(response);
+
             })
 
-            // erreur: signaler puis réessayer
-            .catch(function (resp) {
-                console.log("Request fail: ", resp);
-                console.log(vm.patientUpdater);
-                console.log(vm.patientUpdateAttempt);
-                if (typeof vm.patientUpdater === "undefined") {
-                    vm.patientUpdater = setInterval(function () {
-                        vm.updatePatients.apply(vm);
+            // requete ratée: signaler éventuellement puis réessayer
+            .catch(function (response) {
+
+                console.log("Request fail: ", funcPromise, response);
+
+                // lancer un compteur si besoin
+                if (typeof vm.requestIntervals[funcPromise] === "undefined") {
+
+                    vm.requestAttempts[funcPromise] = 1;
+
+                    vm.requestIntervals[funcPromise] = setInterval(function () {
+                        // re-executer funcPromise 
+                        vm.womanRequest(funcPromise, cbSuccess, cbCatch);
+                        funcPromise();
                     }, 400);
                 }
-                vm.patientUpdateAttempt++;
+                vm.requestAttempts[funcPromise]++;
+
+                // notification si arrêt prolongé du service
+                if (vm.requestAttempts[funcPromise] === 4) {
+                    vm.showAlert("Serveur indisponible pour le moment.");
+                }
+
+                // execution du cbCatch
+                if (typeof cbCatch !== "undefined") {
+                    cbCatch(response);
+                }
             });
 
+};
+
+/**
+ * Afficher une petite pop up d'information
+ * @param {type} message
+ * @param {type} delay
+ * @returns {undefined}
+ */
+Controller.prototype.showAlert = function (message, delay) {
+    this.$mdToast.show(
+            this.$mdToast.simple()
+            .textContent(message)
+            .position("top right")
+            .hideDelay(delay || 2000)
+            );
 };
 
 

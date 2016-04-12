@@ -32,10 +32,9 @@
 
                 <td ng-switch="$ctrl.disabled">
 
-                    <span ng-switch-when="true" ng-model="$ctrl.patient.gender" name="gender" 
-                          layout="row">
-                        {{$ctrl.prettyGender}}
-                    </span>
+            <md-input-container ng-switch-when="true" ng-model="$ctrl.patient.gender">
+                <input ng-disabled="$ctrl.disabled" ng-model="$ctrl.prettyGender"/>
+            </md-input-container>
 
             <md-radio-group ng-switch-default ng-model="$ctrl.patient.gender" name="gender" 
                             layout="row">

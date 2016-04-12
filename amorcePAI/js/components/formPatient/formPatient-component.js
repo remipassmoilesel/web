@@ -75,8 +75,6 @@ Controller.prototype.showAlert = function (message, delay) {
 
 Controller.prototype.addPatient = function () {
 
-    console.log("Ajout de : " + this.patient.name);
-
     // vérfier les informations
     var patt = new RegExp(this.patientInfoPattern);
     if (patt.test(this.patient.name) === false) {
@@ -98,16 +96,13 @@ Controller.prototype.addPatient = function () {
     // envoyer le patient
     var vm = this;
     this.datah.addPatient(this.patient).then(function (response) {
-        console.log(response);
         vm.showAlert("Enregistrement réussi.");
     }).catch(function (response) {
-        console.log(response);
         vm.showAlert("Erreur lors de l'enregistrement.");
     });
 
     // notification du composant parent si necessaire
     if (typeof this.onFormValidated !== "undefined") {
-        console.log("Appel de :", this.onFormValidated);
         this.onFormValidated();
     }
 };
