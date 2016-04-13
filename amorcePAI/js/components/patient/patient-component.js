@@ -43,6 +43,8 @@ var Controller = function ($mdDialog, $scope, datah, $mdToast) {
     // les modes d'affichage du patient
     this.availablesDisplayModes = ["summary", "complete", "visits", "modification", "$mdToast"];
     this.setDisplayMode("summary");
+
+    this.actions = datah.getActions();
 };
 Controller.$inject = ["$mdDialog", "$scope", constants.serviceDataHandler, "$mdToast"];
 
@@ -96,7 +98,7 @@ Controller.prototype.deletePatient = function () {
                             .catch(function (response) {
 
                                 console.log(response);
-                        
+
                                 utils.simpleToast(vm.$mdToast,
                                         "Erreur lors de la suppression. Veuillez réessayer.",
                                         6000);

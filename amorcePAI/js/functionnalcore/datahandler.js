@@ -199,6 +199,50 @@ DataHandler.prototype.getAllPatients = function () {
         };
 
 /**
+ * Retourne une promesse contenant tous les actes médicaux
+ * @returns {undefined}
+ */
+DataHandler.prototype.getActions = function () {
+
+    var vm = this;
+    return this.asyncXmlParse(
+            // document à parser
+            constants.dataActions).then(
+            // cb en cas de succès
+                    function (xmlDoc) {
+
+                        var output = {};
+
+                        //console.log(xmlDoc.querySelector("types"));
+
+                        // rassembler les types d'actes
+                        output.types = {};
+                        var typesTags = xmlDoc.querySelector("types").getElementsByTagName("type");
+                        for (var i = 0; i < typesTags.length; i++) {
+                            var t = typesTags[i];
+                            output.types[t.getAttribute("id")] = t.innerHTML.trim().replace(/\s/i, " ");
+                        }
+
+                        // rassembler les différents actes
+                        output.actions = {};
+                        var actionTags = xmlDoc.querySelector("actes").getElementsByTagName("acte");
+                        for (var i = 0; i < actionTags.length; i++) {
+                            var a = actionTags[i];
+                            output.actions[a.getAttribute("id")] = {
+                                type: a.getAttribute("type"),
+                                key: a.getAttribute("clé"),
+                                coeff: a.getAttribute("coef"),
+                                description: a.innerHTML.trim().replace(/\s/i, " ")
+                            };
+                        }
+
+                        console.log(output);
+
+                        return output;
+                    });
+        };
+
+/**
  * Ajoute un patient et retourne la promesse de la requête
  * @param {type} patient
  * @returns {unresolved}
@@ -271,7 +315,7 @@ DataHandler.prototype.getNonAffectedPatients = function () {
         var output = [];
         for (var i = 0; i < patients.length; i++) {
             var pat = patients[i];
-            if (pat.visits.length === 0) {
+            if (pat.visits.length < 1) {
                 output.push(pat);
             }
         }
