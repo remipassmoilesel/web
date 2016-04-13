@@ -44,12 +44,7 @@
 
         <!-- Affichage toutes les visites -->
         <md-content  ng-switch-when="visits" flex >
-            <table style="width: 100%">
-                <tr ng-repeat="(kinfo, info) in $ctrl.data.visits">
-                    <td class="patientInfoLabel">{{kinfo}}</td>
-                    <td>{{info}}</td>
-                </tr>
-            </table>
+            <visit ng-repeat="(kinfo, info) in $ctrl.data.visits" data='info'></visit>
             <span ng-show="$ctrl.data.visits.length < 1">Aucune visite à afficher</span>
         </md-content>
 

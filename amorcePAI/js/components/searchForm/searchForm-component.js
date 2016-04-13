@@ -4,8 +4,8 @@
  */
 
 // récuperer le template et le css
-var template = require('./searchPatientForm-template.html');
-require('./searchPatientForm-component.css');
+var template = require('./searchForm-template.html');
+require('./searchForm-component.css');
 
 // utilitaires et constantes
 var utils = require('../../functionnalcore/utils');
@@ -19,47 +19,59 @@ var Controller = function ($http, datah, $scope) {
     this.utils = utils;
     this.$scope = $scope;
 
-    // les informations a rechercher sur le patient
-    this.patient = {
+    // les informations a rechercher 
+    this.person = {
         name: "",
         firstname: ""
     };
 
     // les résultats de recherche
     this.results = [];
+
+   
 };
 // injection de dépendance sous forme d'un tableau de chaine de caractères
 Controller.$inject = ["$http", constants.serviceDataHandler, "$scope"];
 
 /**
- * Recherche un patient et affiche des résultats
+ * Recherche un patient  ou un infirmier et affiche des résultats
  * @returns {undefined}
  */
-Controller.prototype.searchPatients = function () {
+Controller.prototype.search = function () {
 
     // enlever les précédents résultats
-    this.results = [];
+    this.nurseResults = [];
+    this.patientResults = [];
     this.showFormMessage("");
 
     // vérifier le format des champs
-    if (this.patient.name.length < 1 &&
-            this.patient.firstname.length < 1) {
+    if (this.person.name.length < 1 &&
+            this.person.firstname.length < 1) {
         this.showFormMessage("Vous devez remplir au moins un des champs.");
         return;
     }
 
     var vm = this;
-    this.datah.searchPatients(this.patient).then(function (response) {
+    this.datah.searchPatients(this.person).then(function (patients) {
 
-        if (response.length > 0) {
-            vm.results = response;
-        }
+        vm.datah.searchNurses(vm.person).then(function (nurses) {
 
-        // pas de résultats
-        else {
-            vm.showFormMessage("Aucun patient ne correspond à vos critères.", 5000);
-        }
+            if (nurses.length > 0) {
+                vm.nurseResults = nurses;
+            }
+            if (patients.length > 0) {
+                vm.patientResults = patients;
+            }
+
+            // pas de résultats
+            else {
+                vm.showFormMessage("Aucun résultat ne correspond à vos critères.", 5000);
+            }
+        });
+
     });
+
+
 
 };
 
@@ -88,7 +100,7 @@ Controller.prototype.showFormMessage = function (msg, timeDisplayMs) {
 
 module.exports = function (angularMod) {
 
-    angularMod.component("searchPatientForm", {
+    angularMod.component("searchForm", {
         template: template,
         controller: Controller,
         bindings: {

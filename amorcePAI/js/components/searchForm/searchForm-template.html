@@ -1,0 +1,49 @@
+<md-content layout-padding>
+    <form name="searchPatientForm" 
+          ng-submit="searchPatientForm.$valid && $ctrl.search()">
+
+        <md-input-container class="md-block">
+            <label>Nom</label>
+            <input name="name" ng-model="$ctrl.person.name" ng-maxlength="50" />
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Prénom</label>
+            <input name="firstname" ng-model="$ctrl.person.firstname" 
+                   ng-maxlength="50"/>
+        </md-input-container>
+
+        <div layout="row" layout-align="center">
+            <md-button class="md-raised md-hue-2" type="submit">Rechercher un patient ou un infirmier</md-button>
+        </div>
+
+        <div layout="row" layout-align="center" style="margin: 15px;">
+            {{$ctrl.controllerMessageSpace}}
+        </div>
+
+    </form>
+
+    <!-- Affichage des résultats, uniquement si plus d'un -->
+    <div>
+        <b ng-show="$ctrl.nurseResults.length > 1 || $ctrl.patientResults.length > 1">
+            {{$ctrl.nurseResults.length + $ctrl.patientResults.length}} résultats(s) </b>
+
+        <h2 ng-if="$ctrl.nurseResults.length > 1">Infirmiers</h2>
+        <nurse data="elmt" ng-repeat="elmt in $ctrl.nurseResults"></nurse>
+
+        <h2 ng-if="$ctrl.patientResults.length > 1">Patients</h2>
+        <patient data="elmt" ng-repeat="elmt in $ctrl.patientResults"></patient>
+
+    </div>
+
+    <!--    <div>
+            {{$ctrl}}
+        </div>
+        <div>
+            {{searchPatientForm.name.$error}}
+        </div>
+        <div>
+            {{searchPatientForm.firstname.$error}}
+        </div>-->
+
+</md-content>

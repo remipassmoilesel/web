@@ -20,8 +20,6 @@
                 {{element.label}}
             </md-button>
 
-            <div ng-show="$ctrl.debugMode" class="medicalOfficeDebugIndicator">
-                Mode débuggage actif</div>
         </md-content>
 
     </md-sidenav>
@@ -34,17 +32,19 @@
     -->
     <md-content flex class="medicalOfficeWorkspace">
 
+        <!-- A etudier: iterer les elements de menu a la maniere des boutons du menu -->
 
-        <div ng-show="$ctrl.menuElements.displaySearchPatients.visible">
-            <h2 class="officePanelTitle">{{$ctrl.menuElements.displaySearchPatients.label}}</h2>
 
-            <search-patient-form></search-patient-form>
+        <div ng-show="$ctrl.menuElements.displaySearch.visible">
+            <h2 class="officePanelTitle">{{$ctrl.menuElements.displaySearch.label}}</h2>
+
+            <search-form></search-form>
 
         </div>
 
         <div ng-show="$ctrl.menuElements.displayAddPatientForm.visible">
             <h2 class="officePanelTitle">{{$ctrl.menuElements.displayAddPatientForm.label}}</h2>
-
+            {{$ctrl.menuElements.addPatientForm}}
             <form-patient></form-patient>
 
         </div>

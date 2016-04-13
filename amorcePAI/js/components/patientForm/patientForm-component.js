@@ -4,8 +4,8 @@
  */
 
 // récuperer le template et le css
-var template = require('./formPatient-template.html');
-require('./formPatient-component.css');
+var template = require('./patientForm-template.html');
+require('./patientForm-component.css');
 
 // utilitaires et constantes
 var utils = require('../../functionnalcore/utils');
@@ -152,7 +152,7 @@ Controller.prototype.showFormError = function (element) {
                     this.hide = vm.$mdToast.hide;
                 },
                 controllerAs: "$ctrl",
-                template: require("./formErrorToast.html"),
+                template: require("./patientFormToast.html"),
                 locals: {
                     element: element
                 }

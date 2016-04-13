@@ -31,7 +31,7 @@ require("./components/nurse/nurse-component.js")(officeModule);
 require("./components/patient/patient-component.js")(officeModule);
 
 // définir le composant patient
-require("./components/formPatient/formPatient-component.js")(officeModule);
+require("./components/patientForm/patientForm-component.js")(officeModule);
 
 // affichage d'informations sur le cabinet
 require("./components/displayOfficeInformations/displayOfficeInformations-component.js")(officeModule);
@@ -40,4 +40,7 @@ require("./components/displayOfficeInformations/displayOfficeInformations-compon
 require("./components/jsonPrettyPrint/jsonPrettyPrint-component.js")(officeModule);
 
 // recherche de patients
-require("./components/searchPatientForm/searchPatientForm-component.js")(officeModule);
+require("./components/searchForm/searchForm-component.js")(officeModule);
+
+// recherche de patients
+require("./components/visit/visit-component.js")(officeModule);

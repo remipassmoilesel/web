@@ -12,9 +12,6 @@ var constants = require('../../functionnalcore/constants.js');
 
 var Controller = function (datah, $scope, $compile, $mdToast, $mdDialog) {
 
-    // si vrai, affiche des informations supplémentaires sur le controleur et autre..
-    this.debugMode = true;
-
     // conserver une reference vers les services
     this.datah = datah;
     this.$scope = $scope;
@@ -22,46 +19,11 @@ var Controller = function (datah, $scope, $compile, $mdToast, $mdDialog) {
     this.$mdToast = $mdToast;
     this.$mdDialog = $mdDialog;
 
-    var actions = require("./menuactions.js");
-
     /* 
      Les élements affichés dans le menu et les fonctions associées permettant 
      de déclencher les actions. Pour ajouter un element dans le menu, ajouter un objet.
      */
-    this.menuElements = {
-        displaySearchPatients: {
-            label: "Rechercher un patient",
-            action: actions.displaySearchPatient
-        },
-        displayAddPatientForm: {
-            label: "Ajouter un patient",
-            action: actions.displayAddPatientForm
-        },
-        displayNonAffectedPatients: {
-            label: "Liste des patients non affectés",
-            action: actions.displayNonAffectedPatients
-        },
-        displayAllPatients: {
-            label: "Liste de tous les patients",
-            action: actions.displayAllPatients
-        },
-        displayAllNurses: {
-            label: "Liste de tous les infirmiers",
-            action: actions.displayAllNurses
-        },
-        displayOfficeInfos: {
-            label: "Informations sur le cabinet",
-            action: actions.displayOfficeInformations
-        }
-    };
-
-    // listes des elements affichés uniquement en mode debug
-    if (this.debugMode) {
-        this.menuElements.showController = {
-            label: "Contrôleur de cabinet médical",
-            action: actions.showController
-        };
-    }
+    this.menuElements = require("./menuElements.js");
 
     // affichage lors de la création du composant
     this.menuElements.displayAllPatients.action(this,
