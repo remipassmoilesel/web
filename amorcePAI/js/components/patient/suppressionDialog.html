@@ -1,0 +1,30 @@
+<md-dialog aria-label="Confirmation de suppression"  ng-cloak>
+
+    <!-- partie haute, avec le titre -->
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Confirmation de suppression</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="$ctrl.hide()">
+                X
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <!-- partie centrale, avec l'explication -->
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            Etes vous sur de vouloir supprimer le patient 
+            <b>{{$ctrl.data.name + " (" + $ctrl.data.ssid + ")"}}</b> ?<br/>
+            Cette opération est irréversible.
+        </div>
+    </md-dialog-content>
+
+    <!-- partie basse, avec les boutons -->
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="$ctrl.hide()">Annuler</md-button>
+        <md-button  ng-click="$ctrl.hide(true)" class="md-raised md-warn">Supprimer le patient</md-button>
+    </md-dialog-actions>
+
+</md-dialog>

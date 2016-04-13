@@ -40,5 +40,14 @@ Utils.prototype.dateObjectToString = function (objectDate) {
     return objectDate.toISOString().substr(0, 10);
 };
 
+Utils.prototype.simpleToast = function ($mdToast, message, delay) {
+    $mdToast.show(
+            $mdToast.simple()
+            .textContent(message)
+            .position("top right")
+            .hideDelay(delay || 3000)
+            );
+};
+
 module.exports = new Utils();
 

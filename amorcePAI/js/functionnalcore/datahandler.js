@@ -9,7 +9,7 @@
  */
 
 
-var constants = require("../constants.js");
+var constants = require("./constants.js");
 
 var DataHandler = function ($http) {
     this.$http = $http;
@@ -117,6 +117,7 @@ DataHandler.prototype.getNurses = function () {
                         return output;
                     });
         };
+
 
 /**
  * Renvoi une promesse qui retourne un tableaux d'objet sur les patients
@@ -330,6 +331,20 @@ DataHandler.prototype.searchPatients = function (wanted) {
         return output;
     });
 
+};
+
+/**
+ * Supprime le patient passé en argument
+ * @returns {Promise}
+ */
+DataHandler.prototype.deletePatient = function (patientToDelete) {
+
+    // requete de suppression
+    return this.$http.post(
+            "/removePatient",
+            {
+                patientNumber: patientToDelete.ssid
+            });
 };
 
 

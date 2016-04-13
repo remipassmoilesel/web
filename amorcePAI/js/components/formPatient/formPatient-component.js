@@ -9,7 +9,7 @@ require('./formPatient-component.css');
 
 // utilitaires et constantes
 var utils = require('../../functionnalcore/utils');
-var constants = require('../../constants.js');
+var constants = require('../../functionnalcore/constants.js');
 
 //var datahandler = require("../../functionnalcore/datahandler.js")(angularMod);
 
@@ -50,9 +50,22 @@ var Controller = function ($http, datah, $scope, $mdToast) {
         this.disabled = false;
     }
 
+    // genres lisibles
     var genders = {"H": "Homme", "F": "Femme", "A": "Autre", "I": "Indéterminé"};
     this.prettyGender = genders[this.patient.gender] || genders["I"];
 
+    // messages d'erreur
+    this.formErrors = {
+        'name': {
+            label: 'Nom invalide',
+            message: 'Seuls les caractères suivants sont autorisés: [a-zA-Z ]'
+        },
+        'firstname': {
+            label: 'Prénom invalide',
+            message: 'Seuls les caractères suivants sont autorisés: [a-zA-Z ]'
+        }
+
+    };
 
 };
 // injection de dépendance sous forme d'un tableau de chaine de caractères
@@ -73,57 +86,6 @@ Controller.prototype.showAlert = function (message, delay) {
             .hideDelay(delay || 2000)
             );
 };
-
-/**
- * 
- * @param {type} message
- * @param {type} delay
- * @returns {undefined}
- */
-Controller.prototype.showFormError = function (element) {
-
-    // le controlleur de la popup
-    var ToastController = function ($mdToast) {
-
-        this.$mdToast = $mdToast;
-
-        // nom
-        if ("name" === element) {
-            this.formErrorLabel = "Nom invalide";
-            this.formErrorMessage = "Seuls les caractères suivants sont autorisés: [a-zA-Z ]";
-        }
-        // prénom
-        else if ("firstname" === element) {
-            this.formErrorLabel = "Prénom invalide";
-            this.formErrorMessage = "Seuls les caractères suivants sont autorisés: [a-zA-Z ]";
-        }
-        // element non reconnu: erreur
-        else {
-            throw constants.INVALID_ARGUMENT + ": " + element;
-        }
-
-        console.log(this);
-    };
-    ToastController.$inject = ['$mdToast'];
-
-    var vm = this;
-    this.$mdToast.show(
-            {
-                hideDelay: 6000,
-                position: 'top right',
-                controller: ToastController,
-                controllerAs: "$ctrl",
-                template: require("./formErrorToast.html")
-            })
-            // fin de l'affichage
-            .then(function () {
-                vm.formErrorLabel = "";
-                vm.formErrorMessage = "";
-                vm.formErrorShowed = false;
-            });
-};
-
-
 
 /**
  * Valider le formulaire et l'envoyer
@@ -166,6 +128,69 @@ Controller.prototype.validFormAndSendData = function () {
         this.onFormValidated();
     }
 };
+
+
+/**
+ * 
+ * @param {type} message
+ * @param {type} delay
+ * @returns {undefined}
+ */
+Controller.prototype.showFormError = function (element) {
+
+    var vm = this;
+    this.$mdToast.show(
+            {
+                hideDelay: 6000,
+                position: 'top right',
+                controller: function () {
+                    console.log(element);
+                    console.log(vm.formErrors);
+                    console.log(vm.formErrors[element]);
+                    this.formErrorLabel = vm.formErrors[element].label;
+                    this.formErrorMessage = vm.formErrors[element].message;
+                    this.hide = vm.$mdToast.hide;
+                },
+                controllerAs: "$ctrl",
+                template: require("./formErrorToast.html"),
+                locals: {
+                    element: element
+                }
+            })
+            // fin de l'affichage
+            .then(function () {
+                vm.formErrorShowed = false;
+            });
+};
+
+/**
+ * Controlleur de popup "toast" qui permet d'afficher un message après une saisie incorrecte.
+ */
+var FormErrorToastController = function ($mdToast, element) {
+
+    console.log(this);
+    console.log(element);
+
+    this.$mdToast = $mdToast;
+
+    // nom
+    if ("name" === element) {
+        this.formErrorLabel = "Nom invalide";
+        this.formErrorMessage = "Seuls les caractères suivants sont autorisés: [a-zA-Z ]";
+    }
+    // prénom
+    else if ("firstname" === element) {
+        this.formErrorLabel = "Prénom invalide";
+        this.formErrorMessage = "Seuls les caractères suivants sont autorisés: [a-zA-Z ]";
+    }
+    // element non reconnu: erreur
+    else {
+        throw constants.INVALID_ARGUMENT + ": " + element;
+    }
+
+    console.log(this);
+};
+FormErrorToastController.$inject = ['$mdToast'];
 
 module.exports = function (angularMod) {
 

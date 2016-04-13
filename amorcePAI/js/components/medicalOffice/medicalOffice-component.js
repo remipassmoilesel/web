@@ -8,7 +8,7 @@ var template = require('./medicalOffice-template.html');
 require('./medicalOffice-component.css');
 // utilitaires et constantes
 var utils = require('../../functionnalcore/utils.js');
-var constants = require('../../constants.js');
+var constants = require('../../functionnalcore/constants.js');
 
 var Controller = function (datah, $scope, $compile, $mdToast, $mdDialog) {
 

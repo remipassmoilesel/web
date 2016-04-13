@@ -9,7 +9,7 @@ require('./searchPatientForm-component.css');
 
 // utilitaires et constantes
 var utils = require('../../functionnalcore/utils');
-var constants = require('../../constants.js');
+var constants = require('../../functionnalcore/constants.js');
 
 var Controller = function ($http, datah, $scope) {
 

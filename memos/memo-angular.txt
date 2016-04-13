@@ -1,4 +1,32 @@
 
+Utilisation des filtres pour optimisation:
+    
+    // déconseillé
+    {{ someFunction(someVar) }}
+
+    // utiliser plutot
+    {{ someVar | someFilter }}
+
+    Ainsi angular n'executera pas systematiquement la fonction pour surveiller 
+    les changements dans la variable.
+
+    // implementation du filtre
+    app.filter("someFilter", function{
+        return function(input){
+            console.log(input);
+        }
+    });
+
+
+Mise à jour de valeurs (syntaxe alternative):
+    $scope.$apply(function(){
+        // sera executé avant l'appel d'apply
+    });
+
+Service interval synchronisé:
+    $interval(function(){
+        console.log('Eviter l'emploi de la fonction $scope.$apply');
+    }, 1000);
 
 Installation:
     $ npm install --save-dev angular angular-material angular-animate angular-aria

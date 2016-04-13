@@ -1,5 +1,6 @@
 <md-card class="patientComponent">
 
+    <!-- La partie haute avec le nom du patient -->
     <md-card-title>
         <md-card-title-text 
             ng-class="{'patientFemale': $ctrl.data.gender === 'F', 'patientMale': $ctrl.data.gender === 'H', 'patientOther': $ctrl.data.gender === 'A'}">
@@ -9,16 +10,18 @@
         </md-card-title-text>
     </md-card-title>
 
+
+    <!-- La partie centrale, différente selon les actions demandées -->
     <md-card-content ng-switch="$ctrl.displayMode" class="patientInformationsContainer"
                      ng-class="{
                                  largeContent: $ctrl.displayMode !== 'summary',
                                          smallContent: $ctrl.displayMode === 'summary'
                              }">
 
-        <!-- eventuellement replacer ng-switch par ng-shwo pour faciliter les animations -->
 
         <!-- Affichage des informations de base -->
         <md-content ng-switch-when="summary" flex >
+            <!-- eventuellement replacer ng-switch par ng-show pour faciliter les animations -->
             <table style="width: 100%">
                 <tr ng-repeat="(kinfo, info) in $ctrl.summaryDatas">
                     <td class="patientInfoLabel">{{kinfo}}:</td>
@@ -52,14 +55,14 @@
 
     </md-card-content>
 
-    <!-- Boutons d'action -->
+    <!-- La partie basse avec les boutons d'action -->
     <md-card-actions layout="row" layout-align="end center">
         <md-button ng-click="$ctrl.setDisplayMode('summary')" ng-show="$ctrl.displayMode !== 'summary'">
             Replier</md-button>
         <md-button ng-click="$ctrl.setDisplayMode('visits')">Visites</md-button>
         <md-button ng-click="$ctrl.setDisplayMode('complete')">Détails</md-button>
         <md-button ng-click="$ctrl.setDisplayMode('modification')">Modifier</md-button>
-        <md-button>Supprimer</md-button>
+        <md-button ng-click="$ctrl.deletePatient()">Supprimer</md-button>
     </md-card-actions>
 
 </md-card>

@@ -41,4 +41,3 @@ require("./components/jsonPrettyPrint/jsonPrettyPrint-component.js")(officeModul
 
 // recherche de patients
 require("./components/searchPatientForm/searchPatientForm-component.js")(officeModule);
-

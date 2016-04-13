@@ -36,7 +36,7 @@ function saveXML(doc, res) {
 }
 
 /**_________________________________________________________________________________________________________________________________ 
- * Returns DOM node of patient identified by numlber in document doc or null if there is no such patient ---------------------------
+ * Returns DOM node of patient identified by number in document doc or null if there is no such patient ---------------------------
  **/
 function getPatient(doc, number) {
     var L = doc.getElementsByTagName('patient')
@@ -220,6 +220,57 @@ function init(port, applicationServerIP, applicationServerPort) {
 
                 console.log(xmlSerializer.serializeToString(newPatient));
                 saveXML(doc, res);
+            }
+    );
+
+    // Suppression de patient
+    app.post('/removePatient'
+            , function (req, res) {
+                console.log("/removePatient, \nreq.body:\n\t", req.body, "\n_______________________");
+
+                // le numéro du patient qu'on recherche
+                var patientNumber = req.body.patientNumber;
+                //var patientNumber = patientToDelete.ssid;
+
+                // verifier qu'il y ai bien un numero de sécurité sociale
+                if (typeof patientNumber === "undefined") {
+                    console.error("400 - Patient number invalid: \n", patientNumber);
+                    res.writeHead(400);
+                    res.write("Patient number invalid: \n", patientNumber);
+                    res.end();
+                    return;
+                }
+
+                // récuperer tous les patients du document
+                var patients = doc.getElementsByTagName("patient");
+
+                // rechercher le patient ayant le même numero de sécurité sociale
+                var patientFound = false;
+                for (var i = 0; i < patients.length; i++) {
+
+                    var p = patients[i];
+                    var pnum = p.getElementsByTagName("numero")[0].textContent;
+
+                    // puis le retirer du DOM
+                    if (pnum === patientNumber) {
+                        doc.getElementsByTagName("patients")[0].removeChild(p);
+                        patientFound = true;
+                        break;
+                    }
+                }
+
+                // pas de patient retiré, erreur
+                if (patientFound === false) {
+                    console.error("400 - Patient not found: \n", patientNumber);
+                    res.writeHead(400);
+                    res.write("Patient not found: \n", patientNumber);
+                    res.end( );
+                    return;
+                }
+
+                // ecrire le document
+                saveXML(doc, res);
+
             }
     );
 
