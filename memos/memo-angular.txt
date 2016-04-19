@@ -1,4 +1,84 @@
 
+Injection de dépendance dans les routes: resolve, qui renvoi un service enregistré
+    $routeProvider
+         .when(
+             "/search", {
+                 template: require("./search-view.html"),
+                 controller: function ($location) {
+                     console.log($location);
+                     console.log(this);
+                     console.log(vm);
+                 },
+                 resolve: {
+                     $location: "$location"
+                 }
+             }
+         );
+
+Angular route:
+    Attention: Si pas de ng-view dans le document, pas de route lulu !
+
+Insérer un template dans une balise
+    <script type="text/ng-template" id="embedded.about.html">
+        <h1> About </h1>
+    </script>
+
+Pratique pour debugger:
+    $scope.$watch(this.patient, function (oldVal, newVal) {
+           console.log("Changing !", oldVal, newVal);
+       });
+
+
+Executer du code après le rendu angular
+    // principe: executer une fonction adans un settimeout(function, 0)
+
+    // Execution d'une fonction après les operations de rendu d'angular
+    // Utilisé pour initialisation tardive de la carte. Voir constructeur.
+    // Source: http://gsferreira.com/archive/2015/03/angularjs-after-render-directive/
+    angularMod.directive('afterRender', ['$timeout', function ($timeout) {
+            var def = {
+                restrict: 'A',
+                terminal: true,
+                transclude: false,
+                link: function (scope, element, attrs) {
+                    $timeout(scope.$eval(attrs.afterRender), 3000);
+                }
+            };
+            return def;
+        }]);
+    
+
+Surveiller une variable
+    
+    // syntaxe
+    $scope.$watch(var, cb(oldVal, newVal){})
+
+    // ici une fonction est utilisée pour retournée la variable
+    var vm = this;
+    this.$scope.$watch(function () {
+        return vm.adress;
+    }, function (newValue, oldValue) {
+        alert('La variable a été modifiée: ' + newValue + " " + oldValue);
+    });
+
+
+Lier un formulaire à un controlleur:
+    <form action="/" method="post" name="$ctrl.connexionForm">
+    ....
+
+    Sera accessible ensuite de le controleur du composant via:
+    this.connexionForm....
+
+
+Flex et layout
+Flex permet de positionner les elements de maniere responsive. Doit être encapsulé dans un
+layout="". 
+        flex: largeur ou hauteur en %
+        flex-offset: decalage en %
+        <div layout ='row' ng-cloak>
+            <md-whiteframe class="md-whiteframe" flex="50" flex-offset="25" ...
+
+
 Utilisation des filtres pour optimisation:
     
     // déconseillé
