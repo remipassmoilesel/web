@@ -1,4 +1,14 @@
 
+// tester si tableau
+console.log(array instanceof Array);
+
+/**
+ * Modules exportés vides ? Attention à l'orthographe de module.exports !!!!
+ */
+module.export = {
+    "rien ne sortira d'ici sans s a export": "Dans le ... Lulu !"
+}
+
 // Meilleure méthode pour tester si undefined, qui ne déclenche pas d'erreur
 if (typeof this.patient.name === "undefined") {
     // source: https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/undefined

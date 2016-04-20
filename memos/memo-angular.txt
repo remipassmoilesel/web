@@ -1,4 +1,87 @@
 
+Retrouver $routeParams dans un controlleur de route: utiliser la bonne déclaration de controlleur
+(ci-dessous) ou l'objet injecté sera systematiquement vide.
+
+Déclarer dynamiquement des routes: Attention à faire les déclarations de controlleur avant celles des routes
+cad hors de la méthode .config !
+
+        // déclarer dynamiquement les controlleurs
+        for (var elmtK in vm.views) {
+            var elmt = vm.views[elmtK];
+
+            // declarer le controlleur, au nom de l'url simple
+            if (typeof elmt.controller !== "undefined") {
+                angularMod.controller(controllerNameOf(elmt),
+                    elmt.controller);
+            }
+        }
+
+
+        // declarer dynamiquement les routes
+        angularMod.config(['$routeProvider', function ($routeProvider) {
+
+            // iterer les vues diponibles pour établir les routes possibles
+            for (var elmtK in vm.views) {
+                var elmt = vm.views[elmtK];
+
+                // verifier les patterns de routes
+                if (elmt.urlPatterns instanceof Array !== true) {
+                    throw constants.INVALID_ARGUMENT;
+                }
+
+                // iterer les differentes routes possibe pour les déclarer
+                for (var r in elmt.urlPatterns) {
+
+                    var route = elmt.urlPatterns[r];
+
+                    // parametres de la route
+                    var params = {
+                        template: makeViewTemplate(elmt),
+                        controller: controllerNameOf(elmt),
+                        controllerAs: "$ctrl"
+                    };
+
+                    // creation de la route
+                    $routeProvider.when(route, params);
+
+                }
+
+            }
+
+
+Drag and drop, a completer
+     // fonction executee en cas de drag
+                this.dragSuccess = function (data, event) {
+                    // console.log("dragSuccess");
+                    // console.log(data);
+                    // console.log(event);
+                }
+                // fonction executee en cas de drag
+                this.dropSuccess = function (data, event) {
+
+                    console.log("dropSuccess");
+                    console.log(data);
+                    console.log(event);
+                }
+
+    <!-- Liste des infirmières -->
+    <div layout="col">
+
+        <div ng-repeat="nrs in $ctrl.allNurses" style="margin: 10px; background: red"
+             ng-drag="true" ng-drag-data="nrs" ng-drag-success="$ctrl.dragSuccess($data, $event)"
+             ng-center-anchor="true">
+
+            {{nrs.name + " " + nrs.firstname}} (Patients affectés: {{nrs.patientNbr}})</div>
+
+    </div>
+
+    <!--<div>{{$ctrl}}</div>-->
+
+    <!-- Liste des patients -->
+    <patient ng-repeat="elmt in $ctrl.nonAffectedPatients" data="elmt"
+             nurses="$ctrl.allNurses" on-patient-modified="$ctrl.updateDatas()"></patient>
+
+
 Injection de dépendance dans les routes: resolve, qui renvoi un service enregistré
     $routeProvider
          .when(
