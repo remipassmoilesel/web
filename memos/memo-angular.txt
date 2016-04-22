@@ -1,4 +1,12 @@
 
+Injection de HTML: ng-bind-html
+   <span ng-show="$ctrl.errorMessage !== ''" class="adressOnMapErrorMessage"
+                        ng-bind-html="$ctrl.errorMessage">
+                </span>
+
+    <!-- Installer angular-sanitize
+
+
 Retrouver $routeParams dans un controlleur de route: utiliser la bonne déclaration de controlleur
 (ci-dessous) ou l'objet injecté sera systematiquement vide.
 
