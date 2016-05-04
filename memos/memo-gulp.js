@@ -1,4 +1,11 @@
 
+// ERROR in multi main
+// Module not found: Error: Cannot resolve 'file' or 'directory' /home/remipassmoilesel/projects/www/markdown-js/src/scripts/main.js in /home/remipassmoilesel/projects/www/markdown-js
+//  @ multi main
+
+// Ce genre d'erreur legerement enervante peut appraitre si il y a une erreur dans package.json
+
+
 // appel de gulp
 var gulp = require("gulp");
 

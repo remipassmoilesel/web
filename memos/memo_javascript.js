@@ -1,3 +1,38 @@
+// Expressions régulières
+var monExpressionReguliere = new RegExp("d(b+)d", "g");
+var monTableau = monExpressionReguliere.exec("cdbbdbsbz");
+
+
+// Copie profonde d'objets
+
+var obj = [
+    "json", {
+        test: [
+            "Hello",
+            "World"
+        ],
+        test2: "eeee"
+    },
+    "sam"
+];
+
+console.log(obj);
+console.log(JSON.parse(JSON.stringify(obj)));
+
+// Combiner des promesses: Promise.all()
+
+var p1 = Promise.resolve(3);
+var p2 = 1337;
+var p3 = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 100, "toto");
+});
+
+Promise.all([p1, p2, p3]).then(function(values) {
+    console.log(values); // [3, 1337, "toto"]
+});
+
+// Arrondir un nombre
+(8 * 8.52).toFixed(2);
 
 // tester si tableau
 console.log(array instanceof Array);
@@ -16,14 +51,12 @@ if (typeof this.patient.name === "undefined") {
 
 
 // dates
-var getPrettyDate = function (date) {
+var getPrettyDate = function(date) {
     var sep = "/";
     if (typeof date === "undefined") {
         date = new Date();
     }
-    return date.getDate()
-            + sep + date.getMonth()
-            + sep + date.getFullYear();
+    return date.getDate() + sep + date.getMonth() + sep + date.getFullYear();
 };
 
 
@@ -84,22 +117,22 @@ var list1 = list(1, 2, 3); // [1, 2, 3]
 var anonymObject = {
     template: template,
     'template': template,
-            bindings: {
-                titre: "@"
-            }
+    bindings: {
+        titre: "@"
+    }
 }
 
 // mécanisme de promesse
-var promise = new Promise(function (resolve, rejected) {
+var promise = new Promise(function(resolve, rejected) {
     console.log("Traitement numéro 1");
     resolve();
 });
 
-promise.then(function () {
+promise.then(function() {
     console.log("Traitement numéro 2");
 });
 
-promise.catch(function () {
+promise.catch(function() {
     console.log("Promesse non tenue");
 });
 
@@ -107,7 +140,7 @@ promise.catch(function () {
 var object = {
     var1: "./data/actes.xml",
     var2: "./data/cabinetInfirmier.xml",
-    logAll: function () {
+    logAll: function() {
 
         console.log("Champs: ");
         for (var property in this) {
@@ -134,23 +167,23 @@ foo();
 
 /**
  * Essai sur les promesses
- * 
+ *
  * /!\ Attention: les promesses angular sont différentes des promesses javascript. Les p angular
  * mettent à jour les controleurs.
  */
 
 // promesse attendant 3 seconde avant de se résoudre
-var p = new Promise(function (resolve, reject) {
+var p = new Promise(function(resolve, reject) {
 
     setTimeout(resolve, 3000);
 
 });
 
 function testPromise() {
-    return p.then(function () {
+    return p.then(function() {
         console.log("Hello !");
         return "Text";
-    }).then(function (resp) {
+    }).then(function(resp) {
         console.log("Hello 2 !");
         console.log(resp);
     });

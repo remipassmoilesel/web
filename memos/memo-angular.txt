@@ -1,4 +1,39 @@
 
+Angular ng-repeat sur des elements en double
+   <tr ng-show="$ctrl.data.actions.length > 0"
+        ng-repeat="act in $ctrl.data.actions track by $index">
+
+Créer une promesse angular
+   var vm = this;
+    return this.$q(function(resolve, reject) {
+         resolve(vm.publications);
+    });
+
+
+Declaration de service avec arguments, en utilisant les factories
+
+   // renvoyer une instance du service
+   angularMod.factory(id, function($http) {
+        return new PublicationsService(repository, $http);
+   });
+
+
+Module simple: nécéssite la directive ng-app="eeee"
+   var angular = require("angular");
+
+   console.log("Script loading");
+
+   angular.module("crossCallApp", [])
+
+       .config(function() {
+           console.log("Code executé avant le démarrage");
+       })
+
+       .run(function($http) {
+           console.log($http);
+       });
+
+
 Injection de HTML: ng-bind-html
    <span ng-show="$ctrl.errorMessage !== ''" class="adressOnMapErrorMessage"
                         ng-bind-html="$ctrl.errorMessage">
@@ -137,10 +172,10 @@ Executer du code après le rendu angular
             };
             return def;
         }]);
-    
+
 
 Surveiller une variable
-    
+
     // syntaxe
     $scope.$watch(var, cb(oldVal, newVal){})
 
@@ -163,7 +198,7 @@ Lier un formulaire à un controlleur:
 
 Flex et layout
 Flex permet de positionner les elements de maniere responsive. Doit être encapsulé dans un
-layout="". 
+layout="".
         flex: largeur ou hauteur en %
         flex-offset: decalage en %
         <div layout ='row' ng-cloak>
@@ -171,14 +206,14 @@ layout="".
 
 
 Utilisation des filtres pour optimisation:
-    
+
     // déconseillé
     {{ someFunction(someVar) }}
 
     // utiliser plutot
     {{ someVar | someFilter }}
 
-    Ainsi angular n'executera pas systematiquement la fonction pour surveiller 
+    Ainsi angular n'executera pas systematiquement la fonction pour surveiller
     les changements dans la variable.
 
     // implementation du filtre
@@ -210,7 +245,7 @@ Utilisation des services: injection d'arguments dans la création du controlleur
 
     Fichier 'service.js'
     --------------------
-    
+
     // créer le service avec une/des méthode(s) utiles
     var serviceAngular = function($http){
         this.doSomething = function(){
@@ -236,7 +271,7 @@ Utilisation des services: injection d'arguments dans la création du controlleur
 
     Fichier utilisateurService.js
     -----------------------------
-    
+
     // créer un module angular
     var moduleAngular = angular.module("module", []);
 
@@ -264,8 +299,8 @@ Formulaires avec Angular
         <input ng-model="$ctrl.field" type="text" />
         <!-- Synchronisation bi-directionnelle avec le champs 'field'. Si le modéle est modifié l'affichage sera modifié,
             si l'affichage est modifié le modele sera modifié -->
-    
-           
+
+
         <md-button ng-click="$ctrl.dosomething()" ...>
         <!-- ng-click permet d'éxecuter du code javascript dans le bon contexte -->
 
@@ -294,7 +329,7 @@ Créer un nouveau module Angular vide
     // /!\ Les modules angular sont différents des modules CommonJS/Webpack
 
     var mod = angular.module("module", []);
-    
+
     // ou créer un nouveau module contenant des élements d'autres modules
     var extMod = angular.module("moduleEtendu", [angularMaterial]);
 
@@ -331,7 +366,7 @@ Ajouter un composant
 
 Méthode angular de création de directives, à utiliser uniquement
 pour les besoins spécifiques. Préférer les constructeurs de composants.
- 
+
 
 Exemple de balise:
     <bhsm-liste data="myDataObject" titre="Ma liste de course" onModified="console.log('hello!');">
@@ -363,7 +398,7 @@ Rafraichir si on utilise des mecanismes non interne à angular (par exemple les 
     // récupérer les infirmiers du cabinet en asynchrone
         datah.getNurses().then(function (response) {
             vm.nurses = response;
-            // si pas d'utilisation des promesses angular, via les méthodes http et tout ça, mettre à jour angular 
+            // si pas d'utilisation des promesses angular, via les méthodes http et tout ça, mettre à jour angular
             // en appelant cette méthode
             $scope.$apply();
         });
@@ -375,7 +410,7 @@ Lister un attribut composé du controleur dans la vue:
             {{ inf | json }}
         </li>
     </ul>
-    
+
 Problème d'affichage de messages Input ANgular:
     Inclure ngMessage
 
@@ -392,7 +427,7 @@ Afficher le message d'erreur dans un formulaire Angular Material
                 </div>
             </div>
 
-Débugger un formulaire: 
+Débugger un formulaire:
         <div>
             {{$ctrl}}
         </div>
