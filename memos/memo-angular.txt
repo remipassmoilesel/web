@@ -1,4 +1,28 @@
 
+Si un $apply est necessaire et qu'il arrive une erreur "Digest already in progress" utiliser:
+   // permet de mettre a jour le scope sans erreur
+   var safeApply = function() {
+        self.$timeout(function() {
+            self.$scope.$apply();
+        }, 0);
+   }
+
+
+Evenements personnalisés:
+
+   // ecouter un evenement
+   $scope.$on('buttonPressedEvent', function() {
+       console.log(arguments);
+       console.log(arguments);
+       console.log(arguments);
+   });
+
+   // diffuser un evenement
+   $scope.$broadcast('buttonPressedEvent');
+
+   // possibilité d'utiliser $emit(name, args);
+
+
 Angular ng-repeat sur des elements en double
    <tr ng-show="$ctrl.data.actions.length > 0"
         ng-repeat="act in $ctrl.data.actions track by $index">
@@ -242,6 +266,7 @@ Installation:
 /!\ Attention: les promesses angular ne sont pas celle de Javascript
 
 Utilisation des services: injection d'arguments dans la création du controlleur.
+/!\ Les services angular ne peuvent pas utiliser d'autres services (comme $scope)
 
     Fichier 'service.js'
     --------------------

@@ -1,3 +1,40 @@
+// evenements jquery
+// Associer un evenement à une action
+$('#go_button').bind('click', function(ev, data) {
+    // do something here
+});
+
+// declencher un evenement programmaticalement
+$('#go_button').trigger('click');
+
+// declencher un evenement special
+$(document).trigger('contact_added', {
+    jid: 'darcy@pemberley.lit'
+});
+
+// ++ methodes utiles raccourcies
+// keypress() , keyup() , keydown() , mouseup() ,
+// mousedown() , mousemove() , click() , load() , and ready()
+
+// document ready event
+$(document).ready(function() {
+    // init code here
+});
+$(function() {
+    // when document is ready
+});
+
+// iterer des elements
+$(stanza).find('item').each(function() {});
+
+// Styler des elements
+var c = $('#tab1').css('color'); // get the tab's font color
+$('.username').css('background-color', '#fff'); // set a single css style
+$('.errorMsg').css({
+    fontSize: '150%',
+    color: 'red'
+}); // change multiple styles at
+
 // Utilisation:
 jquery() === $()
 
