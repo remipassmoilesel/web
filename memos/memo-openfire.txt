@@ -1,0 +1,12 @@
+
+Websocket disponible après activation du plugin nécéssaire.
+    Port d'écoute: 7443
+
+Voir l'option d'audit de messages permettant de conserver certains type de messages pour analyse
+    Serveur > Paramètres du serveur > Audit de message
+
+Voir l'option Clustering permettant de supporter une plus grande charge
+    Serveur > Gestion du serveur > Clustering
+
+Voir l'option Média proxy permettant de faire transiter des données si les connexions paires à paires échouent
+    Serveur > Media services > Media proxy

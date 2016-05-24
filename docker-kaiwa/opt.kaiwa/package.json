@@ -1,0 +1,65 @@
+{
+  "name": "kaiwa.im",
+  "description": "Kaiwa: XMPP Client in the Browser",
+  "version": "1.1.0",
+  "browser": {
+    "crypto": "crypto-browserify"
+  },
+  "dependencies": {
+    "andlog": "1.0.0",
+    "async": "^1.4.0",
+    "attachmediastream": "1.3.5",
+    "backbone": "1.0.0",
+    "body-parser": "1.15.1",
+    "bows": "1.5.0",
+    "compression": "1.6.1",
+    "crypto-browserify": "",
+    "express": "4.13.4",
+    "frameguard": "2.0.0",
+    "getconfig": "0.0.5",
+    "getusermedia": "1.3.7",
+    "helmet": "2.0.0",
+    "human-model": "2.6.2",
+    "human-view": "1.8.0",
+    "jade": "^1.11.0",
+    "jquery": "",
+    "jxt": "^3.0.1",
+    "jxt-xmpp": "^2.0.0",
+    "jxt-xmpp-types": "^3.0.0",
+    "ldapjs": "0.7.1",
+    "moonboots-express": "^3.0",
+    "node-uuid": "^1.4.7",
+    "notify.js": "0.0.3",
+    "semi-static": "1.1.2",
+    "serve-static": "1.10.2",
+    "sound-effect-manager": "1.0.1",
+    "stanza.io": "8.0.0",
+    "staydown": "1.0.3",
+    "templatizer": "0.1.2",
+    "underscore": "1.8.3",
+    "wildemitter": "^1.0.1",
+    "xmpp-constants": "^2.2.2",
+    "x-xss-protection": "1.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "node-stringprep": "0.8.0",
+    "precommit-hook": "^3.0.0"
+  },
+  "license": "MIT",
+  "main": "server.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:digicoop/kaiwa.git"
+  },
+  "scripts": {
+    "lint": "jshint .",
+    "validate": "npm ls"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
+}

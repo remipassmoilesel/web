@@ -1,0 +1,16 @@
+section.page.chat
+  section.group.conversation
+    header.online
+      .title
+        span.name
+        i.channel_actions.fa.fa-comments-o
+        span.status(contenteditable="true", spellcheck="false")
+    ul.messages
+    a#members_toggle
+      i.fa.fa-user
+      span#members_toggle_count
+    ul.groupRoster
+    .chatBox
+      ul.autoComplete
+      form.formwrap
+        textarea(name='chatInput', type='text', placeholder='Send a message...', autocomplete='off')

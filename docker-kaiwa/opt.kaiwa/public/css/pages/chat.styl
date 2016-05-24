@@ -1,0 +1,615 @@
+@import '../_variables'
+@import '../_mixins'
+
+.page.chat
+  padding-top: 0px
+  borderbox()
+  overflow-y: auto
+  overflow-x: hidden
+
+.conversation
+  padding: 0px
+  overflow: hidden
+  borderbox()
+
+  .contactState
+    position: relative
+    left: 24px
+    color: $gray-light
+    font-size: $font-size-small
+
+  header
+    padding: 0px
+    position: fixed
+    top: 0px
+    right: 0px
+    left: 230px
+    right: 200px
+    height: 42px
+    z-index: 101
+
+    .title
+      padding: 0px
+      margin: 0px
+      top: 0px
+      white-space: nowrap
+      display: inline-block
+      height: 42px
+
+    .prefix, .name, .user_presence, .channel_actions, .status
+      display: inline-block
+      color: $gray-dark
+      padding: 0px
+      text-rendering: optimizelegibility
+      top: 0px
+      vertical-align: middle
+      line-height: 42px
+
+    .prefix
+      color: $gray
+      font-size: $font-size-h2
+      font-weight: $font-weight-classic
+      margin-left: 25px
+      cursor: default
+
+    .name
+      font-size: $font-size-h2
+      font-weight: $font-weight-bolder
+      overflow: hidden
+      text-overflow: ellipsis
+      padding-left: 20px
+      cursor: default
+      color: $topbarFg
+
+    .user_presence, .channel_actions
+      color: $gray
+      padding-left: 8px
+      cursor: default
+
+    .user_presence
+      padding-top: 5px
+      font-size: $font-size-small
+
+      &.online
+        color: $green
+        opacity: 1
+
+      &.offline
+        color: $gray-dark
+        opacity: 0.5
+
+      &.dnd
+        color: $red
+
+      &.away, &.xa
+        color: $orange
+
+      &.composing
+        animation: pulsate 1.5s infinite ease-in
+        -webkit-animation: pulsate 1.5s infinite ease-in
+        -moz-animation: pulsate 1.5s infinite ease-in
+
+      &.paused:before
+      color: lighten($gray-dark, 30%)
+
+      &.idle:before
+        background: transparent
+
+    .channel_actions
+      opacity: 1
+      font-size: 20px
+
+    .status
+      color: $gray
+      font-weight: $font-weight-classic
+      font-size: $font-size-h3
+      line-height: 18px
+      margin-left: 15px
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      transition: all .25s
+      allowselect()
+
+      &:empty:before
+        content: ''
+
+      &:focus
+        border-radius: 0.25rem
+        border: 1px solid $gray
+        padding: 5px
+        outline: none
+
+    .tzo:not(:empty)
+      position: absolute
+      right: 15px
+      top: 18px
+      height: 20px
+      margin-top: -10px
+      padding: 0 5px
+      roundall(3px)
+      font-size: $font-size-small
+      font-weight: $font-weight-bold
+      line-height: 20px
+      color: lighten($gray, 30%)
+      background: $gray-lighter
+      border: 1px solid darken($gray-lighter, 10%)
+
+      &:before
+        content: 'Current Time: '
+        font-weight: bold
+
+  .activeCall
+    display: none
+    transition(height 250ms)
+    height: 0px
+    position: absolute
+    bottom: 4rem
+    width: 100%
+    min-width: 610px
+    box-sizing: border-box
+    padding: 0px 73px 0px 24px
+
+    .container
+      width: 100%
+      height: 100%
+      border: 1px solid $gray-lighter
+      border-bottom: none
+      border-radius: 0.2rem 0.2rem 0 0
+      background-color: $gray-lighter
+
+    .remote
+      position: absolute
+      top: 20px
+      left: 40px
+      height: 65%
+      border: 2px solid $gray-light
+
+    .local
+      position: absolute
+      bottom: 10px
+      right: 80px
+      height: 20%
+      border: 2px solid $gray-light
+      transform(scaleX(-1))
+
+    .button-wrap
+      position: absolute
+      left: 118px
+      bottom: 26px
+
+      .button-group
+        margin-left: 5px
+  &.onCall
+    .activeCall
+      display: block
+      height: 20rem
+    .messages
+      bottom: 24rem
+
+  .chatBox
+    background-color: #fff
+    bottom: 0px
+    position: fixed
+    right: 0px
+    left: 230px
+    z-index: 302
+    transition: none
+    -webkit-transition: none
+
+    .autoComplete
+      display: none
+      position: fixed
+      left: 245px
+      bottom: 46px
+      border: 2px solid #ddd
+      border-bottom: 0
+      border-radius: 0.25rem 0.25rem 0 0
+      background-color: #fff
+      z-index: 100
+      list-style-type: none
+      padding: 3px
+      margin: 0px
+
+      li
+        padding: 3px 25px
+        margin: 0px
+        border-radius: 0.25rem
+        position: relative
+        cursor: pointer
+
+        &:hover, &.selected
+          background-color: #439FE0
+          .name
+            color: #fff
+
+        .name
+          color: $gray
+          font-size: 14px
+          font-weight: bold
+
+    .formwrap
+      transition: none
+      -webkit-transition: none
+      position: relative
+
+    textarea
+      display: inline-block
+      vertical-align: middle
+      background: none repeat scroll 0% 0% padding-box #fff
+      font-size: 13px
+      border: 0
+      border-top: 2px solid $gray-lighter
+      border-radius: 0
+      font-family: "Lato",sans-serif
+      margin: 0
+      color: #3D3C40
+      overflow-y: auto
+      box-shadow: none
+      outline: 0px none
+      bottom: 0px
+      height: 44px;
+      padding: 13px 24px
+      max-height: 102px
+      resize: none !important
+
+      &.editing
+        background-color: #fffcea
+        border: 1px solid #efe391
+        color: #d2bd2d
+      &:focus
+        box-shadow: none
+
+    .call
+      display: none
+      width: 50px
+      height: 38px
+      position: absolute
+      top: 0px
+      right: 11px
+
+.messages
+  margin: 0px
+  padding: 0px 1.5rem
+  overflow-y: auto
+  overflow-x: hidden
+  position: absolute
+  top: 0px
+  right: 0px
+  bottom: 59px
+  margin-top: 43px
+  width: 100%
+  borderbox()
+  -webkit-overflow-scrolling: touch
+
+  li.day_divider
+    display: block
+    background: none repeat scroll 0% 0% #fff
+    font-size: 1rem
+    color: $gray-light
+    text-align: right
+    cursor: default
+    clear: both
+    position: relative
+    line-height: 1.2rem
+    margin: 10px 0 30px
+    padding: 0
+    min-height: 0
+
+    hr
+      position: absolute
+      width: 100%
+      top: 0.6rem
+      margin: 0px
+      border-width: 1px 0px 0px 0px
+      border-style: dotted none
+      border-color: #ddd
+
+    .day_divider_name
+      background: none repeat scroll 0% 0% #fff
+      text-transform: capitalize
+      padding-left: 1rem
+      display: inline-block
+      margin: 0px auto
+      position: relative
+
+  li
+    position: relative
+    list-style: none
+    padding: 10px 0
+    width: 100%
+    min-height: 50px
+    display: table
+    display: table-row
+
+    &:last-of-type
+      border: none
+
+    .messageAvatar
+      display: inline-block
+      outline: none
+
+      img
+        avatar()
+
+      .name
+        text-indent: -9999em
+        position: absolute
+        width: 1px
+
+    p a
+      display: inline
+      word-wrap: break-word
+      word-break: break-all
+
+    p img
+      margin: 5px 0
+      border-radius: 5px
+      box-shadow: rgba(0, 0, 0, .25) 0 2px 3px
+
+  .sender
+    font-size: 12px
+    font-weight: bold
+    color: $gray
+    text-align: right
+    white-space: nowrap
+    vertical-align: top
+    margin-top: 5px
+
+    .name
+      padding-left: 10px
+      vertical-align: middle
+
+  .messageWrapper
+    display: table-cell
+    padding: 0px 0px 12px 15px
+    width: 99%
+    vertical-align: top
+    position: relative
+
+    &:hover
+      .date
+        color: $gray
+        font-weight: bolder
+
+    .message_header
+
+      .name
+        display: inline-block
+        margin-right: 0.25rem
+        font-size: $font-size-small
+        line-height: 16px
+        color: $gray
+        font-weight: bold
+        &:empty
+          margin-right: 0
+
+      .nickname
+        display: inline-block
+        font-weight: $font-weight-classic
+        font-size: $font-size-small
+        color: $gray
+        line-height: 22px
+        cursor: pointer
+        &:not(:empty)
+          margin-right: 0.25rem
+          &:before
+            content: '@'
+
+      .date
+        display: inline-block
+        color: $gray-light
+        font-size: $font-size-small
+        width: 60px
+        line-height: 22px
+        text-transform: uppercase
+        text-aligne: right
+        position: absolute
+        right: 0
+
+  .message
+    font-size: $font-size-message
+    line-height: 20px
+    color: $black
+    margin: 0
+    display: block
+    min-width: 20px
+    width: 100%
+    borderbox()
+
+    &:hover
+      &:not(.first) .date
+        visibility: visible
+
+    &:not(.mine)
+      color: $gray-dark
+
+    &.pending
+      color: lighten($gray, 50%)
+
+    &.meAction
+      font-style: italic
+      color: $blue
+      background-color: $blue-lighter
+      padding: 2px
+      padding-left: 8px
+      padding-right: 3px
+      border-radius: 2px
+
+      &:before
+        content: '\2022  '
+        font-style: normal
+
+      .timestamp
+        font-style: normal
+        color: $blue-light
+
+    .date
+      color: $gray-light
+      font-size: $font-size-small
+      width: 60px
+      line-height: 22px
+      text-transform: uppercase
+      cursor: pointer
+      position: absolute
+      left: -40px
+      visibility: hidden
+
+    .body
+      word-break: break-word
+      margin: 0
+      padding: 0
+
+      .mention
+        color: $pink
+        background-color: $pink-lighter
+        padding: 1px
+        font-weight: bold
+        border-radius: 4px
+        border: 1px solid darken($pink-lighter, 25%)
+
+    .timestamp
+      font-size: $font-size-smaller
+      color: lighten($blue, 50%)
+      float: right
+      display: block
+
+      &:after
+        width: 12px
+        content: ''
+        display: inline-block
+        text-align: center
+
+    .sender
+      display: block
+
+.group.conversation
+  .title
+    .status
+      &:empty:before
+        content: 'No subject'
+/*
+  .chatBox .formwrap
+    margin-right: 35px
+*/
+  #members_toggle
+    position: absolute
+    bottom: 50px
+    right: 20px
+    cursor: pointer
+    color: $gray
+    font-size: $font-size-h3
+    background: #fff
+    padding: 5px
+
+    &:hover
+      color: #439FE0
+
+    #members_toggle_count
+      margin-left: 5px
+
+  .groupRoster
+    width: 150px
+    margin: 0px
+    padding: 0px
+    overflow-y: auto
+    overflow-x: hidden
+    position: absolute
+    bottom: 80px
+    right: 20px
+    borderbox()
+    box-shadow: 0px 2px 10px rgba(64, 54, 63, 0.25)
+    -webkit-overflow-scrolling: touch
+    border: 1px solid #ddd
+    border-radius: 0.25rem
+    background-color: #fff
+    z-index: 100
+    visibility: hidden
+    padding: 5px 30px 5px 5px
+
+    li
+      padding: 3px
+      margin: 0px
+      border-radius: 0.25rem
+      position: relative
+      cursor: pointer
+
+      &:hover
+        background-color: #439FE0
+
+        .name
+          color: #fff
+
+      .name
+        padding-left: 14px
+        color: $gray
+        font-size: 14px
+        font-weight: bold
+
+      &:before
+        content: ''
+        position: absolute
+        left: 4px
+        top: 12px
+        height: 4px
+        width: 4px
+        margin-top: -3px
+        border: 2px solid transparent
+        roundall(10px)
+
+      &.online,
+      &.chat
+        &:before
+          background: $green
+          border-color: $green
+        &:not(:hover) .name
+          color: $gray-dark
+
+        &:not(:hover).active .name
+          color $red
+
+      &.dnd:before
+        background: $red
+        border-color: $red
+
+      &.away:before,
+      &.xa:before
+        background: $orange
+        border-color: $orange
+
+      &.offline:before
+        background: $gray-dark
+        border-color: $gray-dark
+
+      &.composing:before
+        animation: pulsate 1.5s infinite ease-in
+        -webkit-animation: pulsate 1.5s infinite ease-in
+        -moz-animation: pulsate 1.5s infinite ease-in
+
+      &.paused:before
+        background: lighten($gray-light, 30%)
+        border-color: lighten($gray-light, 30%)
+
+      &.idle:before
+        background: transparent
+
+.embeds
+  margin: 0px
+  padding: 0px
+  display: none
+
+.embed
+  width: 500px
+  max-width: 500px
+  margin-bottom: 20px
+
+  p, p:hover
+    margin: 0px
+    padding: 6px
+    background-color: #E6EAEF
+
+  a, a:hover
+    color: #34465a
+
+  a.source
+    display: none

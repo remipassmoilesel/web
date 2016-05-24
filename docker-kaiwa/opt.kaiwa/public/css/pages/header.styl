@@ -1,0 +1,37 @@
+@import '../_variables'
+@import '../_mixins'
+
+#topbar.connected
+  z-index: 100
+  #connectionStatus
+    display: none
+
+#topbar
+  position: fixed
+  right: 0px
+  top: 0px
+  height: 42px
+  width: 100%
+  background-color: $topbarBg
+  z-index: 102
+  noselect()
+  color: $topbarFg
+
+  #connectionStatus
+    width: 340px
+    margin: 2px auto
+    background-color: transparent
+
+    p
+      position: relative
+      top: 2px
+      display: inline
+      color: #fff
+      font-size: 15px
+      padding: 0
+      margin: 0 18px 0 0
+
+    button
+      height: 30px
+      margin: 3px 0
+      cursor: pointer

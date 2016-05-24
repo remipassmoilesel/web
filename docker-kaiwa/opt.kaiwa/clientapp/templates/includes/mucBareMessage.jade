@@ -1,0 +1,16 @@
+- var messageClasses = ['message', 'message.classList']
+if firstEl
+  - messageClasses.push('first')
+
+div(id='chat'+message.cid, class=messageClasses)
+  .date(title=messageDate.format('{Dow}, {MM}/{dd}/{yyyy} - {h}:{mm} {Tt}')) #{messageDate.format('{h}:{mm} {tt}')}
+  p.body !{message.processedBody}
+  - var urls = message.urls
+  section.embeds
+    each item in urls
+      if item.source == 'body'
+        section.embed.hidden
+          a.source(href=item.href)= item.desc
+      else
+        section.embed
+          a.source(href=item.href)= item.desc

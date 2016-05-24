@@ -1,0 +1,49 @@
+@import _variables
+
+roundall($round)
+  -moz-border-radius: $round
+  -webkit-border-radius: $round
+  -khtml-border-radius: $round
+  -o-border-radius: $round
+  -border-radius: $round
+  border-radius: $round
+
+noselect()
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+allowselect()
+  -webkit-touch-callout: initial
+  -webkit-user-select: initial
+  -khtml-user-select: initial
+  -moz-user-select: initial
+  -ms-user-select: initial
+  user-select: initial
+
+transform()
+  -webkit-transform: arguments
+  -moz-transform: arguments
+  -ms-transform: arguments
+  transform: arguments
+
+borderbox()
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+// avatars
+
+avatar()
+  width: 36px
+  height: 36px
+  roundall(0.2rem)
+  border-radius: 50%
+
+// this if for the content flash and hardware acceleration bugs in webkit
+webkit-transition-fix()
+  -webkit-backface-visibility: hidden
+  //-webkit-transform: translateZ(0)

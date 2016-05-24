@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  section#loginbox.content.box
+    .head
+        h3 Connexion
+
+    .content
+
+        form
+            .fieldContainer
+                label(for='username') Login
+                input(type='text', id='jid', name='jid', placeholder='you', tabindex='1', autofocus)
+            .fieldContainer
+                label(for='password') Mot de passe
+                input(type='password', id='password', name='password', placeholder='•••••••••••••', tabindex='2')
+
+
+            button(type='button', tabindex='3', id='connexionButton', class="primary") Connexion
+
+        div(id='errorMessage', style='margin: 10px; text-align: center; width: 100%; font-weight: bolder')
+
+block scripts
+    script(src="/config.js")
+    script(src="/js/login.js")
+    script.
+        if ("#{config.wss}".length == 0)
+            $('.fieldContainerWSS').show();

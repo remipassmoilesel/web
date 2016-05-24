@@ -1,0 +1,32 @@
+@import '../_variables'
+@import '../_mixins'
+
+html
+  font-size: 100%
+
+body
+  background: white
+  font-family: $font-family-lato
+  font-size: $font-size-base
+  font-weight: 400
+  -webkit-font-smoothing: antialiased
+
+h4
+  margin-top: 0
+  font-size: $font-size-h4
+
+a
+  color: $blue
+  font-weight: $font-weight-bold
+  text-decoration: none
+
+  &:hover, &:active
+    color: $blue-saturated-light
+
+#pages
+  position: absolute
+  top: 0px
+  right: 0px
+  left: 230px
+  height: 100%
+  borderbox()

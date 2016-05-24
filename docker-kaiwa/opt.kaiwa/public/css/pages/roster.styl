@@ -1,0 +1,343 @@
+@import '../_variables'
+@import '../_mixins'
+
+#menu
+  position: fixed
+  top: 0px
+  bottom: 0px
+  left: 0px
+  width: 230px
+  background-color: $sidebarBg
+  color: $sidebarText
+  z-index: 300
+  webkit-transition-fix()
+  noselect()
+
+  #organization
+    width: 230px
+    height: 42px
+    background: $sidebarTopAndBottomBg
+
+    #orga_name
+      color: $topbarFg
+      font-size: $font-size-large
+      font-weight: $font-weight-bolder
+      line-height: 42px;
+      vertical-align: middle
+      margin-left: 20px
+
+    .settings
+      position: relative
+      height: 28px;
+      left: 5px;
+      background-color: $settingsBg
+      color: $settingsText
+      transition: none
+      border: 0
+
+      svg
+        position: absolute
+        top: 55%
+        left: 3px
+        margin: 0px
+        margin-top: -13px
+        fill: $settingsText
+
+      &:hover
+        svg
+          fill: $settingsHoverText
+
+      &.active
+        svg
+          fill: $settingsHoverText
+
+  .viewport
+    position: absolute
+    top: 42px
+    bottom: 22px
+    left: 0
+    right: 0
+    overflow-y: auto
+    overflow-x: hidden
+    padding-top: 20px
+    padding-bottom: 10px
+
+  .main
+    margin: 10px 0 0 0
+    text-align: center
+    li
+      display: inline-block
+
+      &:last-of-type
+        a
+          margin-left: 5px
+          padding-left: 30px
+
+      svg
+        position: absolute
+        top: 50%
+        left: 5px
+        margin-top: -13px
+        fill: white
+
+      a
+        position: relative
+
+  h1
+    font-size: $font-size-message
+    margin: 0
+    padding: 4px 20px
+    text-transform: uppercase
+    margin-bottom: 7px;
+    color: $sidebarSectionTitleColor
+
+#roster,
+#bookmarks
+  margin-bottom: 25px
+
+  #contactrequests
+    margin: 0px
+    padding-left: 0px
+
+    li
+      width: 180px
+      height: 68px
+      margin-left: 20px
+      margin-bottom: 10px
+      padding-bottom: 4px
+      background: $sidebarRequestBg
+      border-radius: 0.25rem
+      border: 2px solid $sidebarRequestBorder
+
+      .response
+        text-align: center
+
+  .jid
+    display: inline-block
+    width: 100%
+    text-align: center
+
+  .approve, .deny
+    display: inline-block
+    margin-top: 10px
+
+  #addcontact,
+  #joinmuc
+    margin: 8px 20px 5px 20px
+    padding: 0px 10px
+    width: 178px
+    height: 25px
+    font-size: $font-size-small
+    background-color: $sidebarInputBg
+    border-radius: 0.25rem
+    border: 1px solid $sidebarInputBorder
+    color: $sidebarInputText
+
+  li
+    list-style-type: none
+    padding: 3px 10px
+    padding-right: 15px
+    position: relative
+    font-size: $font-size-base
+    cursor: pointer
+    width: 100%
+    borderbox()
+    color: $sidebarNames
+
+    &:hover
+      background: $sidebarHover
+      color: $sidebarHoverText
+
+    &.joined
+      &:hover:not(.hasUnread) .remove
+        visibility: visible
+
+    &:not(.joined)
+      &:hover:not(.hasUnread) .join
+        visibility: visible
+
+    &.hasUnread, &.hasUnread .prefix
+      font-weight: $font-weight-bolder
+      color: $sidebarUnreadText
+
+    &:not(.activeContact).offline,
+    &:not(.activeContact).chat
+      .presence
+        color: $brown-light
+
+    &:not(.activeContact).dnd
+      .presence
+        color: $red
+        opacity: 1
+
+    &:not(.activeContact).away,
+    &:not(.activeContact).xa
+      .presence
+        color: $orange
+        opacity: 1
+
+    &.activeContact, &.offline.activeContact
+      background: $sidebarSelectionBg
+      &:not(.dnd):not(.away):not(.online) .presence
+        color: $brown-darkerer
+        opacity: 1
+      .remove, .join
+        color: $sidebarSelectionText
+      .name
+        color: $sidebarSelectionText
+
+    &:not(.activeContact).online
+      .presence
+        color: $green
+        opacity: 1
+
+    &.online, &.dnd, &.away
+      .name
+        font-style : normal
+
+    &.activeContact
+      &.online .presence,
+      &.dnd .presence,
+      &.away .presence
+        color: #fff
+        opacity: 1
+
+    &.composing
+      &:after
+        animation: pulsate 1.5s infinite ease-in
+        -webkit-animation: pulsate 1.5s infinite ease-in
+        -moz-animation: pulsate 1.5s infinite ease-in
+
+    &.paused
+      &:after
+        background: lighten($gray-light, 30%)
+        border-color: lighten($gray-light, 30%)
+
+    &.idle
+      &:after
+        background: transparent
+
+      .name
+        color: $sidebarNames
+        font-style: italic
+
+    .presence
+      font-size: 10px
+      display: inline-block
+      margin-top: -10px
+      vertical-align: middle
+      position: absolute;
+      top: 28px;
+      left: 37px
+
+    .user
+      display: inline-block
+      width: 170px
+      overflow: hidden
+      text-overflow: ellipsis
+      height: 22px
+      font-style: italic
+
+    .status
+      font-size: $font-size-small
+      font-weight: 400
+      line-height: 12px
+      margin: 0
+
+    .idleTime
+      display: inline-block
+      margin-left: 5px
+      font-size: $font-size-small
+      color: darken($brown-light, 50%)
+
+    .avatar
+      width: 20px
+      height: 20px
+      roundall(0.2rem)
+      border-radius: 50%
+      margin: 0
+      padding: 0
+      margin-right: 10px
+      margin-top: 2px
+
+    .name
+      width: 100%
+      overflow: hidden
+      text-overflow: ellipsis
+      max-width: 140px
+      line-height: 23px
+      height: 23px
+      position: absolute
+
+    .unread
+      display: none
+      color: $sidebarUnreadText
+      height: 16px
+      width: 18px
+      roundall(5px)
+      position: absolute
+      padding-top:2px
+      right: 15px
+      top: 6px
+      font-size: $font-size-smaller
+      font-weight: $font-weight-bold
+      text-align: center
+      background: $sidebarUnreadBg
+
+    .unread:not(:empty)
+      display: block
+
+    .remove, .join
+      position: absolute
+      right: 10px
+      top: 8px
+      font-size: $font-size-base
+      display: inline-block
+      font-family: FontAwesome
+      visibility: hidden
+
+    button
+      margin: -15px 0px 0px 5px
+
+    .leaveRoom
+      display: none
+
+    .joinRoom
+      display: inline-block
+
+    &.joined
+      .joinRoom
+        display: none
+
+      .leaveRoom
+        display: inline-block
+
+#roster
+  .wrap
+    padding-left: 14px
+    height: 23px;
+
+#bookmarks
+  .wrap
+    padding-left: 14px
+    height: 23px
+
+@keyframes pulsate
+  0%
+    opacity: 1.0
+  50%
+    opacity: 0.5
+  100%
+    opacity: 1.0
+
+#kaiwaNotice
+  position: absolute
+  bottom: 8px
+  left: 50%
+  width: 120px
+  margin-left: -60px
+  opacity: .4
+
+  img
+    width: 36px
+    margin-left: 3px;

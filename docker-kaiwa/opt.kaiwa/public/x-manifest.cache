@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# 0.0.4 1388973562957
+
+CACHE:
+/app.js
+/styles.css
+
+images/logo.png
+images/icon_128x128.png
+
+js/zepto.js
+js/login.js
+js/logout.js
+
+NETWORK:
+*
+
+FALLBACK:
+

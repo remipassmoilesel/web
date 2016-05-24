@@ -1,0 +1,18 @@
+{
+    "isDev": true,
+    "http": {
+        "host": "0.0.0.0",
+        "port": 80
+    },
+    "session": {
+        "secret": "bd1wE8tYjT2HbWesfxdSIOHrs6gURJxF"
+    },
+    "server": {
+        "name": "Prototype Kaiwa",
+        "domain": "lesurvivantdelamort",
+        "wss": "http://172.17.0.2:7070/http-bind/",
+        "muc": "",
+        "startup": "",
+        "admin": "admin"
+    }
+}
