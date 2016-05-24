@@ -1,4 +1,9 @@
 
+/**
+Fusionner deux objet. Si vrai alors une copie profonde est effectuée.
+*/
+
+$.extend(true, object1, object2);
 
 
 /*
