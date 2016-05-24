@@ -1,4 +1,4 @@
-# Dockerfile to test Kaiwa / Openfire
+# Docker image with Kaiwa / Openfire
 
 
 ```
