@@ -1,4 +1,9 @@
 
+API Rest: Intaller le plugin puis aller dans Serveur > Paramètres du serveur > REST API
+    Doc: https://www.igniterealtime.org/projects/openfire/plugins/restapi/readme.html#feature-list
+    Adresse: HTTPS: var apiBaseUrl = "https://test-messagerie.ddns.net:9091/plugins/restapi/v1";
+             HTTPS: var apiBaseUrl = "http://test-messagerie.ddns.net:9090/plugins/restapi/v1";
+
 Websocket disponible après activation du plugin nécéssaire.
     Port d'écoute: 7443
 

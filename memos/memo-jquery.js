@@ -1,3 +1,10 @@
+
+// vider un element
+$(logSpaceId).empty();
+
+// Transformer un objet en chaine de parametres compatible URL
+$.param(req.data)
+
 // evenements jquery
 // Associer un evenement à une action
 $('#go_button').bind('click', function(ev, data) {
