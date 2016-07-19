@@ -1,7 +1,59 @@
 
 
+// Manque d'erreur dans une application utilisant Strophe ?
+
+var stLogLevel = Strophe.LogLevel.WARN;
+
+Strophe.log = function (level, msg) {
+    if(level >= stLogLevel){
+        console.error("Strophe [" + level + "] " + msg);
+    }
+};
+
+
+// Envoyer une requete IQ
+self.conn.sendIQ(
+    iq,
+    // success
+    function (stanza) {
+       // requete réalisée avec succés, réponse en argument
+    },
+    // error
+    function (stanza) {
+        // erreur lors de la requete, réponse passée en argument
+    }
+);
+
+// Stanza (retour) to string
+$(stanza).html();
+
+
+// methode utilitaire de decomposition de JID
+Strophe.getUserFromJid('darcy@pemberley.lit/library'); // 'darcy'
+Strophe.getDomainFromJid('darcy@pemberley.lit/library'); // 'pemberley.lit'
+Strophe.getResourceFromJid('darcy@pemberley.lit/library'); // 'library'
+Strophe.getBareJidFromJid('darcy@pemberley.lit/library'); // 'darcy@pemberley.lit'
+
+
+// A l'aide de JQuery, retrouver le corps d'une stanza
+var body = $(stanza).find("body").text();
+
+$('#chat_input').text('Type your message here..');
+
+// iterer une stanza
+$(stanza).find('item').each(function() {
+    $('#contact_list').append(' < li > ' + $(this).attr('jid') + ' < /li>');
+});
+
+
 
 // Ajouter un observateur de stanza
+
+// /!\ Un handler de stanza doit retourner vrai ou il sera sinon retiré !
+// /!\ Un handler de stanza doit retourner vrai ou il sera sinon retiré !
+// /!\ Un handler de stanza doit retourner vrai ou il sera sinon retiré !
+// /!\ Un handler de stanza doit retourner vrai ou il sera sinon retiré !
+
 Strophe = {
     addHandler: function(handler, ns, name, type, id, from) {
         // La selection des message se fait sur la base de l'égalité.

@@ -1,4 +1,11 @@
 
+// areter la propagation d'un evenement
+$("selector").click(function(){
+    // ...
+    return false;
+})
+
+
 /**
 Fusionner deux objet. Si vrai alors une copie profonde est effectuée.
 */

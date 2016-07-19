@@ -1,0 +1,26 @@
+
+Importer un fichier
+    @import "menu";
+    /* importe ./_menu.scss */
+
+/*
+Ci-dessous des examples SASS et ce qu'il donnent en CSS
+ (Source: https://css-tricks.com/the-sass-ampersand/)
+ */
+
+    // SASS
+    .parent {
+      .child {}
+    }
+    // >> CSS
+    .parent .child {}
+
+
+    // SASS
+    .some-class {
+      &.another-class {}
+    }
+    // >> CSS
+    .some-class.another-class { }
+
+

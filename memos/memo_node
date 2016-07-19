@@ -1,4 +1,8 @@
 
+Si ce message d'erreur apparait pendant un npm install:
+gyp: /home/remipassmoilesel/.node-gyp/4.4.4/common.gypi not found
+    >>> supprimer le dossier ~/.node-gyp et recommencer le build
+
 Initialiser un répertoire avec npm, de manière interactive
     $ npm init
 

@@ -1,4 +1,51 @@
 
+// Stanza XMPP, XML, ... (retour) to string
+$(stanza).html();
+
+console.log($("#djoeMenuCtn > h1.ui-accordion-header").eq(0));
+
+// manipuler un noeud après selection
+var djoeMenu = $(".hey");
+djoeMenu.currentResults.eq(djoeMenu.currentSearchResultIndex);
+
+// obtenir le noeud DOM, et non un objet jquery
+var firstHeadingElem = $( "h1" ).get( 0 );
+console.log(firstHeadingElem.tagName);
+
+// sélectionner le premier titre
+var firstHeading = headings.eq( 0 );
+
+// affecter le contenu du 3 eme element H3
+$( "#content" ).find( "h3" ).eq( 2 ).html( "new text for the third h3!" );
+
+// obtenir une propriete, le nom de la balise par exemple
+console.log($(this).prop("tagName"));
+
+// Obtenir tous les enfants d'un element, au premier niveau uniquement
+// sur plusieurs niveaux utiliser find()
+console.log($("#menu").children());
+
+
+// Magasin de plugins: http://plugins.jquery.com
+
+/*
+
+Créer un plugin JQuery
+
+*/
+// ajouter la fonction au prototype
+$.fn.greenify = function() {
+    this.css( "color", "green" );
+
+    // retourner l'objet pour chainage
+    return this;
+}
+// La fonction sera accessible ensuite par $("...").greenify()
+// Voir plus sur https://learn.jquery.com/plugins/basic-plugin-creation/
+
+
+$( "a" ).greenify().addClass( "greenified" );
+
 // vider un element
 $(logSpaceId).empty();
 
@@ -31,7 +78,7 @@ $(function() {
     // when document is ready
 });
 
-// iterer des elements
+// Obtenir tous les enfants d'un element, sur plusieurs niveaux
 $(stanza).find('item').each(function() {});
 
 // Styler des elements
